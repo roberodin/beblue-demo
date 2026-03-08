@@ -90,13 +90,17 @@
       el.style.cursor = 'pointer';
       el.addEventListener('click', () => location.href = '05-program-overview.html');
     }
-    if (text.includes('ver informe') || text.includes('ver todo')) {
+    if (text.includes('ver informe') || text.includes('ver todo') || text.includes('ver informe completo')) {
       el.style.cursor = 'pointer';
       el.addEventListener('click', () => location.href = '07-progress-avatar.html');
     }
-    if (text.includes('reservar') || text.includes('nueva cita') || text.includes('agendar')) {
+    if (text.includes('reservar') || text.includes('nueva cita') || text.includes('agendar') || text.includes('gestionar reservas')) {
       el.style.cursor = 'pointer';
       el.addEventListener('click', () => location.href = '11-booking.html');
+    }
+    if (text.includes('cerrar sesión') || text.includes('cerrar sesion') || text.includes('logout') || text.includes('salir')) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', e => { e.preventDefault(); location.href = '01-welcome.html'; });
     }
   });
 
@@ -129,6 +133,23 @@
       if (text.includes('siguiente') || text.includes('continuar') || text.includes('finalizar') || text.includes('completar')) {
         el.addEventListener('click', e => { e.preventDefault(); location.href = '04-home-dashboard.html'; });
       }
+      if (text.includes('anterior') || text.includes('atrás') || text.includes('atras')) {
+        el.addEventListener('click', e => { e.preventDefault(); location.href = '02-login.html'; });
+      }
+    });
+  }
+
+  // Login: forgot password link -> stay on login
+  if (currentFile === '02-login.html') {
+    document.querySelectorAll('a[href="#"]').forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (text.includes('olvidaste') || text.includes('contraseña') || text.includes('contrasena')) {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          alert('Se ha enviado un email de recuperación');
+        });
+      }
     });
   }
 
@@ -147,8 +168,25 @@
     });
   }
 
-  // Profile: devices section
+  // Profile: menu items + devices section
   if (currentFile === '08-profile.html') {
+    document.querySelectorAll('button, a, div').forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (el.offsetHeight > 20 && el.offsetHeight < 80) {
+        if (text === 'analíticas' || text === 'analiticas') {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => location.href = '07-progress-avatar.html');
+        }
+        if (text === 'historial médico' || text === 'historial medico') {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => location.href = '07-progress-avatar.html');
+        }
+        if (text.includes('conectar nuevo dispositivo')) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => location.href = '15-connected-devices.html');
+        }
+      }
+    });
     document.querySelectorAll('h3').forEach(h3 => {
       if (h3.textContent.includes('Dispositivos')) {
         const section = h3.nextElementSibling;
@@ -158,6 +196,49 @@
         }
         h3.style.cursor = 'pointer';
         h3.addEventListener('click', () => location.href = '15-connected-devices.html');
+      }
+    });
+  }
+
+  // Booking: accept/change buttons
+  if (currentFile === '11-booking.html') {
+    document.querySelectorAll('button').forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (text.includes('aceptar') || text.includes('confirmar')) {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', e => { e.preventDefault(); location.href = '06-calendar.html'; });
+      }
+      if (text.includes('cambiar horario') || text.includes('cambiar')) {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', e => { e.preventDefault(); location.href = '06-calendar.html'; });
+      }
+    });
+  }
+
+  // Therapies: manage bookings
+  if (currentFile === '10-therapies.html') {
+    document.querySelectorAll('button').forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (text.includes('gestionar') || text.includes('reservas')) {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', e => { e.preventDefault(); location.href = '11-booking.html'; });
+      }
+    });
+  }
+
+  // Connected devices: connect buttons -> stay on page (visual feedback)
+  if (currentFile === '15-connected-devices.html') {
+    document.querySelectorAll('button').forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (text === 'conectar') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          el.textContent = 'Conectado ✓';
+          el.style.background = '#22c55e';
+          el.style.color = '#fff';
+          el.disabled = true;
+        });
       }
     });
   }
