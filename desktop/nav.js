@@ -97,22 +97,31 @@
     // Remove fixed positioning if any
     existingAside.className = '';
   } else {
-    // No sidebar exists - inject one
+    // No sidebar exists - inject one and restructure the layout
     const aside = document.createElement('aside');
     aside.innerHTML = buildSidebar();
-    aside.style.cssText = 'width:256px;min-width:256px;flex-shrink:0;display:flex;flex-direction:column;background:#0B1120;border-right:1px solid rgba(255,255,255,0.06);height:100vh;position:fixed;top:0;left:0;overflow-y:auto;z-index:100;';
+    aside.style.cssText = 'width:256px;min-width:256px;flex-shrink:0;display:flex;flex-direction:column;background:#0B1120;border-right:1px solid rgba(255,255,255,0.06);height:100vh;position:sticky;top:0;overflow-y:auto;';
 
-    document.body.insertBefore(aside, document.body.firstChild);
+    // Remove existing header nav elements (the sidebar replaces them)
+    document.querySelectorAll('header nav').forEach(n => n.remove());
 
-    // Push main content to the right
-    const mainContent = aside.nextElementSibling;
-    if (mainContent) {
-      mainContent.style.marginLeft = '256px';
+    // Wrap all body children in a flex container with the sidebar
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'display:flex;min-height:100vh;';
+    while (document.body.firstChild) {
+      wrapper.appendChild(document.body.firstChild);
     }
-    // Also handle body-level flex layouts
-    if (window.getComputedStyle(document.body).display !== 'flex') {
-      document.body.style.paddingLeft = '256px';
-      aside.style.position = 'fixed';
+    wrapper.insertBefore(aside, wrapper.firstChild);
+    document.body.appendChild(wrapper);
+    document.body.style.margin = '0';
+    document.body.style.overflow = 'hidden';
+
+    // Make the main content area scrollable
+    const mainArea = aside.nextElementSibling;
+    if (mainArea) {
+      mainArea.style.flex = '1';
+      mainArea.style.overflowY = 'auto';
+      mainArea.style.maxHeight = '100vh';
     }
   }
 
