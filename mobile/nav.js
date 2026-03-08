@@ -69,14 +69,15 @@
 
   // === WIRE UP NAVIGATION LINKS ===
 
-  // Back buttons
-  document.querySelectorAll('a[href="#"], button, span, div').forEach(el => {
-    const icon = el.querySelector('.material-symbols-outlined') || (el.classList && el.classList.contains('material-symbols-outlined') ? el : null);
-    const iconName = icon ? icon.textContent.trim() : '';
+  // Back buttons — only target the icon itself or its direct small parent
+  document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+    const iconName = icon.textContent.trim();
     if (iconName === 'arrow_back' || iconName === 'arrow_back_ios' || iconName === 'arrow_back_ios_new' || iconName === 'close') {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', function(e) {
+      const target = icon.parentElement || icon;
+      target.style.cursor = 'pointer';
+      target.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         location.href = '04-home-dashboard.html';
       });
     }
