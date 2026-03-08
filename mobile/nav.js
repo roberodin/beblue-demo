@@ -215,6 +215,11 @@
     document.body.style.cssText = 'margin:0;padding:0;overflow:hidden;background:#111;height:100vh;';
     document.documentElement.style.overflow = 'hidden';
 
+    // Hide scrollbar
+    const hideScrollStyle = document.createElement('style');
+    hideScrollStyle.textContent = '#phone-scroll::-webkit-scrollbar{display:none} #phone-scroll{-ms-overflow-style:none;scrollbar-width:none;}';
+    document.head.appendChild(hideScrollStyle);
+
     // Move bottom nav inside phone and make it sticky to bottom of phone frame
     const beblueNav = document.getElementById('beblue-nav');
     if (beblueNav) {
