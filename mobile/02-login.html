@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "beblue-bg": "#0A1628",
+                        "beblue-primary": "#135BEC",
+                        "beblue-link": "#60A5FA",
+                    },
+                    fontFamily: {
+                        "sans": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "btn": "1.25rem",
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        .glass-input {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+        .glass-input:focus-within {
+            border-color: #135BEC;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            background-color: #0A1628;
+            -webkit-font-smoothing: antialiased;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+<style>
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col text-white overflow-x-hidden antialiased">
+<div class="fixed top-[-10%] left-[-20%] w-[80%] h-[50%] bg-beblue-primary/10 blur-[120px] rounded-full pointer-events-none z-[-1]"></div>
+<div class="fixed bottom-[-10%] right-[-20%] w-[70%] h-[40%] bg-beblue-primary/5 blur-[100px] rounded-full pointer-events-none z-[-1]"></div>
+<main class="flex-1 flex flex-col items-center justify-center px-8 py-12 w-full max-w-[430px] mx-auto">
+<header class="w-full flex flex-col items-center text-center mb-10">
+<div class="flex flex-col items-center mb-8">
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-beblue-primary/20 mb-3">
+<span class="material-symbols-outlined text-beblue-primary text-3xl fill-1 leading-none">blur_on</span>
+</div>
+<h2 class="text-beblue-primary font-extrabold tracking-[0.4em] text-[11px] uppercase ml-[0.4em]">Be Blue</h2>
+</div>
+<h1 class="text-3xl font-bold tracking-tight mb-2">Bienvenido de nuevo</h1>
+<p class="text-slate-400 text-sm font-medium">Tu camino hacia la longevidad premium</p>
+</header>
+<form class="w-full space-y-5" onsubmit="event.preventDefault();">
+<div class="space-y-4">
+<div class="glass-input flex items-center px-4 h-14 rounded-btn transition-all duration-200">
+<span class="material-symbols-outlined text-slate-500 mr-3 text-[22px]">mail</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-white placeholder:text-slate-500 text-[15px] font-medium" placeholder="Email" type="email"/>
+</div>
+<div class="glass-input flex items-center px-4 h-14 rounded-btn transition-all duration-200">
+<span class="material-symbols-outlined text-slate-500 mr-3 text-[22px]">lock</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-white placeholder:text-slate-500 text-[15px] font-medium" placeholder="Contraseña" type="password"/>
+<button class="text-slate-500 hover:text-white transition-colors ml-2 flex items-center" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-center pt-1">
+<a class="text-sm font-medium text-beblue-link hover:text-blue-300 transition-colors" href="#">
+                    ¿Olvidaste tu contraseña?
+                </a>
+</div>
+<div class="pt-4">
+<button class="w-full bg-beblue-primary hover:bg-blue-600 text-white font-bold h-14 rounded-btn flex items-center justify-center shadow-lg shadow-beblue-primary/25 transition-all active:scale-[0.98]">
+                    Iniciar Sesión
+                </button>
+</div>
+</form>
+<div class="w-full flex items-center gap-4 py-10">
+<div class="h-[1px] bg-white/10 flex-1"></div>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] whitespace-nowrap">o continúa con</span>
+<div class="h-[1px] bg-white/10 flex-1"></div>
+</div>
+<div class="w-full grid grid-cols-2 gap-4">
+<button aria-label="Apple Login" class="glass-input h-14 rounded-btn flex items-center justify-center hover:bg-white/10 transition-colors">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.702z"></path>
+</svg>
+</button>
+<button aria-label="Google Login" class="glass-input h-14 rounded-btn flex items-center justify-center hover:bg-white/10 transition-colors">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C20.187 1.147 17.2 0 12.48 0 5.693 0 0 5.693 0 12.48S5.693 24.96 12.48 24.96c3.667 0 6.44-1.213 8.573-3.44 2.213-2.213 2.907-5.32 2.907-7.827 0-.747-.067-1.453-.187-2.08H12.48z"></path>
+</svg>
+</button>
+</div>
+<footer class="mt-auto pt-10 text-center w-full">
+<p class="text-[15px] text-slate-400">
+                ¿No tienes cuenta? 
+                <a class="text-beblue-primary font-bold hover:underline transition-all ml-1" href="#">Regístrate</a>
+</p>
+</footer>
+</main>
+
+</body></html>

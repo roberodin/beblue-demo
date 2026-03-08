@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Center Scheduling Agenda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                        "neutral-dark": "#16253d",
+                        "neutral-border": "#1e2f4d"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 140px repeat(7, 1fr);
+        }
+        .time-row {
+            height: 60px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Left Sidebar -->
+<aside class="w-64 border-r border-neutral-border bg-neutral-dark flex flex-col shrink-0">
+<div class="p-6 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<div>
+<h1 class="text-slate-100 text-base font-bold leading-tight">BeBlue Center</h1>
+<p class="text-slate-400 text-xs font-medium">Longevity Staff</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">calendar_today</span>
+<span class="text-sm font-semibold">Agenda</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-semibold">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">science</span>
+<span class="text-sm font-semibold">Tratamientos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold">Ajustes</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-neutral-border">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-background-dark/50">
+<div class="size-8 rounded-full bg-slate-700 overflow-hidden">
+<img alt="Staff Avatar" data-alt="Profile photo of clinic staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyGKr-nUP2rG2dr0SpAjGT2Fq52zDWj4apN5ZY07NZcTcs7VyKYBXOOc5yLlWbbGXQiMf9lVuvbTqKq6Uk0pGDdieTF2j__kniEzKLO7u2ZAdU33ugRHS-mOftGf8WMfH-82T1Yg3Pp9ZanVUGGjll0KDphOn9uk5P2hdm9Dq3NZ9-2aeyrZZ0D0Jm6nQQsyjcAoJj7Z86QgHGR2fkXm3VhLnVHy2sHf1DXOdiTuZIXcST3XN0iH-SIVubszeO7Dguk1LA5d5okiE"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Dr. Julian S.</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Clinical Lead</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Header -->
+<header class="h-16 border-b border-neutral-border bg-neutral-dark/30 backdrop-blur-md px-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold text-slate-100">Agenda del Centro</h2>
+<div class="flex items-center gap-2 bg-neutral-dark px-3 py-1.5 rounded-lg border border-neutral-border ml-4">
+<span class="material-symbols-outlined text-primary text-sm">calendar_month</span>
+<span class="text-sm font-medium">Semana del 8-14 Marzo 2026</span>
+<span class="material-symbols-outlined text-slate-500 text-sm cursor-pointer">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-neutral-dark border-neutral-border rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-primary focus:border-primary" placeholder="Buscar reserva..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                    Nueva Reserva
+                </button>
+</div>
+</header>
+<!-- Content Grid -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Calendar Section -->
+<div class="flex-1 overflow-auto p-6">
+<!-- Days Header -->
+<div class="calendar-grid sticky top-0 z-10 bg-background-dark mb-1">
+<div class="h-12 border-b border-neutral-border flex items-center justify-center text-xs font-bold text-slate-500 uppercase tracking-widest">Equipos</div>
+<div class="h-12 border-b border-b-primary border-b-2 flex flex-col items-center justify-center bg-primary/5">
+<span class="text-xs font-bold text-primary">LUN 08</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400">MAR 09</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400">MIE 10</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400">JUE 11</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400">VIE 12</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400 text-slate-600">SAB 13</span>
+</div>
+<div class="h-12 border-b border-neutral-border flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-slate-400 text-slate-600">DOM 14</span>
+</div>
+</div>
+<!-- Equipment Rows -->
+<div class="space-y-1">
+<!-- Machine: Camara Hiperbarica 1 -->
+<div class="calendar-grid group">
+<div class="p-4 border-r border-neutral-border bg-neutral-dark/40 flex flex-col justify-center">
+<span class="text-xs font-bold text-slate-200">Cámara Hiperbárica 1</span>
+<span class="text-[10px] text-slate-500">Longevity Core</span>
+</div>
+<div class="relative border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40">
+<!-- Blue Block -->
+<div class="absolute top-4 left-1 right-1 h-12 bg-primary/90 border-l-4 border-primary rounded p-1.5 shadow-lg flex flex-col justify-center">
+<span class="text-[10px] font-bold text-white truncate">María G. - 60min</span>
+<span class="text-[8px] text-white/80">10:00 - 11:00</span>
+</div>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+</div>
+<!-- Machine: Camara Hiperbarica 2 -->
+<div class="calendar-grid group">
+<div class="p-4 border-r border-neutral-border bg-neutral-dark/40 flex flex-col justify-center">
+<span class="text-xs font-bold text-slate-200">Cámara Hiperbárica 2</span>
+<span class="text-[10px] text-slate-500">Longevity Core</span>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="relative border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40">
+<!-- Yellow Block -->
+<div class="absolute top-2 left-1 right-1 h-12 bg-amber-400/90 border-l-4 border-amber-500 rounded p-1.5 shadow-lg flex flex-col justify-center">
+<span class="text-[10px] font-bold text-slate-900 truncate">Ana R. - 60min</span>
+<span class="text-[8px] text-slate-800">09:00 - 10:00</span>
+</div>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+</div>
+<!-- Machine: Sauna Finlandesa -->
+<div class="calendar-grid group">
+<div class="p-4 border-r border-neutral-border bg-neutral-dark/40 flex flex-col justify-center">
+<span class="text-xs font-bold text-slate-200">Sauna Finlandesa</span>
+<span class="text-[10px] text-slate-500">Detox Zone</span>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="relative border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40">
+<!-- Green Block -->
+<div class="absolute top-10 left-1 right-1 h-12 bg-emerald-500/90 border-l-4 border-emerald-600 rounded p-1.5 shadow-lg flex flex-col justify-center">
+<span class="text-[10px] font-bold text-white truncate">Roberto M. - 45min</span>
+<span class="text-[8px] text-white/80">11:30 - 12:15</span>
+</div>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+</div>
+<!-- Machine: Fotobiomodulación -->
+<div class="calendar-grid group">
+<div class="p-4 border-r border-neutral-border bg-neutral-dark/40 flex flex-col justify-center">
+<span class="text-xs font-bold text-slate-200">Fotobiomodulación</span>
+<span class="text-[10px] text-slate-500">Skin &amp; Recovery</span>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+</div>
+<!-- Machine: Tanque de Flotación -->
+<div class="calendar-grid group">
+<div class="p-4 border-r border-neutral-border bg-neutral-dark/40 flex flex-col justify-center">
+<span class="text-xs font-bold text-slate-200">Tanque de Flotación</span>
+<span class="text-[10px] text-slate-500">Neurological Reset</span>
+</div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="border-r border-neutral-border/50 h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+<div class="h-32 bg-slate-900/20 group-hover:bg-slate-900/40"></div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Summary -->
+<aside class="w-80 border-l border-neutral-border bg-neutral-dark/20 p-6 flex flex-col gap-6 overflow-y-auto">
+<div>
+<h3 class="text-sm font-bold text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Resumen del Día
+                    </h3>
+<div class="bg-neutral-dark border border-neutral-border p-4 rounded-xl space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400">Utilización</span>
+<span class="text-sm font-bold text-primary">78%</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 78%"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="text-center">
+<p class="text-[10px] text-slate-500 uppercase">Slots Disponibles</p>
+<p class="text-xl font-black text-slate-100">12</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] text-slate-500 uppercase">Confirmadas</p>
+<p class="text-xl font-black text-slate-100">24</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500">pending_actions</span>
+                        Reservas Pendientes
+                    </h3>
+<div class="space-y-3">
+<div class="bg-neutral-dark/60 border border-neutral-border p-3 rounded-lg flex gap-3 hover:border-amber-500/50 transition-colors cursor-pointer">
+<div class="size-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold text-slate-100 truncate">Carlos Villagrán</p>
+<p class="text-[10px] text-slate-500">Sauna de Ozono • 16:00</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm self-center">arrow_forward</span>
+</div>
+<div class="bg-neutral-dark/60 border border-neutral-border p-3 rounded-lg flex gap-3 hover:border-amber-500/50 transition-colors cursor-pointer">
+<div class="size-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold text-slate-100 truncate">Helena Prieto</p>
+<p class="text-[10px] text-slate-500">Hiperbárica 1 • 17:30</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm self-center">arrow_forward</span>
+</div>
+<div class="bg-neutral-dark/60 border border-neutral-border p-3 rounded-lg flex gap-3 hover:border-amber-500/50 transition-colors cursor-pointer">
+<div class="size-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold text-slate-100 truncate">Juan Pablo Escobar</p>
+<p class="text-[10px] text-slate-500">Fotobiomodulación • 18:45</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm self-center">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="mt-auto bg-primary/10 border border-primary/20 p-4 rounded-xl">
+<p class="text-xs font-bold text-primary mb-1">Mantenimiento Programado</p>
+<p class="text-[10px] text-slate-400">Sauna de Ozono será intervenido mañana a las 08:00 AM.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Legend Overlay -->
+<div class="fixed bottom-6 left-72 bg-neutral-dark border border-neutral-border px-4 py-2 rounded-full flex gap-6 text-[10px] font-bold shadow-2xl z-20">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-slate-400 uppercase tracking-wider">Confirmado</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-amber-400"></span>
+<span class="text-slate-400 uppercase tracking-wider">Pendiente</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<span class="text-slate-400 uppercase tracking-wider">Completado</span>
+</div>
+</div>
+</body></html>

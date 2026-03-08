@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+    :root {
+      --bg-deep: #0A1628;
+      --card-glass: rgba(16, 30, 54, 0.6);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --primary: #135bec;
+      --accent-exercise: #3b82f6;
+      --accent-recovery: #14b8a6;
+      --accent-nutrition: #10b981;
+      --accent-supplement: #8b5cf6;
+    }
+    body {
+      background-color: var(--bg-deep);
+      font-family: 'Manrope', sans-serif;
+      color: #e2e8f0;
+    }
+    .glass-card {
+      background: var(--card-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glass);
+    }
+    .clinical-input {
+      @apply bg-slate-900/40 border border-slate-700/50 rounded px-3 py-1.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none text-slate-200;
+    }
+    .clinical-table-header {
+      @apply text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500 border-b border-slate-800 pb-2;
+    }
+    .accent-glow {
+      box-shadow: 0 0 20px -5px var(--primary);
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#135bec",
+            "background-dark": "#0A1628",
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="dark overflow-x-hidden antialiased">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-50 border-b border-white/5 bg-[#0A1628]/80 backdrop-blur-xl px-8 py-4">
+<div class="max-w-[1600px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2.5">
+<div class="size-9 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-2xl" style="">clinical_notes</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight text-white uppercase" style="">BeBlue</span>
+</div>
+<nav class="hidden xl:flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-slate-500">
+<a class="hover:text-white transition-colors" href="#" style="">Pacientes</a>
+<span class="material-symbols-outlined text-sm" style="">chevron_right</span>
+<a class="hover:text-white transition-colors" href="#" style="">María García López</a>
+<span class="material-symbols-outlined text-sm text-primary" style="">chevron_right</span>
+<span class="text-white" style="">Editor de Programa</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-all" style="">
+<span class="material-symbols-outlined text-lg" style="">history</span>
+            Historial
+          </button>
+<div class="h-6 w-px bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-500 leading-none" style="">CLINICAL EXPERT</p>
+<p class="text-sm font-semibold text-white" style="">Dr. Arcas</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/30 p-0.5">
+<img alt="Doctor" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd8Hf_7CpZ54Fejm4Nwuqn2DwBGIkOgYlGOMxQbQ1jRu3qLv-SEk0P_2fchhwKYa9WMb6yeeNUZpwEtFGTUduVNPf-o8ouJBv3riJR6N7TZ3o0Yo8YgYpfOcAAh1L3gV39w4delBdfJ3uk78BEX4tfZM7i6ViHOZWvfK2cY2h3ydSTYW8sM1cdSckqGJd9if7kQIRfZhNOGweCszxuucJwvLuhukLnEqAN-fcdSgfs6TkSg49i4oevPfWOvpWH-En0n0hZDROu7PI" style="">
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1600px] mx-auto px-8 py-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider border border-emerald-500/20" style="">
+<span class="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Programa Activo
+            </span>
+<span class="text-slate-500 text-xs font-medium tracking-wide" style="">Protocolo Longevidad v4.2.0</span>
+</div>
+<h1 class="text-4xl font-extrabold text-white tracking-tight" style="">Editor de Programa Clínico</h1>
+<p class="text-slate-400 mt-2 text-lg font-light italic" style="">María García López · ID: BB-99420</p>
+</div>
+<div class="flex gap-1 p-1 bg-slate-900/60 border border-white/5 rounded-xl">
+<button class="px-6 py-2 bg-primary rounded-lg text-xs font-bold text-white uppercase tracking-wider shadow-lg shadow-primary/10" style="">Editor Clínico</button>
+<button class="px-6 py-2 text-slate-500 hover:text-slate-300 text-xs font-bold uppercase tracking-wider transition-colors" style="">Vista Previa</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-12 space-y-8">
+<section class="glass-card rounded-2xl overflow-hidden shadow-2xl relative">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-[var(--accent-exercise)]"></div>
+<div class="px-8 py-6 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+<span class="material-symbols-outlined text-[var(--accent-exercise)]" style="">fitness_center</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white tracking-wide" style="">01. PROTOCOLO DE EJERCICIO</h3>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter" style="">Fuerza · Cardio Z2 · VO2 Max</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 px-4 py-2 bg-slate-900/50 rounded-lg border border-white/5">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" style="">Entorno:</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-slate-800 text-slate-400 border border-transparent" style="">GYM</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-primary text-white border border-primary/30" style="">CASA</button>
+</div>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary/80 text-[10px] font-black uppercase tracking-widest transition-colors" style="">
+<span class="material-symbols-outlined text-lg" style="">add_circle</span>
+                  Añadir Módulo
+                </button>
+</div>
+</div>
+<div class="p-8">
+<table class="w-full">
+<thead>
+<tr>
+<th class="clinical-table-header text-left w-[20%]" style="">Tipo de Estímulo</th>
+<th class="clinical-table-header text-left w-[15%]" style="">Frecuencia</th>
+<th class="clinical-table-header text-left w-[15%]" style="">Duración</th>
+<th class="clinical-table-header text-left w-[20%]" style="">Intensidad / RPE</th>
+<th class="clinical-table-header text-left" style="">Prescripción Clínica</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="group">
+<td class="py-6 font-bold text-white tracking-wide text-sm uppercase" style="">Entrenamiento Fuerza</td>
+<td class="py-6" style=""><input class="clinical-input w-28" type="text" value="3x / semana"></td>
+<td class="py-6" style=""><input class="clinical-input w-24" type="text" value="60 min"></td>
+<td class="py-6" style="">
+<select class="clinical-input w-44">
+<option>Alta (RPE 8-9)</option>
+<option>Moderada (RPE 6-7)</option>
+<option>Recuperativa</option>
+</select>
+</td>
+<td class="py-6" style=""><input class="clinical-input w-full italic" type="text" value="Enfoque en hipertrofia mecánica y densidad ósea axial."></td>
+</tr>
+<tr class="group">
+<td class="py-6 font-bold text-white tracking-wide text-sm uppercase" style="">Base Aeróbica (Z2)</td>
+<td class="py-6" style=""><input class="clinical-input w-28" type="text" value="2x / semana"></td>
+<td class="py-6" style=""><input class="clinical-input w-24" type="text" value="45 min"></td>
+<td class="py-6" style="">
+<select class="clinical-input w-44">
+<option>FC 125-135 BPM</option>
+<option>FC 110-120 BPM</option>
+<option>Umbral Lactato</option>
+</select>
+</td>
+<td class="py-6" style=""><input class="clinical-input w-full italic" type="text" value="Mantener respiración nasal obligatoria. Eficiencia mitocondrial."></td>
+</tr>
+<tr class="group">
+<td class="py-6 font-bold text-white tracking-wide text-sm uppercase" style="">Optimización VO2max</td>
+<td class="py-6" style=""><input class="clinical-input w-28" type="text" value="1x / semana"></td>
+<td class="py-6" style=""><input class="clinical-input w-24" type="text" value="20 min"></td>
+<td class="py-6" style="">
+<select class="clinical-input w-44">
+<option>Supra-máxima (&gt;90%)</option>
+<option>Intervalos 4x4</option>
+</select>
+</td>
+<td class="py-6" style=""><input class="clinical-input w-full italic" type="text" value="Protocolo Norwegian 4x4. 3min recuperación activa."></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<section class="glass-card rounded-2xl overflow-hidden relative">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-[var(--accent-recovery)]"></div>
+<div class="px-6 py-5 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-teal-500/10 flex items-center justify-center border border-teal-500/20">
+<span class="material-symbols-outlined text-[var(--accent-recovery)] text-xl" style="">spa</span>
+</div>
+<h3 class="text-sm font-bold text-white uppercase tracking-widest" style="">02. Terapias Recovery</h3>
+</div>
+</div>
+<div class="p-6">
+<div class="space-y-4">
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-3 bg-slate-900/30 rounded-xl border border-white/5">
+<div class="col-span-5">
+<p class="text-xs font-bold text-white" style="">Sauna Infrarrojo</p>
+<p class="text-[10px] text-slate-500 font-medium" style="">20 min @ 75°C · Hormesis térmica</p>
+</div>
+<div class="col-span-3 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter" style="">3x / sem</span>
+</div>
+<div class="col-span-4 text-right">
+<span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/20" style="">ACTIVO</span>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-3 bg-slate-900/30 rounded-xl border border-white/5 opacity-60">
+<div class="col-span-5">
+<p class="text-xs font-bold text-white" style="">Cámara Hiperbárica</p>
+<p class="text-[10px] text-slate-500 font-medium" style="">1.5 ATA · Oxigenación celular</p>
+</div>
+<div class="col-span-3 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter" style="">1x / sem</span>
+</div>
+<div class="col-span-4 text-right">
+<span class="px-2 py-1 rounded bg-slate-800 text-slate-500 text-[10px] font-bold border border-white/5 uppercase" style="">Pausado</span>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 items-center px-4 py-3 bg-slate-900/30 rounded-xl border border-white/5">
+<div class="col-span-5">
+<p class="text-xs font-bold text-white" style="">Inmersión en Frío</p>
+<p class="text-[10px] text-slate-500 font-medium" style="">3 min @ 5°C · Control inflamación</p>
+</div>
+<div class="col-span-3 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter" style="">DIARIO</span>
+</div>
+<div class="col-span-4 text-right">
+<span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/20" style="">ACTIVO</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-dashed border-slate-700 rounded-xl text-slate-500 hover:text-teal-400 hover:border-teal-500/50 transition-all text-[10px] font-black uppercase tracking-[0.2em]" style="">
+                  Añadir Protocolo de Recuperación
+                </button>
+</div>
+</section>
+<section class="glass-card rounded-2xl overflow-hidden relative">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-[var(--accent-nutrition)]"></div>
+<div class="px-6 py-5 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+<span class="material-symbols-outlined text-[var(--accent-nutrition)] text-xl" style="">restaurant</span>
+</div>
+<h3 class="text-sm font-bold text-white uppercase tracking-widest" style="">03. Nutrición de Precisión</h3>
+</div>
+</div>
+<div class="p-6 space-y-6">
+<div class="bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 rounded-xl p-5">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-black text-emerald-500 uppercase tracking-widest" style="">Estrategia Dietética</p>
+<h4 class="text-lg font-bold text-white leading-tight" style="">Mediterránea Anti-inflamatoria Adaptada</h4>
+</div>
+<button class="text-emerald-500" style=""><span class="material-symbols-outlined text-lg" style="">edit_square</span></button>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed italic" style="">Restricción calórica cíclica (10-15%) enfocada en densidades altas de polifenoles y ácidos grasos monoinsaturados. Protocolo de ayuno 16:8.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-slate-900/50 border border-white/5">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-lg" style="">genetics</span>
+<span class="text-[10px] font-black text-slate-500 uppercase tracking-widest" style="">Genética</span>
+</div>
+<p class="text-xs font-semibold text-white" style="">Metabolismo CHO: <span class="text-amber-400" style="">Moderado</span></p>
+</div>
+<div class="p-4 rounded-xl bg-slate-900/50 border border-white/5">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="">biotech</span>
+<span class="text-[10px] font-black text-slate-500 uppercase tracking-widest" style="">Biomarcador</span>
+</div>
+<p class="text-xs font-semibold text-white" style="">Índice Omega-3: <span class="text-emerald-400" style="">8.2%</span></p>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-2 px-1" style="">Notas Clínicas Específicas</label>
+<textarea class="clinical-input w-full h-24 resize-none leading-relaxed italic text-xs" placeholder="Anotar observaciones...">Énfasis en ingesta proteica post-entrenamiento (min 1.6g/kg). Priorizar ingesta de polifenoles en la ventana de ayuno.</textarea>
+</div>
+</div>
+</section>
+</div>
+<section class="glass-card rounded-2xl overflow-hidden relative">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-[var(--accent-supplement)]"></div>
+<div class="px-8 py-6 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
+<span class="material-symbols-outlined text-[var(--accent-supplement)]" style="">medication</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white tracking-wide" style="">04. PROTOCOLO SUPLEMENTACIÓN</h3>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter" style="">Stack Pterovita™ · Senolíticos · NAD+ Boosters</p>
+</div>
+</div>
+<button class="px-4 py-2 border border-purple-500/30 text-purple-400 hover:bg-purple-500/10 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all" style="">
+                Configurar Catálogo
+              </button>
+</div>
+<div class="p-8">
+<table class="w-full">
+<thead>
+<tr>
+<th class="clinical-table-header text-left w-[20%]" style="">Suplemento (Lab)</th>
+<th class="clinical-table-header text-left w-[15%]" style="">Dosis Exacta</th>
+<th class="clinical-table-header text-left w-[20%]" style="">Crononutrición / Timing</th>
+<th class="clinical-table-header text-left" style="">Mecanismo de Acción</th>
+<th class="clinical-table-header text-center w-[10%]" style="">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="group">
+<td class="py-5" style="">
+<p class="font-bold text-purple-400 text-sm" style="">NMN (Uthever®)</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest" style="">High Purity 99.8%</p>
+</td>
+<td class="py-5 text-sm font-medium text-slate-300" style="">500 mg</td>
+<td class="py-5" style="">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-amber-400" style="">wb_sunny</span>
+<span class="text-sm text-slate-300" style="">Ayunas (Mañana)</span>
+</div>
+</td>
+<td class="py-5 text-xs text-slate-400 italic" style="">Precursor de NAD+ para optimización mitocondrial y reparación DNA.</td>
+<td class="py-5 text-center" style="">
+<button class="text-slate-600 hover:text-rose-400 transition-colors" style="">
+<span class="material-symbols-outlined text-lg" style="">delete</span>
+</button>
+</td>
+</tr>
+<tr class="group">
+<td class="py-5" style="">
+<p class="font-bold text-purple-400 text-sm" style="">Trans-Resveratrol</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest" style="">Micronizado</p>
+</td>
+<td class="py-5 text-sm font-medium text-slate-300" style="">500 mg</td>
+<td class="py-5 text-sm text-slate-300" style="">Con Desayuno (Liposoluble)</td>
+<td class="py-5 text-xs text-slate-400 italic" style="">Activador de Sirtuinas (SIRT1). Mimetizador de restricción calórica.</td>
+<td class="py-5 text-center" style="">
+<button class="text-slate-600 hover:text-rose-400 transition-colors" style="">
+<span class="material-symbols-outlined text-lg" style="">delete</span>
+</button>
+</td>
+</tr>
+<tr class="group">
+<td class="py-5" style="">
+<p class="font-bold text-purple-400 text-sm" style="">Pterostilbeno</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest" style="">Biodisponibilidad Superior</p>
+</td>
+<td class="py-5 text-sm font-medium text-slate-300" style="">150 mg</td>
+<td class="py-5 text-sm text-slate-300" style="">Comida Principal</td>
+<td class="py-5 text-xs text-slate-400 italic" style="">Antioxidante avanzado con mayor vida media plasmática que Resveratrol.</td>
+<td class="py-5 text-center" style="">
+<button class="text-slate-600 hover:text-rose-400 transition-colors" style="">
+<span class="material-symbols-outlined text-lg" style="">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<button class="flex items-center gap-2 mt-6 text-purple-400 hover:text-purple-300 text-[10px] font-black uppercase tracking-widest transition-colors" style="">
+<span class="material-symbols-outlined text-lg" style="">add_circle</span>
+                Añadir Suplemento
+              </button>
+</div>
+</section>
+</div>
+</div>
+<footer class="mt-12 mb-20">
+<div class="glass-card rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 border-primary/20 bg-primary/5">
+<div class="flex items-center gap-6">
+<div class="size-16 rounded-2xl bg-primary/20 flex items-center justify-center border border-primary/30 text-primary">
+<span class="material-symbols-outlined text-4xl" style="">verified_user</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-white tracking-tight" style="">Validación de Programa Clínico</h4>
+<p class="text-slate-400 text-sm max-w-md mt-1" style="">Al guardar, se generará una nueva versión del protocolo y se notificará al paciente mediante la plataforma BeBlue.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-4 text-slate-400 hover:text-rose-400 text-sm font-bold uppercase tracking-widest transition-colors" style="">
+              Descartar Cambios
+            </button>
+<button class="flex-1 md:flex-none px-12 py-4 bg-primary text-white text-sm font-extrabold uppercase tracking-[0.15em] rounded-2xl accent-glow hover:bg-blue-500 transition-all transform hover:-translate-y-1" style="">
+              Guardar Programa Definitivo
+            </button>
+</div>
+</div>
+<div class="mt-8 text-center">
+<p class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]" style="">BeBlue Clinical Systems © 2024 · All Protocols Certified</p>
+</div>
+</footer>
+</main>
+</div>
+
+</body></html>

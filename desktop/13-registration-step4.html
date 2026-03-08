@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue - Registro de Nuevo Paciente Paso 4</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f5af0",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0A1628",
+                        "clinical-blue": "#0f5af0",
+                        "clinical-teal": "#14b8a6",
+                        "clinical-green": "#22c55e",
+                        "clinical-purple": "#a855f7",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col min-h-screen">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-3 bg-white dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">BeBlue</h2>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+<span>Pacientes</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Alta de Nuevo Paciente</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary/20 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKn7yi33cNE2et8D4q-PcvwKZAJqaA-LkSjx2t3gLhbzLom5-bxORBE8p55m9lZthxQnHti97aie0I9IOs3RjSL21rZQArf23TI0Ehq13eYTm5DOPpJulxxD3SQ3si5wq5bHyBAXgslXGvYtb-fegg5P_AJbe2Zfqix5_Q9XdJr-qBhhW-Q5VnJ-ukcvDGifbmYxlWUtx0XAD33kx79dyfSnBxmgC6Lj6AjMhkCHZvAeH_5rZZGroDLZZ5dp_qgy3fvmURBAvM-VA');"></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1400px] mx-auto w-full p-6 flex gap-8">
+<aside class="w-80 shrink-0 space-y-6">
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">Estado de registro</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-green text-xl">check_circle</span>
+<span class="text-sm font-medium text-slate-500">1. Datos Personales</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-green text-xl">check_circle</span>
+<span class="text-sm font-medium text-slate-500">2. Historia Médica</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-green text-xl">check_circle</span>
+<span class="text-sm font-medium text-slate-500">3. Biomarcadores</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white text-xs font-bold ring-4 ring-primary/20">4</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">4. Programa Inicial</span>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-slate-500">Progreso Total</span>
+<span class="text-xs font-bold text-primary">75%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-3/4"></div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+<div class="h-24 bg-gradient-to-br from-primary to-clinical-teal relative">
+<div class="absolute -bottom-6 left-6 border-4 border-white dark:border-slate-900 rounded-xl overflow-hidden shadow-lg">
+<img alt="Maria Garcia" class="w-20 h-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVaPshb42pXbvitC4yr5MfQsS71G8Yj39588va3HjUycj-kdu1pyKMc5Lm3rmGl3YtsKQMwM7URvAQioll7p5DR6xAaaRK6f0gNxCPz5gTA1Ka0DRzJtvkiMYJX15Ic6Ia71eQR1IBD9l6RpjwCzp_ZyhyzaA3gldvsJKqgH9cOYc8D2sravGihcLjO8NKVUTlAE5olnx1WJjb4WIfk1GLsFkL_eRwz37kVl7eq68V_FOAdrX2G2JufzrjTMl5XJdnEVFmk6MOLd4"/>
+</div>
+</div>
+<div class="pt-8 px-6 pb-6">
+<h3 class="text-xl font-bold dark:text-white">Maria Garcia</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Edad Biológica actual: 48 años (Cronológica: 45)</p>
+<div class="grid grid-cols-1 gap-4 mt-6">
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">EDAD BIO</span>
+<p class="text-2xl font-black text-primary">48 años</p>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<h4 class="text-xs font-bold uppercase text-slate-400 tracking-widest">Problemas Clave</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400 text-[10px] font-bold rounded uppercase">Bajo Cardio</span>
+<span class="px-2 py-1 bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold rounded uppercase">Bajo Músculo</span>
+<span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold rounded uppercase">Sueño Frag.</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2.5 text-xs font-bold text-primary bg-primary/10 rounded-xl hover:bg-primary/20 transition-all">Ver Perfil Completo</button>
+</div>
+</div>
+</aside>
+<section class="flex-1 space-y-6 pb-32">
+<div class="mb-8">
+<h1 class="text-2xl font-extrabold text-slate-900 dark:text-white">Configuración del Programa Inicial</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Defina los pilares de intervención basados en la edad biológica detectada.</p>
+</div>
+<div class="bg-white dark:bg-slate-900/50 border-l-4 border-clinical-blue rounded-xl border-y border-r border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-blue">fitness_center</span>
+<h3 class="font-bold text-slate-900 dark:text-white uppercase tracking-tight">1. EJERCICIO</h3>
+</div>
+</div>
+<div class="p-6">
+<table class="w-full text-sm text-left">
+<thead class="text-xs font-bold uppercase text-slate-400">
+<tr>
+<th class="pb-3 pr-4">Categoría</th>
+<th class="pb-3 px-4">Frecuencia</th>
+<th class="pb-3 px-4">Duración</th>
+<th class="pb-3 px-4">Intensidad</th>
+<th class="pb-3 pl-4">Lugar</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-3 pr-4 font-semibold">Fuerza</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>3x / semana</option>
+<option>4x / semana</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>45 min</option>
+<option>60 min</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>RPE 8</option>
+<option>RPE 7</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Gimnasio</option>
+<option>Hogar</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="py-3 pr-4 font-semibold">Cardio Z2</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>2x / semana</option>
+<option>3x / semana</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>30 min</option>
+<option>40 min</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Moderado</option>
+<option>Alto</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Exterior</option>
+<option>Gimnasio</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 border-l-4 border-clinical-teal rounded-xl border-y border-r border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-teal">spa</span>
+<h3 class="font-bold text-slate-900 dark:text-white uppercase tracking-tight">2. TERAPIAS RECOVERY</h3>
+</div>
+</div>
+<div class="p-6">
+<table class="w-full text-sm text-left">
+<thead class="text-xs font-bold uppercase text-slate-400">
+<tr>
+<th class="pb-3 pr-4">Terapia</th>
+<th class="pb-3 px-4">Frecuencia Mensual</th>
+<th class="pb-3 pl-4">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-3 pr-4 font-semibold">Sauna Infrarrojo</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-48">
+<option>4 Sesiones</option>
+<option>8 Sesiones</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-32">
+<option>Activo</option>
+<option>Pausado</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="py-3 pr-4 font-semibold">Cámara Hiperbárica</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-48">
+<option>2 Sesiones</option>
+<option>4 Sesiones</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-32">
+<option>Activo</option>
+<option>Pausado</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="py-3 pr-4 font-semibold">Fotobiomodulación</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-48">
+<option>10 Sesiones</option>
+<option>20 Sesiones</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-32">
+<option>Activo</option>
+<option>Pausado</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 border-l-4 border-clinical-green rounded-xl border-y border-r border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-green">restaurant</span>
+<h3 class="font-bold text-slate-900 dark:text-white uppercase tracking-tight">3. NUTRICIÓN</h3>
+</div>
+</div>
+<div class="p-6 grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="block">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Plan Sugerido</span>
+<select class="mt-2 block w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl text-sm font-medium focus:ring-primary">
+<option>Longevity Protocol (High Protein)</option>
+<option>Keto Modified</option>
+<option>Paleo Modern</option>
+</select>
+</label>
+<label class="block">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Restricciones</span>
+<div class="mt-2 flex flex-wrap gap-2 p-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-800">
+<span class="bg-clinical-green/20 text-clinical-green px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1">SIN GLUTEN <span class="material-symbols-outlined text-xs">close</span></span>
+<span class="bg-clinical-green/20 text-clinical-green px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1">SIN LACTOSA <span class="material-symbols-outlined text-xs">close</span></span>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">add_circle</span></button>
+</div>
+</label>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Ayuno Intermitente</p>
+<p class="text-xs text-slate-500">Protocolo 16:8 sugerido</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-clinical-green"></div>
+</label>
+</div>
+<div class="space-y-2">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Objetivo Calórico</span>
+<div class="flex items-center gap-4">
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-clinical-green" type="range"/>
+<span class="text-sm font-bold text-slate-900 dark:text-white">2,100 kcal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 border-l-4 border-clinical-purple rounded-xl border-y border-r border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-clinical-purple">medication</span>
+<h3 class="font-bold text-slate-900 dark:text-white uppercase tracking-tight">4. SUPLEMENTACIÓN</h3>
+</div>
+</div>
+<div class="p-6">
+<table class="w-full text-sm text-left">
+<thead class="text-xs font-bold uppercase text-slate-400">
+<tr>
+<th class="pb-3 pr-4">Suplemento</th>
+<th class="pb-3 px-4">Dosis</th>
+<th class="pb-3 px-4">Frecuencia</th>
+<th class="pb-3 pl-4">Momento</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-3 pr-4">
+<div class="font-semibold">Pterovita</div>
+<div class="text-[10px] text-slate-500 uppercase">Pterostilbeno + Quercetina</div>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>250 mg</option>
+<option>500 mg</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Diario</option>
+<option>L-V</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Desayuno</option>
+<option>Cena</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="py-3 pr-4">
+<div class="font-semibold">Magnesium Threonate</div>
+<div class="text-[10px] text-slate-500 uppercase">Support Neuro</div>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>2000 mg</option>
+<option>1000 mg</option>
+</select>
+</td>
+<td class="py-3 px-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Diario</option>
+<option>S-D</option>
+</select>
+</td>
+<td class="py-3 pl-4">
+<select class="bg-slate-50 dark:bg-slate-800 border-0 rounded-lg text-xs font-medium focus:ring-primary w-full">
+<option>Antes de dormir</option>
+<option>Comida</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+<button class="mt-4 flex items-center gap-2 text-xs font-bold text-clinical-purple hover:underline">
+<span class="material-symbols-outlined text-sm">add_circle</span> Añadir Suplemento
+                    </button>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-white dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 z-50">
+<div class="max-w-[1400px] mx-auto flex justify-between items-center w-full">
+<button class="px-6 py-3 border-2 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Anterior
+                    </button>
+<button class="px-8 py-4 bg-clinical-green text-white font-extrabold rounded-xl shadow-lg shadow-clinical-green/20 hover:shadow-clinical-green/40 hover:scale-[1.02] transition-all flex items-center gap-3">
+                        Finalizar Alta y Activar Programa
+                        <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+</body></html>

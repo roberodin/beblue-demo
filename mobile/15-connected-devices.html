@@ -1,0 +1,204 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#5755f7",
+            "background-light": "#f5f5f8",
+            "background-dark": "#0A1628", // Requested deep blue
+            "accent-green": "#10b981",
+          },
+          fontFamily: {
+            "display": ["Manrope"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Manrope', sans-serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4 border-b border-slate-200 dark:border-primary/20">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Dispositivos y Apps</h1>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+<!-- Intro Section -->
+<section class="px-5 pt-6 pb-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          Conecta tus dispositivos para nutrir tu perfil con datos automáticos de salud, sueño, ejercicio y más.
+        </p>
+</section>
+<!-- Connected Section -->
+<section class="px-5 py-4">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-accent-green text-xs font-bold tracking-widest uppercase">Connected</h2>
+<span class="flex size-2 rounded-full bg-accent-green animate-pulse"></span>
+</div>
+<div class="space-y-4">
+<!-- Apple Watch Card -->
+<div class="rounded-xl border border-primary/10 bg-white dark:bg-primary/5 p-4 flex gap-4 items-center">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-primary/10 flex items-center justify-center bg-cover bg-center" data-alt="Apple Watch smart watch device icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHPP6bciI-4lxBcQ4Nwu9iApvv2YbvToPqD8Jo4OLVF5wSC1YT-mVue95SiQUf5O-eQsB7fuCgWXXW6MTLgAXm4lU0u5jD781IoMhiyw-ie-J4Tw-1wmWFxbxmBk_QFUR4YLwZE3PTRN9rW7MZwxvBA4LtBg7085B0P3_rLlPt3ocjL2tNFXPwYezpJgTOaE6kjOeyrp_VsGbfwRo6O6ZmPcMniETlD2gCqJRJFUDVFXPGRYsKrDevW2rRhd76Oof6PEydtuRURHE')"></div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-base">Apple Watch</h3>
+<span class="text-[10px] text-slate-500 dark:text-slate-400">Hace 5 min</span>
+</div>
+<p class="text-accent-green text-xs font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Conectado
+              </p>
+<p class="text-slate-500 dark:text-slate-400 text-[11px] mt-1 italic line-clamp-1">Actividad, HRV, Sueño, Oxígeno</p>
+</div>
+<button class="text-slate-400 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-xl">link_off</span>
+</button>
+</div>
+<!-- Oura Ring Card -->
+<div class="rounded-xl border border-primary/10 bg-white dark:bg-primary/5 p-4 flex gap-4 items-center">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-primary/10 flex items-center justify-center bg-cover bg-center" data-alt="Oura ring smart health tracker icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5hMsvkLMvNW6Xbm1IKhcxr4xeK56dwz_tvXjfGeHQRIy2KCYXo78p1mNfLMhe2S3jZoDvxh3xM4WeSaN56LzcsgQQ6yjpaxk-YrVs6oGUY2kl8wtFQAALpPufOndxS-k2uNh1SFT4a13U_URliFr1v0vjhJQO7-eU1w8DkI5ujbZ0FCiuweqhmxBrGAznGy7MTIU6uabNlqeKIHIMbtL89Po6OnSb4bUT24DBo0VYGIATZNymYrODQXqRyo5Xc1sRAbQUhZQ_X6M')"></div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-base">Oura Ring</h3>
+<span class="text-[10px] text-slate-500 dark:text-slate-400">Hace 1h</span>
+</div>
+<p class="text-accent-green text-xs font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Conectado
+              </p>
+<p class="text-slate-500 dark:text-slate-400 text-[11px] mt-1 italic line-clamp-1">Sueño, Temperatura, Preparación</p>
+</div>
+<button class="text-slate-400 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-xl">link_off</span>
+</button>
+</div>
+<!-- Withings Card -->
+<div class="rounded-xl border border-primary/10 bg-white dark:bg-primary/5 p-4 flex gap-4 items-center">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-primary/10 flex items-center justify-center bg-cover bg-center" data-alt="Withings smart scale health device icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAz8Eq3sJYTMyxH-33Q_nuQhBdvhZ-tUWYnWIFtK7MOxAYCIXxxtn89NChbQb8_JG1drHZfKkF6cKNq2YbZhuTz0WvbVQ0L-xncvFmeOEAxKRU8BE9BYia4vt8DcZYjqgf37RX8rI1EngKuAXutCn_OM6JSVEAosbQVW5_k4YEeQNVhiLEPDZ5PdTh07PEGzRQAl5TjjDddMatOe9zpKW_2NueFMM6P5Eb5WshLPzMMY3EQDpRajNrJ-plGebBGs_JuPOg2_81XASQ')"></div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-base">Withings Body+</h3>
+<span class="text-[10px] text-slate-500 dark:text-slate-400">Hace 12h</span>
+</div>
+<p class="text-accent-green text-xs font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Conectado
+              </p>
+<p class="text-slate-500 dark:text-slate-400 text-[11px] mt-1 italic line-clamp-1">Peso, Composición Corporal, BMI</p>
+</div>
+<button class="text-slate-400 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-xl">link_off</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Available Section -->
+<section class="px-5 py-6">
+<h2 class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-4">Available to Connect</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Integration Grid Item Template -->
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Whoop fitness tracker brand logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5j0JbyF7MOcryAkdKRrfg1qEHigSaURT54hGWXxFMSBS9TdDPaiJo-cT3LX2GJxjehG3hdmCwxfSyDa6B-CyJHJlQtCvOIDSH6I5jVkVuoXMlGeciEbIOcBORgMtL8PCZpCV7G1gktmF0Ght1g1z3QADkDnGsGu0JcsHY34pAxc_TcSMbt35tQ2WDSOYTyYcdNy5nc4ycqETCVu7icNzyzTjs8-Qbr7VuNu9miazaJ2I1WSaZfGudS-c9GdypTifDr7Olx_xCyD8')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">Whoop</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Garmin sports watch brand logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7JvqHq4pRRgi3vOejM8bwAUqV85z0UmL_-oA2cC_7MSbNBT3F2cZAUQS-mBKfScOLjnyCbAuN0UvIdDT-agOd21s_5kcNEOTpEusRgfvxkBkj9BN4aJs_jIJra3c5b4Ek2-J2Id78r_Xq2BIJN-3Jx63ABPnZfH0rFCCkXdnKCNN0RY_8E2PCzWI0TI1fETEY8NbOr8qRIbUJB7I-uSjOl__AGbMc65zL0afPFSTa02RbE0GAVazMlx9moNmLKYRb4tirDdu3kCo')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">Garmin</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Fitbit wearable technology brand logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDywn1hZa9F63nzpy8n0x3IA7Bmsg_-ZDoZ6dDnKttQ5UhA9j0afm9lUJO2q4cU48zaY1q-ATbSuAUfmaw_sWEAtA5YaiA0o5wgWhYPDO8q799d3lrWxv84OfTblOViMneygjvJmgzgkg5wXDmwDO0TVIsfWKlx62OFD8SgTbZ9h989brHNZtVOJu2e6P5lyh0doJ8jMaBzz-d05tvKcgMKIgEdugwTfylnbiFyHKgT1iAJU_vJGel4mGJn4AR0W8tv1sAsrQRitE8')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">Fitbit</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Apple Health app logo icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1950wU7EYq4UxfkqAnslfrQjHSpb0tiomIiN3cNRwwas6OkYnJXyPfKE505eGet3dpgweFFoQKLHpahXwIwkMceyWn9SrrQ3Ji_OO1b01Hhs8HfbMKLNF9BTKCYwngrreeNMvKMra04jg_iMUhUq4RU34h5ClV1V7tTmKv8Xz-Z3OV8bwbm5lqwAa3AAl60osKlIfWglHUCdL5XKkOScsircoGHAWCDWQB-hmzimB6eKD2MZ43Q4mVL_Q_9b0QKFwNOqN-B09ZpE')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">Apple Salud</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="MyFitnessPal calorie counter app logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDffxyLyUhVmYmusB8VBofEg5w-yo1pwbjB6oNt4bXLcB8UHdWO1-k8i6oj5vMxuvtjOGtBc5Xhz_j7HDJCuq-kZUIHdQ5nRBwas_pZV3Qjf0ZfDTccCx-yfzF1K9vexy30sJ284QVJPAlWb505c1ydKQ9d1C3sRzN3aYeD_EGwUQvFIELxtCi5IbcQfQ8MbcQdIWCoiEC3eC4iouVrWJkYOIpjGfYbWuWjpzq2Wfo6WhrZe7ZM8xgwPDC4VCIlQYJp13l_iTBPH-U')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">MyFitnessPal</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+<div class="rounded-xl bg-slate-100 dark:bg-primary/10 p-4 flex flex-col items-center text-center">
+<div class="size-12 rounded-full mb-3 bg-white dark:bg-background-dark shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Google Fit health platform logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhwcPjPGqxDO09P4ozWh3hJ6hSYk2U3p-O78ojWB9uu9xuJcuDCSJcYOW-XJcEMnkBkh5IfLKKudA1Jpm4-waZT9Nejf1GAT1sRPY02zaGRYjlVON4qQFeyOBWzSlj953S5v8FzTUCpzjiPbzkVtvCeJJT_VMUa80b_NNSzrKcYlfWOmjYIF24tWwAe-ZFRdlYKXp5JDkFlFgX6sET0rsWK-kZCx7AIyoXKex1QLqdekYCxFp6E73Dw1YtDItt508OftpOaVlDDj4')"></div>
+</div>
+<p class="text-sm font-semibold mb-3">Google Fit</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:brightness-110 transition-all">Conectar</button>
+</div>
+</div>
+</section>
+<!-- Info Card -->
+<section class="px-5 pb-12">
+<div class="rounded-2xl bg-gradient-to-br from-primary to-primary/60 p-5 text-white shadow-xl shadow-primary/20">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined">analytics</span>
+<h3 class="font-bold">Scoring Inteligente</h3>
+</div>
+<p class="text-sm leading-relaxed opacity-90">
+            La sincronización de datos permite que BeBlue personalice tu programa de longevidad en tiempo real. Cada dato mejora la precisión de tu <strong>BeBlue Scoring</strong> y nos ayuda a recomendarte mejores hábitos.
+          </p>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full max-w-md bg-background-light dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-primary/20 px-2 py-2">
+<div class="flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium">Hoy</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined fill-current">watch</span>
+<span class="text-[10px] font-medium">Dispositivos</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="text-[10px] font-medium">Plan</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-medium">Insights</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

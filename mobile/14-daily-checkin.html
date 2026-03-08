@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5755f7",
+                        "exercise": "#3b82f6",
+                        "nutrition": "#10b981",
+                        "supplements": "#a855f7",
+                        "wellness": "#f59e0b",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .custom-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+            outline: none;
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: currentColor;
+            cursor: pointer;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden pb-10">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 pb-2 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">close</span>
+</div>
+<div class="flex flex-col items-center">
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Check-in Diario</h2>
+<p class="text-primary text-xs font-semibold uppercase tracking-widest">BeBlue Longevity</p>
+</div>
+<div class="flex w-10 items-center justify-end">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-bold leading-normal">Hoy</p>
+</div>
+</div>
+<div class="max-w-md mx-auto w-full px-4 pt-6 space-y-8">
+<!-- SECTION: EJERCICIO -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 border-l-4 border-exercise pl-3">
+<span class="material-symbols-outlined text-exercise text-xl">fitness_center</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-extrabold tracking-widest uppercase">Ejercicio</h3>
+</div>
+<div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 space-y-4 border border-slate-200 dark:border-slate-800">
+<div class="flex gap-3">
+<label class="flex-1 flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Fuerza</span>
+<input checked="" class="w-5 h-5 rounded text-exercise focus:ring-exercise bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+<label class="flex-1 flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Cardio</span>
+<input class="w-5 h-5 rounded text-exercise focus:ring-exercise bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+</div>
+<div class="space-y-2">
+<p class="text-xs font-semibold text-slate-500 uppercase">Duración (minutos)</p>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-lg font-bold focus:ring-exercise focus:border-exercise outline-none" placeholder="45" type="number"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<p class="text-xs font-semibold text-slate-500 uppercase">Esfuerzo Percibido (RPE)</p>
+<span class="text-exercise font-bold">7</span>
+</div>
+<input class="custom-slider text-exercise" max="10" min="1" type="range" value="7"/>
+<div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase">
+<span>Suave</span>
+<span>Máximo</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: NUTRICIÓN -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 border-l-4 border-nutrition pl-3">
+<span class="material-symbols-outlined text-nutrition text-xl">restaurant</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-extrabold tracking-widest uppercase">Nutrición</h3>
+</div>
+<div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 space-y-4 border border-slate-200 dark:border-slate-800">
+<div class="space-y-2">
+<label class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Plan Nutricional Completo</span>
+<input checked="" class="w-5 h-5 rounded text-nutrition focus:ring-nutrition bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Ayuno Intermitente</span>
+<input class="w-5 h-5 rounded text-nutrition focus:ring-nutrition bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-500 uppercase">Hidratación</span>
+<span class="text-lg font-bold">1.5 L</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-8 rounded-full border border-nutrition text-nutrition flex items-center justify-center"><span class="material-symbols-outlined text-sm">remove</span></button>
+<button class="size-10 rounded-full bg-nutrition text-white flex items-center justify-center shadow-lg shadow-nutrition/20"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 p-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">add_a_photo</span>
+<span class="text-sm font-bold">Añadir foto de comida</span>
+</button>
+</div>
+</section>
+<!-- SECTION: SUPLEMENTACIÓN -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 border-l-4 border-supplements pl-3">
+<span class="material-symbols-outlined text-supplements text-xl">medication</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-extrabold tracking-widest uppercase">Suplementación</h3>
+</div>
+<div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 space-y-3 border border-slate-200 dark:border-slate-800">
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-400 ml-1">Pterovita™ Premium Complex</p>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex flex-col items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-transparent has-[:checked]:border-supplements transition-all">
+<span class="material-symbols-outlined text-supplements mb-1">wb_sunny</span>
+<span class="text-xs font-bold uppercase mb-2">Mañana</span>
+<input checked="" class="w-6 h-6 rounded-full text-supplements focus:ring-supplements bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+<label class="flex flex-col items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-transparent has-[:checked]:border-supplements transition-all">
+<span class="material-symbols-outlined text-slate-400 mb-1">dark_mode</span>
+<span class="text-xs font-bold uppercase mb-2 text-slate-400">Noche</span>
+<input class="w-6 h-6 rounded-full text-supplements focus:ring-supplements bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: BIENESTAR -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 border-l-4 border-wellness pl-3">
+<span class="material-symbols-outlined text-wellness text-xl">self_improvement</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-extrabold tracking-widest uppercase">Bienestar</h3>
+</div>
+<div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 space-y-6 border border-slate-200 dark:border-slate-800">
+<div class="space-y-3">
+<p class="text-center text-xs font-semibold text-slate-500 uppercase">Estado de Ánimo</p>
+<div class="flex justify-between px-2">
+<button class="text-3xl grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all">😔</button>
+<button class="text-3xl grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all">😐</button>
+<button class="text-3xl ring-2 ring-wellness ring-offset-4 ring-offset-slate-900 rounded-full transition-all">😊</button>
+<button class="text-3xl grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all">😄</button>
+<button class="text-3xl grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all">🤩</button>
+</div>
+</div>
+<div class="space-y-6">
+<!-- Energy Slider -->
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase">Nivel de Energía</span>
+<span class="text-wellness font-bold">8/10</span>
+</div>
+<input class="custom-slider text-wellness" max="10" min="1" type="range" value="8"/>
+</div>
+<!-- Sleep Slider -->
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase">Calidad del Sueño</span>
+<span class="text-wellness font-bold">6/10</span>
+</div>
+<input class="custom-slider text-wellness" max="10" min="1" type="range" value="6"/>
+</div>
+<!-- Stress Slider -->
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-xs font-bold text-slate-400 uppercase">Nivel de Estrés</span>
+<span class="text-wellness font-bold">3/10</span>
+</div>
+<input class="custom-slider text-wellness" max="10" min="1" type="range" value="3"/>
+</div>
+</div>
+</div>
+</section>
+<!-- ADDITIONAL NOTES -->
+<section class="space-y-3">
+<p class="text-xs font-extrabold text-slate-500 uppercase tracking-widest px-1">Notas Adicionales</p>
+<textarea class="w-full bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl p-4 text-sm focus:ring-primary focus:border-primary outline-none resize-none" placeholder="¿Algo más que destacar sobre hoy?" rows="3"></textarea>
+</section>
+<!-- CTA BUTTON -->
+<div class="pt-4 pb-12">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-extrabold py-4 rounded-xl shadow-xl shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">task_alt</span>
+                    Guardar check-in
+                </button>
+<p class="text-center text-[10px] text-slate-500 mt-4 uppercase tracking-[0.2em]">Los datos se sincronizan con tu perfil BeBlue</p>
+</div>
+</div>
+<!-- IOS Indicator -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+</div>
+</body></html>

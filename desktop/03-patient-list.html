@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Clinical Patient List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased h-screen overflow-hidden">
+<div class="flex h-full w-full">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl font-bold">clinical_notes</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-none">BeBlue</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Plataforma Clínica</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill-icon">group</span>
+<span class="text-sm font-medium">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Calendario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">Mensajes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors mb-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+<div class="flex items-center gap-3 px-3 py-4">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Dr. profile" class="w-full h-full object-cover" data-alt="Portrait of a medical professional doctor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW3dxt5O0Phm9cZJda6ywQ65qnqUZLl5-7Q5vZkH0rxI4F-R3qmGDCvoWfqjKw1mlcWXjDfTRHT9Xduesw-a0rdSxALR0fiFWcfuEEbMwdI5EJs06J-vnQRANFAx_Itn_gSxf8DpeyoHMOtTbvZwpD2lN8StRj84-lir2V2-ylpifYx6c64rHgeJ752PQh4qECuixupKEqUTDh75h4ueBWEkJ1-1QTyc0h0lyVb1ycQXVMZcl5qhaI-h9knI4LAYYdnmHRCnPgZiw"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Dr. Ricardo Silva</p>
+<p class="text-xs text-slate-500 truncate">Cardiólogo</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-2">
+<h2 class="text-xl font-bold">Pacientes</h2>
+<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs rounded-full font-medium">127 Total</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors">notifications</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Nuevo Paciente
+                    </button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-[#080f1a] p-8">
+<!-- Toolbar/Filters -->
+<div class="flex flex-col gap-6 mb-8">
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl border-none bg-white dark:bg-slate-800/50 focus:ring-2 focus:ring-primary dark:text-slate-100 text-sm shadow-sm transition-all" placeholder="Buscar paciente por nombre, ID o programa..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/50 rounded-xl text-sm font-medium border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all shadow-sm">
+<span>Estado</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/50 rounded-xl text-sm font-medium border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all shadow-sm">
+<span>Programa</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/50 rounded-xl text-sm font-medium border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all shadow-sm">
+<span>Scoring</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Ordenar por:</span>
+<button class="flex items-center gap-1 text-primary text-sm font-bold">
+                                Scoring
+                                <span class="material-symbols-outlined text-base">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs uppercase font-bold tracking-wider border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4">Foto</th>
+<th class="px-6 py-4">Nombre</th>
+<th class="px-6 py-4">Edad</th>
+<th class="px-6 py-4">Scoring</th>
+<th class="px-6 py-4">Edad Bio.</th>
+<th class="px-6 py-4">Adherencia</th>
+<th class="px-6 py-4">Programa</th>
+<th class="px-6 py-4">Próxima Revisión</th>
+<th class="px-6 py-4 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 1" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlR0ttJ_hBcxO0Zd421rQHR9dHiLsxzGyzzIBGN7c4TwOHYVQ1N1sgxtJ2_zD6vIpBzHcUSEg9mtrOJ0NoIiSNGYT-cKBAPNx3lx7KPCZv36XKaOoLQAfRTMwRJZfcIsGV9hQk99dZ8Ja35Rs284JwvCWodLAg80-PsUNZxTpNpcTpnw_VZ_EE2R1IafNIi1-iS40x3EzkUW0ibV6biGGWbkpEADSDLEQ_JhRHOl3j9fh6UQuvThzruv0qAgiYeeO6N4HSQqkrDZs"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">María García López</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">45</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">72</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">38</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 78%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">78%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Completo</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">15 Mar 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 2" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqxccjfXWgj29XijFjZZh5LeBjta_iNM-HEFbumQEgP3TNagYzZN_y6q5jINmk89h4h44sjN8savjWK4o97lGfbU_iR1ccb_iSTSnWvmdryBvPfeqvj288DecW0kMoHwI9RdIeMWzw1GRaOThIQRjOyp_l4Y37WyVtdlrwuLSBGQISn6zLxVkmGvu2K4U7vAouRBtCJMZbsOymXJQn2Oe4FZUOmB6zVe-b345p0GnrhqKWdb0nAEWQmNAnpv2YYhZpB72i_SyMXms"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Juan Pérez</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">52</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">48</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">60</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">45%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Básico</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">10 Abr 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 3" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwA5IS72Mt2uM5jShbyhePJkcGeuPUoT63ubQeimOQxb3oVtrW0rm3zhOQPc9YWIU-t9VzSnCbY4tJNLYVuyHG2kBl4FmYHh9X_fElu4KDcGsuSGMnC8i254A5XfYmp5f9v3hc8TTubFx1fs-Jd8PPXSTQrzriM1A9YZE-6vnriRY_eYZhRsgrTai8umy6dQraZTbfqtPRU8Xlzcn1p7QkBLWnLf9Jq7EE6K18SJzVOOYFAdsygTlYmJSZ5OTpE3JtzkKgpNYr78"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Ana Martínez</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">30</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">85</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">25</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 92%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">92%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Premium</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">22 Mar 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 4" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb7B5705dLJuEE4HKvwDg3P8dYYggqcdTBfw7x4bcYJpRLjEOBq4tZYlyUjKCTDJtPc1KeZhzcqPo-kUgtpD6sNG-vzmf6lK9s4cxOopRz3CQVhN6YCURKoBlJya8otG7ghIS83jFZM7UR6xrPDQAdaxssW7AKL49BQXXncURepMz06SqtOSOPvvCKLpI_LTVTe4W8JY8GrV2lOLwesVI53l4ckMlQ4Ccpqg7Ky0FsHffbQWN0f8h09Vxf4-TkZF-eiU0W3T1g_1A"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Carlos Ruiz</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">61</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">55</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">65</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 60%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">60%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Intermedio</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">05 May 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 5" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuWmChoUiWjdcmtbykRIzEjER8FZFpUe6A9jYUqfFTmL5-y2rNlL4GfGeyrOf-MAA86w3dZoPMueahP5CD_zeXhjRG4REc6Rm_D9Kt3z-Ru-Mvg8IcyxjJr2Xp60SXrtI4UIKsIeroUqqfk0OuV6V9mIoaEuDTw_FD2tQs_4uGQMK8sncITmBBgjXrlEOEjQj0br0-zAzZ5vLspMDItoXyfM8SSnPDsENJQn53dedUA3njcMNcktOajI6-58mtrSlX450BxNPXbM4"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Elena Sanz</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">38</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">68</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">35</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 70%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">70%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Completo</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">12 Jun 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 6" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnD83uR_vcQqhRzvFbq5CcOqkY1yb3I0zTimrP_SKOpW9-KgO_ItunZ0T_wcjVmn9cBaZPCc4MXDDI4E2d6uNFuHfNkWg16ilbsLs29pJtDmOq4OEGs5qwVBOw6RteaPvDLtDDyhbFzSei9-MQqnGpwc9Vf0Rqi96BgS3N_jTQm6hBI1KY1nXbiWa_q_h_0EiBDdmHG2OEcq8BOjc5CuQzyrclZ4p4UilGFLkRvjHEHONvPpqUjeop0ft3VA2gXiVP2rjrhjOFh-c"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Luis Moreno</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">55</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">75</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">50</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">85%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Completo</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">18 Jul 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 7" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQm4HIAWvtnWJFwxLEh2a7KksVO_zpEnsv4sb-nriJpJv3rB6Fzt6iuVZ1zlz_oqWOFXCwBCeg0WByt62scp1MMtvB3Y8efWZ9HGXN9U6xbfUvC2y89gDIQ2ThhhgajF8XIMr0ItrnNpdy0_f30OO4zeseHKe8wD_a1B6T6oqjEsRwUE99Isf7I9p5tq_bSV4CQE7SWkC8oBXaOPU4CQ-GFKaOTXVn5QEp56AE7Gfzmgu5SQzCR0FJPHHfxa6FI5IQRy6ZIx-f0To"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Carmen Ortiz</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">42</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">35</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">48</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 30%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">30%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Básico</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">01 Ago 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 8" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGlRSH-XbdBZiNhOA2K8aRYi4QF92YQYNrw2JwGqKLe5pxifIOJHgTVOh5o4k9XKPv8qD3lOsg7Mx2-4lcN61da-8NL0JiQYOHZpRsG07fUctLYycZ7ZXnh8le7ALsaKUime3Hvr5my2CCU5E8N7S7kQ_zkjEniIyE3muoqAyse1fF624ewLZpBuUhAb2kUyCU7lGoMxy28QrNlO59y7Uz8XZJ93m7Ceku-L5KqB3KJN3NI3EGUUN8D07WnZHyEovIayVX7IwxnSQ"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Roberto Díaz</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">67</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">91</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">58</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 95%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">95%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Premium</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">12 Sep 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<img alt="Patient 9" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqCkyY6fzjp3aAFoxa1CMu9mEiFSP2Ba7bCAg8QYnIlln3ImAD4GQSQbHejwBK9kxgGHeepGQJEnXw0HQnYthrCeicrX25ejJ-CGSSXF6ykmuZgx3bft_l03floaiGthaqSHr2MoRtwxEi5oYTd6r1RRqL62CE-M7OfWBQH3I7465mm4iAj7jK1n1rgVQUCBe1howD4ULnNEaNyla8j6XKosBB77ZrmYL0YCE9QFzgS_PmoQs1W1BRTpkMtjU492ujMRHmr_aehDs"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">Sonia Vaca</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">49</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">62</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">45</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 65%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">65%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Intermedio</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">25 Oct 2026</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 border-none">
+<img alt="Patient 10" class="size-10 rounded-full border-2 border-primary/20 p-0.5" data-alt="Portrait of a male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_RRkndwJ0ymM_HxjTLGCyJolbEG41A2FaRC5FxubK8QMzqZtI4kgqnyolMnvYakVsYNPdLoFValZKSDJTUrOHVNRfXGTHaTapku2-WbI7BRYhmg5T0XusgjUudIEcWbazLJ4Q-DEfQAJSWvROatceYfxiTSrk60vo7sEMOqijpOU9Y1S6TfVHd8gZDW2_-D3QWWQVg3r4nv8vwV5njw2540DiI0qvi1HWn7Mp7YH4yFZPaJzB8F9tCw1SP3JbH0ypdHizN1q4ukk"/>
+</td>
+<td class="px-6 py-4 text-sm font-semibold border-none">Alberto Gil</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 border-none">36</td>
+<td class="px-6 py-4 border-none">
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">79</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 border-none">33</td>
+<td class="px-6 py-4 border-none">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 82%"></div>
+</div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-300">82%</span>
+</div>
+</td>
+<td class="px-6 py-4 border-none">
+<span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg font-medium">Completo</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium border-none">05 Nov 2026</td>
+<td class="px-6 py-4 text-right border-none">
+<button class="text-primary text-xs font-bold hover:underline">Ver Detalle</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between text-sm">
+<p class="text-slate-500 dark:text-slate-400 font-medium">Mostrando 1-10 de 127 pacientes</p>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="size-8 rounded-lg bg-primary text-white font-bold text-xs">1</button>
+<button class="size-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors font-medium text-xs">2</button>
+<button class="size-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors font-medium text-xs">3</button>
+<span class="mx-1 text-slate-400">...</span>
+<button class="size-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors font-medium text-xs">13</button>
+</div>
+<button class="p-1 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

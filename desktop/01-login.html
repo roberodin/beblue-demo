@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Clinical Platform | Professional Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3B82F6",
+                        "primary-dark": "#1D4ED8",
+                        "accent": "#60A5FA",
+                        "background-dark": "#020617",
+                        "panel-dark": "#0F172A",
+                        "brand-blue": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1.25rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-sans antialiased text-slate-300 bg-background-dark;
+            }
+            h1, h2, h3 {
+                @apply font-display;
+            }
+        }
+        .glass-field-refined {
+            @apply bg-white/[0.02] border border-white/10 backdrop-blur-md focus:bg-white/[0.05] focus:border-primary/40 focus:ring-4 focus:ring-primary/10 transition-all duration-500 ease-out;
+        }
+        .vibrant-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        .vibrant-btn:hover {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+            box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.5);
+            transform: translateY(-1px);
+        }
+        .vibrant-overlay {
+            background: linear-gradient(165deg, rgba(10, 22, 40, 0.85) 0%, rgba(59, 130, 246, 0.3) 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-hidden">
+<main class="flex-1 flex w-full">
+<div class="hidden lg:flex w-1/2 relative items-center justify-center p-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Modern Wellness Center" class="w-full h-full object-cover scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCad-GRqOetWiD347CLJUgX4Bbo25Iw-L-QEuJIJbUv3zDJcguxzJpZ819pWdxzp1cD9I5BmrtCgHTaj4f4FjJzBnUhGLMBTTo70CKKykX8wJFBerfP62M1PMaHR9RaiigDxkw49HGtiiYifgqm1vniiL191oYKxnO4Lun2GrXv7HOHbwCLI-2LsiKah_jsW6gV509xrSSMLPIhOkXTPe2TLFRL0w2J71G7yRQZMTK14K3tol17-GHgMBYfNB1dUri2X_U3Gs0GQZ0"/>
+<div class="absolute inset-0 vibrant-overlay backdrop-blur-[2px]"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="mb-12 text-white drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]">
+<svg class="w-28 h-28" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<div class="space-y-8">
+<h1 class="text-white text-8xl font-black tracking-tighter uppercase leading-none drop-shadow-2xl">BE BLUE</h1>
+<p class="text-sky-300 text-2xl font-bold tracking-[0.5em] uppercase">Centro de Vida</p>
+<div class="h-1 w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mt-12 mb-10"></div>
+<p class="text-white/70 text-lg font-medium tracking-[0.6em] uppercase">Clinical Management</p>
+</div>
+</div>
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-sky-500/10 blur-[150px] rounded-full"></div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 md:p-20 relative bg-[#020617]">
+<div class="w-full max-w-md flex flex-col items-center">
+<div class="lg:hidden mb-16 flex flex-col items-center gap-4">
+<div class="w-16 h-16 text-primary drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h1 class="text-white text-4xl font-black tracking-tight uppercase">BE BLUE</h1>
+</div>
+<div class="text-center mb-14 w-full">
+<h2 class="text-4xl font-extrabold text-white mb-5 tracking-tight">Acceso Profesional</h2>
+<p class="text-slate-400 font-normal text-lg max-w-[340px] mx-auto leading-relaxed">
+                    Entre a la vanguardia de la longevidad y el bienestar clínico.
+                </p>
+</div>
+<form class="space-y-8 w-full">
+<div class="space-y-3.5">
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-[0.25em] ml-1" for="email">Identificación Corporativa</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[22px] text-slate-500">alternate_email</span>
+</div>
+<input class="block w-full pl-14 pr-5 py-5 glass-field-refined rounded-2xl text-white placeholder-slate-600 focus:outline-none text-base" id="email" name="email" placeholder="doctor@beblue.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-3.5">
+<div class="flex items-center justify-between px-1">
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-[0.25em]" for="password">Contraseña</label>
+<a class="text-[12px] font-semibold text-primary hover:text-accent transition-colors" href="#">Recuperar acceso</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[22px] text-slate-500">lock_open</span>
+</div>
+<input class="block w-full pl-14 pr-5 py-5 glass-field-refined rounded-2xl text-white placeholder-slate-600 focus:outline-none text-base" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center">
+<input class="h-5 w-5 rounded-lg border-white/10 text-primary focus:ring-primary/40 bg-white/5 cursor-pointer transition-all" id="remember" name="remember" type="checkbox"/>
+<label class="ml-3 block text-[13px] text-slate-400 cursor-pointer select-none font-medium" for="remember">
+                            Recordar credenciales
+                        </label>
+</div>
+</div>
+<button class="w-full flex items-center justify-center px-10 py-5 vibrant-btn text-white text-[15px] font-bold uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-[0.98] mt-12" type="submit">
+                    Iniciar Sesión
+                    <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</button>
+</form>
+<div class="mt-16 pt-12 border-t border-white/5 flex flex-col items-center w-full">
+<p class="text-sm text-slate-500 mb-5 font-medium">
+                    ¿Dificultades técnicas?
+                </p>
+<button class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-primary transition-all group px-6 py-3 rounded-full border border-white/5 hover:border-primary/20 hover:bg-primary/5">
+<span class="material-symbols-outlined text-[20px] group-hover:rotate-12 transition-transform">headset_mic</span>
+                    Soporte IT Especializado
+                </button>
+</div>
+</div>
+<footer class="mt-auto w-full text-center py-10">
+<div class="flex flex-col items-center gap-3">
+<div class="flex gap-4 mb-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<p class="text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold">Servidores Activos</p>
+</div>
+<p class="text-[9px] text-slate-600 uppercase tracking-[0.4em] font-semibold">
+                    BeBlue Clinical Ecosystem © 2026 · Encriptación Militar AES-256
+                </p>
+</div>
+</footer>
+</div>
+</main>
+
+</body></html>

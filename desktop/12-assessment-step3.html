@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Initial Assessment Bio-Age Focus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f5af0",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        .circular-gauge {
+            background: conic-gradient(from 180deg, #0f5af0 234deg, #1e293b 0deg);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden">
+<aside class="w-72 bg-slate-50 dark:bg-slate-900/50 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">health_metrics</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight">BeBlue</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Clinical Management</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+<span class="font-medium text-sm">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-medium text-sm">Calendario</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-medium text-sm">Protocolos</span>
+</a>
+<div class="pt-4 pb-2 px-4">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Configuración</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Ajustes</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-300 dark:bg-slate-700" data-alt="Profile picture of Dr. Sergio" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD019zrwoPwlTTZ3xTJ70bFWgXb09xB3yQKj1iNzf15PoARC5EsDgXYNNo62ws6G4q_UQic9T38Sk0IBdGDpzaCl7nZ0GJx3iZrlNYqmyY4lRsJm04Ec9g-bm-OTXOHiR5vzUNZuEW2vwg2OloT7vbw29Oh-NUI64W-II19xyJdcBIMWwXVD0zHQp3t9Bg6yk4XIQjrSCIP0Koa6A92rq1-ASnr73u0WVOwyunCZzvf4PMpdaSYlEKLOvtb36iIofz7FE6ynsCNHPo');"></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold truncate">Dr. Sergio Méndez</p>
+<p class="text-[10px] text-slate-500 truncate">Director Médico</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">logout</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between bg-white/50 dark:bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-sm font-medium">
+<span class="text-slate-400">Pacientes</span>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100">Alta de Nuevo Paciente</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Buscar paciente..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+</div>
+</header>
+<div class="px-8 py-6">
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-extrabold tracking-tight">Valoración Inicial</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Paso 3 de 4: Datos antropométricos y funcionales</p>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold">75% completado</span>
+</div>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+<div class="flex gap-6 text-xs font-bold tracking-wide uppercase">
+<div class="flex items-center gap-1.5 text-emerald-500">
+<span class="material-symbols-outlined text-base">check_circle</span> 1. Datos Personales
+                </div>
+<div class="flex items-center gap-1.5 text-emerald-500">
+<span class="material-symbols-outlined text-base">check_circle</span> 2. Historial Médico
+                </div>
+<div class="flex items-center gap-1.5 text-primary border-b-2 border-primary pb-1">
+<span class="material-symbols-outlined text-base">radio_button_checked</span> 3. Valoración Inicial
+                </div>
+<div class="flex items-center gap-1.5 text-slate-400">
+<span class="material-symbols-outlined text-base">circle</span> 4. Programa Inicial
+                </div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-8 pb-32 custom-scrollbar">
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">body_system</span>
+<h3 class="font-bold text-lg">Composición Corporal</h3>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Peso (kg)</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="0.0" type="number"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">% Grasa</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="0.0" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">% Masa Muscular</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="0.0" type="number"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">% Agua</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="0.0" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Perímetro Cintura/Cadera</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="Ratio" type="text"/>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-2xl border border-primary/10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500 uppercase tracking-tighter leading-none">Cálculo IMC</p>
+<p class="text-2xl font-extrabold text-primary">22.7</p>
+</div>
+</div>
+<span class="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-full uppercase">Normal</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">exercise</span>
+<h3 class="font-bold text-lg">Capacidad Física</h3>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">VO2 Máx</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="ml/kg/min" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">HRV (ms)</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">FC Reposo</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="bpm" type="number"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">FC Máxima</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="bpm" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Fuerza Prensión</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="kg" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Flexibilidad</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 focus:ring-primary focus:border-primary" placeholder="Score" type="text"/>
+</div>
+</div>
+<div class="mt-6 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center group hover:border-primary/50 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 text-3xl mb-2">upload_file</span>
+<p class="text-sm font-bold">Subir analítica completa</p>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">PDF o Imagen con resultados de laboratorio recientes</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4">
+<div class="bg-primary rounded-2xl p-6 text-white shadow-xl shadow-primary/20 flex flex-col items-center">
+<h3 class="font-bold text-lg mb-4 w-full text-left">EDAD BIOLÓGICA INICIAL</h3>
+<p class="text-xs opacity-80 mb-6 w-full text-left leading-tight">Tu edad biológica es 3 años mayor que tu edad real</p>
+<div class="relative size-44 mb-6">
+<div class="absolute inset-0 rounded-full border-[12px] border-white/20"></div>
+<div class="absolute inset-0 rounded-full border-[12px] border-white circular-gauge rotate-[144deg]" style="clip-path: polygon(50% 50%, -50% -50%, 150% -50%, 150% 150%, -50% 150%);"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black">48 años</span>
+<span class="text-[10px] font-bold uppercase opacity-80 tracking-widest mt-1">Edad Biológica</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6 w-full pt-4 border-t border-white/10 mb-6">
+<div class="text-center">
+<p class="text-[10px] uppercase font-bold opacity-70">Edad Cronológica</p>
+<p class="text-xl font-black">45 años</p>
+</div>
+<div class="text-center relative">
+<p class="text-[10px] uppercase font-bold opacity-70">Estado</p>
+<div class="flex items-center justify-center gap-1 mt-1">
+<span class="px-2 py-0.5 bg-red-500 text-[10px] font-black rounded-full">+3 años mayor</span>
+</div>
+</div>
+</div>
+<div class="w-full space-y-3">
+<p class="text-[10px] font-bold uppercase opacity-70 mb-1">Impacto por categoría</p>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase">
+<span>Composición</span>
+<span>+0.8 años</span>
+</div>
+<div class="h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[72%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase">
+<span>Capacidad Física</span>
+<span>+1.5 años</span>
+</div>
+<div class="h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[58%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase">
+<span>Estilo de Vida</span>
+<span>+0.7 años</span>
+</div>
+<div class="h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[65%]"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-white text-primary font-bold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                        Recalcular Edad Biológica
+                    </button>
+</div>
+</div>
+<div class="col-span-12">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">psychiatry</span>
+<h3 class="font-bold text-lg">Estilo de Vida</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Ejercicio (horas/sem)</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 text-sm font-medium" type="text" value="3.5"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Calidad Dieta</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 text-sm font-medium">
+<option>Equilibrada</option>
+<option>Mejorable</option>
+<option>Deficiente</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Horas Sueño</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 text-sm font-medium" type="text" value="6h 30m"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Estrés Autopercibido</label>
+<div class="flex gap-1 h-9">
+<div class="flex-1 bg-primary rounded-lg border border-primary/20"></div>
+<div class="flex-1 bg-primary rounded-lg border border-primary/20"></div>
+<div class="flex-1 bg-primary rounded-lg border border-primary/20"></div>
+<div class="flex-1 bg-primary rounded-lg border border-primary/20"></div>
+<div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Consumo Alcohol</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 text-sm font-medium">
+<option>Ocasional</option>
+<option>Frecuente</option>
+<option>Nulo</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="h-24 px-8 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between absolute bottom-0 left-72 right-0 z-10 shadow-2xl">
+<button class="flex items-center gap-2 px-6 py-3 text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+            Anterior
+        </button>
+<div class="flex gap-4">
+<button class="px-6 py-3 text-slate-600 dark:text-slate-400 font-bold border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800">
+                Guardar Borrador
+            </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                Guardar y Continuar
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+</main>
+
+</body></html>

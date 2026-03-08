@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Clinical Program Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f5af0",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-none">BeBlue</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Clinical Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 py-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Panel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-fill-1">stethoscope</span>
+<span class="text-sm font-semibold">Terapias</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-medium">Programas</span>
+</a>
+<div class="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Ajustes</span>
+</a>
+</div>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Clinical staff profile picture portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp2q9i18cve6mw7mOl4vDkGg8IwUWyXtPOmQW5m9-2o9s7plUUussHcXnG6PFuCEwVzcoI_DAsyIgo4sGutzpLFRfsNWa8JMawB136JgIfw8qPZrXTUnij3vbw7hD47KtfH3rVzInGZCA5pZQ7lAO5L1EygaWBv7U41Xxffua-Zl9uTuqLL5yAIIfmqDazWjPwksIjVKFwErv8FCAkp56lbqwiwWWAtcBAh3tfW6bJuTSqETtTY4hu3OWljpFQhMHAKnGVLKRK_5o"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold truncate">Dr. Julian S.</p>
+<p class="text-[10px] text-slate-500">Director Clínico</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header Bar -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">library_books</span>
+<h2 class="text-xl font-bold tracking-tight">Biblioteca de Programas</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Crear Nuevo Programa
+                    </button>
+</div>
+</header>
+<!-- Filters & Search Bar -->
+<div class="bg-white dark:bg-background-dark/50 border-b border-slate-200 dark:border-slate-800 px-8 py-4 space-y-4">
+<div class="flex flex-wrap items-center gap-4">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Buscar programa..." type="text"/>
+</div>
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="px-4 py-1.5 text-sm font-medium rounded-lg bg-white dark:bg-slate-700 shadow-sm text-primary">Más utilizados</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400">Recientes</button>
+</div>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-primary text-white text-xs font-bold">Todos</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">Longevidad</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">Recovery</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">Deportivo</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">Pérdida grasa</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">Personalizado</button>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="flex-1 overflow-y-auto p-8 bg-slate-50 dark:bg-background-dark/30">
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 max-w-7xl mx-auto">
+<!-- Card 1: Longevidad Integral (Featured) -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col relative overflow-hidden group hover:border-primary/50 transition-all">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full border border-amber-200 dark:border-amber-800">Más popular</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Longevidad Integral</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">Optimización biológica completa mediante intervención multi-pilar diseñada para revertir edad biológica.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase text-slate-400">
+<span>Ejercicio</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[85%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase text-slate-400">
+<span>Terapias</span>
+<span class="text-teal-500">70%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-teal-500 rounded-full w-[70%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase text-slate-400">
+<span>Nutrición</span>
+<span class="text-emerald-500">95%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full w-[95%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase text-slate-400">
+<span>Suplementación</span>
+<span class="text-purple-500">60%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 rounded-full w-[60%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400 mb-6 border-t border-slate-100 dark:border-slate-700 pt-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">groups</span>
+                                Asignado a: <span class="font-bold text-slate-900 dark:text-slate-100">45 pacientes</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                Duración: <span class="font-bold text-slate-900 dark:text-slate-100">12 semanas</span>
+</div>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold transition-colors">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Asignar a paciente</button>
+</div>
+</div>
+<!-- Card 2: Recovery Intensivo -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col hover:border-primary/50 transition-all">
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-500">
+<span class="material-symbols-outlined text-3xl">rebase_edit</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Recovery Intensivo</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">Protocolo de recuperación post-competencia y rehabilitación musculoesquelética avanzada.</p>
+</div>
+</div>
+<div class="flex-1 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-6 border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase mb-3">Sesiones semanales</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs font-semibold">Crioterapia x3</span>
+<span class="px-2 py-1 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs font-semibold">C. Hiperbárica x2</span>
+<span class="px-2 py-1 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs font-semibold">Laser x1</span>
+</div>
+</div>
+<div class="flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400 mb-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">groups</span>
+                                Asignado a: <span class="font-bold text-slate-900 dark:text-slate-100">18 pacientes</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                Intensidad: <span class="font-bold text-slate-900 dark:text-slate-100">Alta</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold">Asignar a paciente</button>
+</div>
+</div>
+<!-- Card 3: Composición Corporal -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col hover:border-primary/50 transition-all">
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-3xl">fitness_center</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Composición Corporal</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Estrategia dual para pérdida de grasa y mantenimiento de masa muscular magra.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex -space-x-2">
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300"></div>
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-800 bg-slate-400"></div>
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-800 bg-slate-500"></div>
+</div>
+<span class="text-xs text-slate-500">+12 expertos involucrados</span>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold">Asignar a paciente</button>
+</div>
+</div>
+<!-- Card 4: Iniciación (Recommended) -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col relative hover:border-primary/50 transition-all">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">Recomendado</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined text-3xl">explore</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Iniciación</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Introducción guiada al ecosistema BeBlue para nuevos pacientes clínicos.</p>
+</div>
+</div>
+<div class="text-xs text-slate-500 mb-6">Ideal para screenings iniciales y establecimiento de línea base biológica.</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold">Asignar a paciente</button>
+</div>
+</div>
+<!-- Card 5: Deportista -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col hover:border-primary/50 transition-all">
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Deportista Élite</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Máximo rendimiento y optimización de VO2 Max y umbrales metabólicos.</p>
+</div>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold">Asignar a paciente</button>
+</div>
+</div>
+<!-- Card 6: Sueño y Estrés -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col hover:border-primary/50 transition-all">
+<div class="flex gap-4 mb-4">
+<div class="size-14 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-500">
+<span class="material-symbols-outlined text-3xl">nights_stay</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Programa Sueño y Estrés</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Regulación del ritmo circadiano y control de cortisol mediante biofeedback.</p>
+</div>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-2 rounded-lg text-sm font-semibold">Ver detalle</button>
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-semibold">Asignar a paciente</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

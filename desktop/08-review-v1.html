@@ -1,0 +1,362 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BeBlue Initial Assessment Baseline View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .gauge-ring { transition: stroke-dashoffset 0.35s; transform: rotate(-90deg); transform-origin: 50% 50%; }
+        :root {
+            --biomarker-blue: #3b82f6;
+            --effort-red: #ef4444;
+            --genetic-purple: #a855f7;
+            --dexa-teal: #14b8a6;
+            --nutrition-green: #22c55e;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark/50">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="">health_and_safety</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight" style="">BeBlue</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">dashboard</span>
+<span class="text-sm font-medium" style="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#" style="">
+<span class="material-symbols-outlined italic" style="">group</span>
+<span class="text-sm font-semibold" style="">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">calendar_today</span>
+<span class="text-sm font-medium" style="">Calendario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">analytics</span>
+<span class="text-sm font-medium" style="">Programas</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<img alt="Doctor profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AEWePRKNJMhFre8qgaRtklDfUkfZcLl9syWU8Ok6eDZyNt0BxG-EoQZyZ7GRPHb9oulw5MRLNYsWarlmHxZVZcuI65GH12Gvsvi9rsXToaMJGmwVaPGurfkCtCVi7V4UYQ6UXYqqz0-RpIyVjlY5e69GQY0-LUfnITlJQQnnj_Y7NRt9WofuvRF6Yg3An8SF4y5aWGlsiQCXX2y3_7-lI2QXmPAz-5kLhMrXaNXoerwUgHyRMp8escZV2r6UDxkI3sBi4tW9ClQ" class="" style="">
+</div>
+<div>
+<p class="text-sm font-bold" style="">Dr. Julian S.</p>
+<p class="text-xs text-slate-500" style="">Cardiólogo</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500 hover:text-primary cursor-pointer" style="">Pacientes</span>
+<span class="text-slate-400" style="">/</span>
+<span class="text-slate-500 hover:text-primary cursor-pointer" style="">María García López</span>
+<span class="text-slate-400" style="">/</span>
+<span class="font-semibold text-primary" style="">Estado Inicial</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all" style="">
+<span class="material-symbols-outlined text-sm" style="">add</span>
+                    Nueva Revisión
+                </button>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full">
+<div class="flex gap-8">
+<div class="w-48 flex-shrink-0">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6" style="">Historial</h3>
+<div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-t before:from-primary before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+<div class="relative flex items-center gap-4">
+<div class="absolute left-0 size-10 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined text-lg" style="">radio_button_checked</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-bold text-primary" style="">Estado Inicial</p>
+<p class="text-xs font-medium" style="">Oct 2025</p>
+</div>
+</div>
+<div class="relative flex items-center gap-4">
+<div class="absolute left-0 size-10 rounded-full bg-slate-800 border-4 border-background-dark flex items-center justify-center text-slate-400 z-10">
+<span class="material-symbols-outlined text-lg" style="">history</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-medium text-slate-400" style="">Revisión 1</p>
+<p class="text-xs text-slate-500" style="">Nov 2025</p>
+</div>
+</div>
+<div class="relative flex items-center gap-4">
+<div class="absolute left-0 size-10 rounded-full bg-slate-800 border-4 border-background-dark flex items-center justify-center text-slate-400 z-10">
+<span class="material-symbols-outlined text-lg" style="">history</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-medium text-slate-400" style="">Revisión 2</p>
+<p class="text-xs text-slate-500" style="">Feb 2026</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-8">
+<div>
+<h2 class="text-3xl font-black tracking-tight" style="">Estado Inicial</h2>
+<p class="text-slate-500 mt-1" style="">Evaluación basal diagnóstica integral</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-blue-500/10 border-b border-blue-500/20 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-500" style="">bloodtype</span>
+<h4 class="text-xs font-bold text-blue-500 uppercase tracking-wider" style="">Biomarcadores</h4>
+</div>
+<div class="p-4">
+<table class="w-full text-xs">
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">Glucosa</td>
+<td class="font-bold py-1.5" style="">95 mg/dL</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">HbA1c</td>
+<td class="font-bold py-1.5" style="">5.6 %</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">Colesterol Total</td>
+<td class="font-bold text-amber-500 py-1.5" style="">220 mg/dL</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">LDL</td>
+<td class="font-bold text-amber-500 py-1.5" style="">145 mg/dL</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">Vit D</td>
+<td class="font-bold text-rose-500 py-1.5" style="">18 ng/mL</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-slate-400 py-1.5" style="">PCR</td>
+<td class="font-bold text-amber-500 py-1.5" style="">2.1 mg/L</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-red-500" style="">exercise</span>
+<h4 class="text-xs font-bold text-red-500 uppercase tracking-wider" style="">Tests de Esfuerzo</h4>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold" style="">VO2máx</p>
+<p class="text-xl font-black text-rose-500" style="">32</p>
+</div>
+<span class="text-[10px] bg-rose-500/20 text-rose-500 px-2 py-0.5 rounded font-bold" style="">Below Avg</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold" style="">FC Reposo</p>
+<p class="text-lg font-bold" style="">72 lpm</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold" style="">HRV</p>
+<p class="text-lg font-bold text-amber-500" style="">28 ms</p>
+</div>
+</div>
+<div class="pt-2 border-t border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1" style="">Movilidad</p>
+<p class="text-xs" style="">Limitación rotación cadera izq.</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-purple-500/10 border-b border-purple-500/20 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-500" style="">genetics</span>
+<h4 class="text-xs font-bold text-purple-500 uppercase tracking-wider" style="">Tests Genéticos</h4>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm mt-0.5" style="">priority_high</span>
+<p class="text-xs" style=""><span class="font-bold" style="">Metabolismo:</span> Lento de grasas</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm mt-0.5" style="">warning</span>
+<p class="text-xs" style=""><span class="font-bold" style="">Vitamina D:</span> Riesgo alto déficit</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm mt-0.5" style="">medication</span>
+<p class="text-xs" style=""><span class="font-bold" style="">CYP2D6:</span> Metabolizador lento</p>
+</div>
+<div class="mt-4 p-2 bg-purple-500/5 rounded border border-purple-500/10">
+<p class="text-[10px] text-purple-400 font-bold uppercase italic" style="">Recomendación Genómica</p>
+<p class="text-[10px] leading-tight mt-1 opacity-70" style="">Ajuste de dosificación en suplementación lipofílica.</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-teal-500/10 border-b border-teal-500/20 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-500" style="">body_system</span>
+<h4 class="text-xs font-bold text-teal-500 uppercase tracking-wider" style="">DEXA Scan</h4>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400" style="">% Grasa Total</span>
+<span class="text-lg font-bold" style="">28%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400" style="">Grasa Visceral</span>
+<span class="text-xs px-2 py-1 bg-rose-500/20 text-rose-500 rounded font-bold uppercase" style="">Alto</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-400" style="">Densidad Ósea (T-score)</span>
+<span class="text-sm font-bold text-amber-500" style="">-0.8</span>
+</div>
+<div class="mt-2 h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-teal-500 w-[65%]"></div>
+</div>
+<p class="text-[10px] text-center text-slate-500 italic" style="">Masa Muscular: 34.2kg</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500" style="">nutrition</span>
+<h4 class="text-xs font-bold text-emerald-500 uppercase tracking-wider" style="">Nutrición &amp; Estrés</h4>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs" style="">Inflamación</span>
+<span class="text-[10px] font-bold text-rose-500 uppercase" style="">Alta</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs" style="">Estrés Oxidativo</span>
+<span class="text-[10px] font-bold text-rose-500 uppercase" style="">Alto</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs" style="">Déficit Proteico</span>
+<span class="text-[10px] font-bold text-amber-500 uppercase" style="">Leve</span>
+</div>
+<div class="pt-4 border-t border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-2" style="">Hábitos</p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-slate-800 rounded text-[10px]" style="">Sedentarismo</span>
+<span class="px-2 py-0.5 bg-slate-800 rounded text-[10px]" style="">Café &gt; 4/día</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1 bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 p-6 rounded-xl flex flex-col justify-between shadow-2xl">
+<div>
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4" style="">Baseline Score</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-6xl font-black text-white" style="">58</span>
+<span class="text-slate-500 font-bold" style="">/ 100</span>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<div class="flex items-center justify-between bg-white/5 p-3 rounded-lg border border-white/10">
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold" style="">Edad Cronológica</p>
+<p class="text-xl font-bold" style="">45 <span class="text-xs font-normal opacity-50" style="">años</span></p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-400 uppercase font-bold" style="">Edad Biológica</p>
+<p class="text-xl font-bold text-rose-500" style="">51 <span class="text-xs font-normal opacity-50" style="">años</span></p>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 text-rose-500 font-bold text-xs uppercase bg-rose-500/10 py-2 rounded-lg" style="">
+<span class="material-symbols-outlined text-sm" style="">trending_up</span>
+                                    Déficit de longevidad: +6 años
+                                </div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-8 rounded-xl">
+<h3 class="text-sm font-bold text-slate-500 uppercase mb-8 flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-sm" style="">analytics</span>
+                            Análisis de Déficits Iniciales por Categoría
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-bold text-slate-400 uppercase" style="">Biomarcadores</span>
+<span class="text-amber-500 font-bold" style="">62%</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-[62%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-bold text-slate-400 uppercase" style="">Cardio / VO2</span>
+<span class="text-rose-500 font-bold" style="">45%</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[45%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-bold text-slate-400 uppercase" style="">Fuerza / Musculatura</span>
+<span class="text-rose-500 font-bold" style="">48%</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-teal-500 w-[48%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-bold text-slate-400 uppercase" style="">Metabolismo / Nutrición</span>
+<span class="text-amber-500 font-bold" style="">54%</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[54%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all shadow-lg shadow-primary/20" style="">
+                            Diseñar Programa Inicial <span class="material-symbols-outlined" style="">arrow_forward</span>
+</button>
+<button class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-6 py-3 rounded-lg font-bold transition-all" style="">
+                            Validar Datos Basales
+                        </button>
+<button class="ml-auto bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all" style="">
+<span class="material-symbols-outlined" style="">picture_as_pdf</span>
+                            Informe Diagnóstico
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

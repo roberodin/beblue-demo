@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0cd4c3",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>BeBlue Therapies Recovery Details</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-4">
+<div class="flex items-center justify-between mb-4">
+<button class="size-10 flex items-center justify-center rounded-full bg-slate-800/50 text-slate-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Terapias Recovery</h1>
+<button class="size-10 flex items-center justify-center rounded-full bg-slate-800/50 text-slate-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Location Section -->
+<div class="flex items-center gap-3 bg-slate-800/30 p-3 rounded-xl border border-slate-700/30">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-semibold">En el centro</p>
+<p class="text-xs text-slate-400">Madrid, España</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-500 text-sm">chevron_right</span>
+</div>
+</header>
+<main class="flex-1 px-4 pb-32">
+<!-- Progress Section -->
+<section class="mb-8 mt-2">
+<div class="flex justify-between items-end mb-3">
+<div>
+<h2 class="text-sm font-medium text-slate-400">Progreso semanal</h2>
+<p class="text-2xl font-bold">4 <span class="text-slate-500 text-lg font-medium">de 7</span></p>
+</div>
+<p class="text-xs font-medium text-primary">57% completado</p>
+</div>
+<div class="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[57%]"></div>
+</div>
+<p class="mt-2 text-xs text-slate-500 italic">Quedan 3 sesiones para tu objetivo semanal</p>
+</section>
+<!-- Therapy Cards Stack -->
+<div class="space-y-4">
+<!-- Card 1: Sauna -->
+<div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-bold text-sm tracking-wide">SAUNA FINLANDESA</h3>
+<p class="text-xs text-slate-400">2-3 sesiones/semana • 20 min</p>
+</div>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-md uppercase">Próxima: Miér 18:00</span>
+</div>
+<p class="text-sm text-slate-300">Reduce riesgo cardiovascular y mejora la recuperación muscular.</p>
+</div>
+<!-- Card 2: Hiperbarica -->
+<div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">air</span>
+</div>
+<div>
+<h3 class="font-bold text-sm tracking-wide uppercase">Cámara Hiperbárica</h3>
+<p class="text-xs text-slate-400">4 sesiones/semana • 1 hora</p>
+</div>
+</div>
+<span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Reservada: Mañana 10:00</span>
+</div>
+<p class="text-sm text-slate-300">Refuerza sistema inmunitario y acelera la cicatrización celular.</p>
+</div>
+<!-- Card 3: Fotobiomodulacion -->
+<div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">wb_sunny</span>
+</div>
+<div>
+<h3 class="font-bold text-sm tracking-wide uppercase">Fotobiomodulación</h3>
+<p class="text-xs text-slate-400">2-3 sesiones/semana • 15 min</p>
+</div>
+</div>
+<span class="bg-yellow-500/10 text-yellow-500 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Pendiente reserva</span>
+</div>
+<p class="text-sm text-slate-300">Luz roja e infrarrojo cercano para salud mitocondrial profunda.</p>
+</div>
+<!-- Card 4: Flotacion -->
+<div class="bg-slate-800/20 border border-slate-700/20 rounded-2xl p-4 opacity-70">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-cyan-500/10 text-cyan-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h3 class="font-bold text-sm tracking-wide uppercase">Tanque de Flotación</h3>
+<p class="text-xs text-slate-400">1 sesión/semana • 60 min</p>
+</div>
+</div>
+<span class="bg-slate-700 text-slate-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Completada ✓</span>
+</div>
+<p class="text-sm text-slate-400">Sal de Epsom y eliminación de estímulos para relajación mental total.</p>
+</div>
+<!-- Card 5: Ozono -->
+<div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">bubble_chart</span>
+</div>
+<div>
+<h3 class="font-bold text-sm tracking-wide uppercase">Sauna de Ozono</h3>
+<p class="text-xs text-slate-400">1 sesión/semana • 30 min</p>
+</div>
+</div>
+<span class="bg-yellow-500/10 text-yellow-500 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Pendiente reserva</span>
+</div>
+<p class="text-sm text-slate-300">Ozonoterapia para desintoxicación profunda y oxigenación tisular.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action & Nav -->
+<div class="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-background-dark via-background-dark to-transparent pb-4 px-4 pt-10">
+<button class="w-full bg-primary hover:bg-primary/90 text-slate-900 font-bold py-4 rounded-xl shadow-lg shadow-primary/20 mb-6 transition-all">
+            Gestionar reservas
+        </button>
+<nav class="flex gap-2 border-t border-slate-800 bg-background-dark/95 backdrop-blur-sm px-4 pb-6 pt-3 -mx-4">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<p class="text-[10px] font-medium">Hoy</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">monitor_heart</span>
+<p class="text-[10px] font-medium">Terapias</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-medium">Comunidad</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium">Perfil</p>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Clinical Staff Dashboard - Bio-Age Focus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                        "slate-custom": {
+                            50: "#f0f4f9",
+                            100: "#e1e9f2",
+                            200: "#c7d7e8",
+                            300: "#a3bcd8",
+                            400: "#799cc3",
+                            500: "#5a7fad",
+                            600: "#476692",
+                            700: "#3a5277",
+                            800: "#324663",
+                            900: "#2d3c54",
+                            950: "#1e2838",
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 flex flex-col bg-slate-custom-950 border-r border-slate-custom-800/50">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl font-bold">blur_on</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-extrabold tracking-tight">BE BLUE</h1>
+<p class="text-slate-400 text-[10px] uppercase tracking-widest font-bold">Clinical Staff</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-custom-900 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-custom-900 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Agenda</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-custom-900 transition-all" href="#">
+<span class="material-symbols-outlined">stethoscope</span>
+<span class="text-sm font-medium">Terapias</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-custom-900 transition-all" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Analíticas</span>
+</a>
+<div class="pt-4 mt-4 border-t border-slate-custom-800/50">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-custom-900 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-custom-800/50">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-slate-custom-900/50">
+<div class="size-10 rounded-full bg-slate-custom-800 overflow-hidden relative">
+<img alt="Doctor Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl7eVDfLktRSnyl3-BSrlxTCWVcTu5QCigGJoV1ths0lSI0BEa6k8Uy1Z6uJ0-yBNqt1NaXGY8_NKTBT4pyCV293_vHyvase87cPCmPZntcmabuVgSJQhWd36IL37SsVaAlj9NINVwFoBaPWOi1ZDQE0xOMu_ZeJVj5CEKp3gfy6eJ9OTogkTBCZmB4J9I2QEDUhwGB39Rlk8ikXy6lqpLbYA1sJsQPdShuq1WkE6S6aF00HJ2blqkI-pdnX0UCTERJ07cDx5eC-8"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Dr. Martínez</p>
+<p class="text-xs text-slate-500 truncate">Oncology Specialist</p>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-sm">more_vert</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto scrollbar-hide">
+<header class="h-16 flex items-center justify-between px-8 bg-background-dark/50 backdrop-blur-md sticky top-0 z-10 border-b border-slate-custom-800/30">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-bold text-white">Dashboard Overview</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-slate-custom-950 border-slate-custom-800 text-slate-100 text-sm rounded-lg pl-10 pr-4 py-2 w-80 focus:ring-1 focus:ring-primary focus:border-primary border-0" placeholder="Buscar pacientes, sesiones o registros..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-white">24 de Octubre, 2023</p>
+<p class="text-xs text-slate-500">Martes, 09:41 AM</p>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full ring-2 ring-background-dark"></span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<div class="p-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 p-6 rounded-xl hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Pacientes Activos</p>
+<h3 class="text-3xl font-extrabold text-white mt-1">127</h3>
+</div>
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 p-6 rounded-xl hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-1 rounded-full">+12%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Sesiones Hoy</p>
+<h3 class="text-3xl font-extrabold text-white mt-1">34</h3>
+</div>
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 p-6 rounded-xl hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-500/10 rounded-lg text-amber-500">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<span class="text-rose-500 text-xs font-bold bg-rose-500/10 px-2 py-1 rounded-full">-2.4%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Adherencia Media</p>
+<h3 class="text-3xl font-extrabold text-white mt-1">78%</h3>
+</div>
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 p-6 rounded-xl hover:border-primary/50 transition-all border-emerald-500/20">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+<span class="material-symbols-outlined">vital_signs</span>
+</div>
+<div class="flex items-center gap-1 text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+<span>Mejora</span>
+</div>
+</div>
+<p class="text-slate-400 text-sm font-medium">Edad Biológica Media</p>
+<h3 class="text-3xl font-extrabold text-white mt-1">42 años</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 rounded-xl overflow-hidden">
+<div class="p-5 border-b border-slate-custom-800/50 flex justify-between items-center bg-slate-custom-900/30">
+<h3 class="font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+                            Agenda de Hoy
+                        </h3>
+<button class="text-xs text-primary font-bold hover:underline">Ver Todo</button>
+</div>
+<div class="p-5 space-y-6 relative">
+<div class="absolute left-[2.25rem] top-8 bottom-8 w-0.5 bg-slate-custom-800"></div>
+<div class="relative flex gap-4">
+<div class="size-6 rounded-full bg-primary border-4 border-background-dark z-[1] shrink-0"></div>
+<div>
+<p class="text-sm font-bold text-white">María - Oxigenoterapia</p>
+<p class="text-xs text-slate-500">09:00 AM • Room 102</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="size-6 rounded-full bg-slate-custom-800 border-4 border-background-dark z-[1] shrink-0"></div>
+<div>
+<p class="text-sm font-bold text-white">Carlos - Crioterapia</p>
+<p class="text-xs text-slate-500">10:30 AM • Cryo Suite</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="size-6 rounded-full bg-slate-custom-800 border-4 border-background-dark z-[1] shrink-0"></div>
+<div>
+<p class="text-sm font-bold text-white">Ana - IV Drip Vitality</p>
+<p class="text-xs text-slate-500">11:45 AM • Lounge B</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="size-6 rounded-full bg-slate-custom-800 border-4 border-background-dark z-[1] shrink-0"></div>
+<div>
+<p class="text-sm font-bold text-white">Pedro - Fotobiomodulación</p>
+<p class="text-xs text-slate-500">02:00 PM • Light Therapy</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="size-6 rounded-full bg-slate-custom-800 border-4 border-background-dark z-[1] shrink-0"></div>
+<div>
+<p class="text-sm font-bold text-white">Laura - Consulta Inicial</p>
+<p class="text-xs text-slate-500">03:30 PM • Office 04</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 bg-slate-custom-950 border border-slate-custom-800/50 rounded-xl overflow-hidden">
+<div class="p-5 border-b border-slate-custom-800/50 flex justify-between items-center bg-slate-custom-900/30">
+<h3 class="font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                            Pacientes Recientes
+                        </h3>
+<button class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+                            Filtrar <span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-custom-900/20 text-slate-500 text-[10px] uppercase tracking-wider font-bold">
+<tr>
+<th class="px-6 py-4">Paciente</th>
+<th class="px-6 py-4">EDAD BIOLÓGICA</th>
+<th class="px-6 py-4">Adherence</th>
+<th class="px-6 py-4">Siguiente Revisión</th>
+<th class="px-6 py-4 text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-custom-800/50">
+<tr class="hover:bg-slate-custom-900/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-custom-800 flex items-center justify-center text-xs font-bold text-white">JB</div>
+<span class="text-sm font-semibold text-white">Julian Barnes</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-sm text-emerald-400 font-bold">38</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-custom-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 90%"></div>
+</div>
+<span class="text-xs text-slate-400">90%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Oct 26, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-custom-900/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-custom-800 flex items-center justify-center text-xs font-bold text-white">AM</div>
+<span class="text-sm font-semibold text-white">Alice Moore</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-sm text-amber-400 font-bold">54</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-custom-800 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500" style="width: 65%"></div>
+</div>
+<span class="text-xs text-slate-400">65%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Oct 28, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-custom-900/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-custom-800 flex items-center justify-center text-xs font-bold text-white">RK</div>
+<span class="text-sm font-semibold text-white">Robert King</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-sm text-emerald-400 font-bold">32</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-custom-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 82%"></div>
+</div>
+<span class="text-xs text-slate-400">82%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Nov 02, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-custom-900/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-custom-800 flex items-center justify-center text-xs font-bold text-white">SD</div>
+<span class="text-sm font-semibold text-white">Sarah Doe</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-sm text-rose-400 font-bold">65</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-custom-800 rounded-full overflow-hidden">
+<div class="h-full bg-rose-500" style="width: 35%"></div>
+</div>
+<span class="text-xs text-slate-400">35%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Hoy, 16:00</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+                            Ocupación Máquinas
+                        </h3>
+<div class="flex items-center gap-2">
+<span class="size-2 bg-emerald-500 rounded-full"></span>
+<span class="text-[10px] text-slate-500 font-bold uppercase">En uso</span>
+</div>
+</div>
+<div class="space-y-5">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-300">Cámara Hiperbárica</span>
+<span class="text-white font-bold">85%</span>
+</div>
+<div class="h-3 bg-slate-custom-900 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400" style="width: 85%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-300">Sauna Infrarrojos</span>
+<span class="text-white font-bold">60%</span>
+</div>
+<div class="h-3 bg-slate-custom-900 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400" style="width: 60%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-300">Cryo Cabin</span>
+<span class="text-white font-bold">42%</span>
+</div>
+<div class="h-3 bg-slate-custom-900 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400" style="width: 42%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-300">Biocharger NG</span>
+<span class="text-white font-bold">92%</span>
+</div>
+<div class="h-3 bg-slate-custom-900 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-custom-950 border border-slate-custom-800/50 rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-500">warning</span>
+                            Alertas Críticas
+                        </h3>
+<span class="bg-rose-500/10 text-rose-500 px-2 py-0.5 rounded text-[10px] font-bold">4 ACTIVAS</span>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 bg-rose-500/5 border border-rose-500/20 rounded-lg">
+<span class="material-symbols-outlined text-rose-500 shrink-0">trending_down</span>
+<div>
+<p class="text-sm font-bold text-white leading-tight">Anomalía en Edad Biológica: Carlos R.</p>
+<p class="text-xs text-slate-400 mt-1">Su adherencia cayó por debajo del 65%. Se sugiere revisión inmediata del plan de longevidad.</p>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-amber-500/5 border border-amber-500/20 rounded-lg">
+<span class="material-symbols-outlined text-amber-500 shrink-0">assignment_late</span>
+<div>
+<p class="text-sm font-bold text-white leading-tight">Revisiones de Edad Biológica Pendientes (3)</p>
+<p class="text-xs text-slate-400 mt-1">Los análisis epigenéticos de Alice, Peter y Julian están esperando validación médica.</p>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+<span class="material-symbols-outlined text-blue-500 shrink-0">sync_problem</span>
+<div>
+<p class="text-sm font-bold text-white leading-tight">Error de Sincronización: María V.</p>
+<p class="text-xs text-slate-400 mt-1">El dispositivo wearable no ha sincronizado datos en 48 horas. Consultar con el paciente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto p-8 border-t border-slate-custom-800/30 text-center">
+<p class="text-xs text-slate-500 font-medium">© 2023 BeBlue Longevity Center • Health-Tech Dashboard v2.4.1</p>
+</footer>
+</main>
+</div>
+
+</body></html>

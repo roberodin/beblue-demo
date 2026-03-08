@@ -1,0 +1,192 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BeBlue - Mi Progreso</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .holographic-glow {
+            box-shadow: 0 0 25px rgba(19, 91, 236, 0.3);
+        }
+        .chart-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Header -->
+<header class="flex items-center justify-between p-4 pt-8 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/20">
+<span class="material-symbols-outlined text-primary" style="">settings</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight" style="">Avatar plan progress</h1>
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/20 relative">
+<span class="material-symbols-outlined text-primary" style="">notifications</span>
+<div class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-background-dark"></div>
+</div>
+</header>
+<!-- Time Selector -->
+<div class="flex gap-3 px-4 py-3 overflow-x-auto no-scrollbar">
+<button class="flex h-10 shrink-0 items-center justify-center px-6 rounded-full bg-primary text-white font-semibold text-sm shadow-lg shadow-primary/20" style="">1M</button>
+<button class="flex h-10 shrink-0 items-center justify-center px-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium text-sm" style="">3M</button>
+<button class="flex h-10 shrink-0 items-center justify-center px-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium text-sm" style="">6M</button>
+<button class="flex h-10 shrink-0 items-center justify-center px-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium text-sm" style="">1A</button>
+</div>
+<!-- Avatar Section -->
+<main class="flex-1 px-4 py-6 relative overflow-hidden">
+<div class="relative w-full aspect-[3/4] flex items-center justify-center">
+<!-- Background Decorative Glow -->
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-[80px] scale-75"></div>
+<!-- Avatar Image -->
+<div class="relative z-10 w-full h-full bg-contain bg-center bg-no-repeat transition-all duration-700" data-alt="Futuristic blue holographic human body silhouette with glowing nodes" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCB11S-jQhMGIR_aw1Qit87U7AOqQ-wMgX_V9WFose1LZDwAeNL34BBcWfEHavg1QAsR5UMBcNGKDTUogmEOfwpxnyoOt7rO9pRb4Av9Ex7dSdPuGR23F6ibSRtY5qL8exXzdbd_vzNyoz_f8GzPq0RByO9KQtJDhMeiEoYGa6jqMmmBXr82NLAGB02B3CPprv5gLhan56B2lz1T9soNOFZv7tnY7AREwR40ed49OFHW3HhDM5PMTiuZoHfRFEcODDDUeYcs0dNsvY&quot;);">
+</div>
+<!-- Callouts -->
+<div class="absolute top-[15%] left-[5%] z-20 bg-background-dark/80 backdrop-blur-md border border-primary/30 p-3 rounded-lg shadow-xl animate-pulse-slow">
+<p class="text-[10px] uppercase tracking-wider text-primary font-bold" style="">Composición corporal</p>
+<div class="flex items-center gap-1">
+<span class="text-sm font-semibold" style="">Mejorando</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="">arrow_upward</span>
+</div>
+</div>
+<div class="absolute top-[45%] right-[2%] z-20 bg-background-dark/80 backdrop-blur-md border border-primary/30 p-3 rounded-lg shadow-xl">
+<p class="text-[10px] uppercase tracking-wider text-primary font-bold" style="">Fuerza muscular</p>
+<div class="flex items-center gap-1">
+<span class="text-sm font-semibold" style="">+12%</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="">add</span>
+</div>
+</div>
+<div class="absolute bottom-[20%] left-[8%] z-20 bg-background-dark/80 backdrop-blur-md border border-primary/30 p-3 rounded-lg shadow-xl">
+<p class="text-[10px] uppercase tracking-wider text-primary font-bold" style="">VO2max</p>
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-slate-400" style="">38</span>
+<span class="material-symbols-outlined text-primary text-xs" style="">arrow_forward</span>
+<span class="text-sm font-semibold text-white" style="">42</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Scoring Evolution -->
+<section class="px-4 py-6 bg-slate-900/40 dark:bg-slate-900/20 backdrop-blur-sm rounded-t-3xl border-t border-primary/10">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="text-xs font-bold tracking-[0.15em] text-slate-500 uppercase" style=""><h3 class="text-xs font-bold tracking-[0.15em] text-slate-500 uppercase cursor-text" spellcheck="false" data-stitch-added-classes="cursor-text" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; --tw-text-opacity: 1; color: rgb(100, 116, 139); outline: none !important;">EVOLUCIÓN DE EDAD BIOLÓGICA</h3></h3>
+<p class="text-2xl font-extrabold text-primary" style="">Actual: 38 años&nbsp;<span class="text-sm font-medium text-green-400 text-opacity-80 ml-1 cursor-text" spellcheck="false" data-stitch-added-classes="cursor-text" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; --tw-text-opacity: 0.8; color: rgba(74, 222, 128, 0.8);">-2 años este mes</span></p>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-slate-500 font-bold uppercase block mb-1" style="">Ultimo test<br></span>
+<span class="bg-primary text-white text-xs px-2 py-1 rounded font-bold" style="">MAR 2024</span>
+</div>
+</div>
+<!-- Simplified Chart Representation -->
+<div class="relative h-24 flex items-end justify-between gap-1 mb-2 px-1">
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-sm transition-all group-hover:bg-primary/30" style="height: 40%;"></div>
+<span class="text-[9px] font-bold text-slate-500 mt-2" style="">OCT</span>
+</div>
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-sm transition-all group-hover:bg-primary/30" style="height: 45%;"></div>
+<span class="text-[9px] font-bold text-slate-500 mt-2" style="">NOV</span>
+</div>
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary/20 rounded-t-sm transition-all group-hover:bg-primary/30" style="height: 52%;"></div>
+<span class="text-[9px] font-bold text-slate-500 mt-2" style="">DIC</span>
+</div>
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary/30 rounded-t-sm transition-all group-hover:bg-primary/30" style="height: 60%;"></div>
+<span class="text-[9px] font-bold text-slate-500 mt-2" style="">ENE</span>
+</div>
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary/50 rounded-t-sm transition-all group-hover:bg-primary/30" style="height: 68%;"></div>
+<span class="text-[9px] font-bold text-slate-500 mt-2" style="">FEB</span>
+</div>
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full bg-primary rounded-t-sm shadow-[0_-4px_10px_rgba(19,91,236,0.3)]" style="height: 85%;"></div>
+<span class="text-[9px] font-bold text-primary mt-2" style="">MAR</span>
+</div>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-2 gap-3 p-4 pb-24">
+<div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-xl border border-transparent dark:border-slate-700/50">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary text-xl" style="">biotech</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="">south</span>
+</div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wide" style="">Edad Biológica</p>
+<p class="text-2xl font-bold" style="">38 <span class="text-xs font-medium text-slate-400" style="">años</span></p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-xl border border-transparent dark:border-slate-700/50">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary text-xl" style="">verified_user</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="">north</span>
+</div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wide" style="">Adherencia</p>
+<p class="text-2xl font-bold" style="">78%</p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-xl border border-transparent dark:border-slate-700/50">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary text-xl" style="">fitness_center</span>
+</div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wide" style="">Sesiones</p>
+<p class="text-2xl font-bold" style="">47</p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-xl border border-transparent dark:border-slate-700/50">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-orange-400 text-xl" style="">local_fire_department</span>
+</div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wide" style="">Racha actual</p>
+<p class="text-2xl font-bold" style="">12 <span class="text-xs font-medium text-slate-400" style="">días</span></p>
+</div>
+</section>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light/90 dark:bg-[#1c1f27]/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-4 pb-6 pt-3 z-50">
+<div class="flex justify-around items-center max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#" style="">
+<span class="material-symbols-outlined" style="">calendar_today</span>
+<p class="text-[10px] font-semibold" style="">Hoy</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#" style="">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">trending_up</span>
+<p class="text-[10px] font-semibold" style="">Progreso</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#" style="">
+<span class="material-symbols-outlined" style="">assignment</span>
+<p class="text-[10px] font-semibold" style="">Plan</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#" style="">
+<span class="material-symbols-outlined" style="">person</span>
+<p class="text-[10px] font-semibold" style="">Perfil</p>
+</a>
+</div>
+</nav>
+</body></html>

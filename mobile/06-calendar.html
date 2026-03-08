@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Calendar &amp; Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                        "therapy": "#14b8a6",
+                        "nutrition": "#22c55e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex justify-center">
+<div class="relative flex h-[844px] w-[390px] flex-col bg-background-light dark:bg-background-dark overflow-hidden shadow-2xl border-x border-slate-200 dark:border-slate-800">
+<!-- Header -->
+<header class="pt-12 pb-2 px-6 flex items-center justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">arrow_back_ios</span>
+<h1 class="text-xl font-extrabold tracking-tight">Calendario</h1>
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">search</span>
+</header>
+<!-- Toggle View -->
+<div class="px-6 py-4">
+<div class="flex h-11 items-center justify-center rounded-full bg-slate-200/50 dark:bg-slate-800/50 p-1">
+<button class="flex-1 h-full rounded-full text-sm font-semibold text-slate-500 dark:text-slate-400">Mes</button>
+<button class="flex-1 h-full rounded-full bg-primary text-sm font-semibold text-white shadow-lg">Semana</button>
+</div>
+</div>
+<!-- Calendar Month/Nav -->
+<div class="px-6 py-2 flex items-center justify-between">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<p class="text-lg font-bold">Marzo 2026</p>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Weekly View Expanded -->
+<div class="px-6 py-4">
+<div class="grid grid-cols-7 gap-2">
+<div class="flex flex-col items-center gap-2">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Lun</span>
+<div class="size-11 flex items-center justify-center rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20 relative">
+                        8
+                        <div class="absolute -bottom-1 flex gap-0.5">
+<span class="size-1 bg-white rounded-full"></span>
+<span class="size-1 bg-teal-300 rounded-full"></span>
+<span class="size-1 bg-green-300 rounded-full"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Mar</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">9</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Mié</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">10</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Jue</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">11</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Vie</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">12</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Sáb</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">13</div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Dom</span>
+<div class="size-11 flex items-center justify-center rounded-2xl font-bold">14</div>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex gap-3 px-6 py-2 overflow-x-auto hide-scrollbar">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 border border-primary/30 px-3">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1">fitness_center</span>
+<p class="text-primary text-xs font-bold">Ejercicio</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-therapy/20 border border-therapy/30 px-3">
+<span class="material-symbols-outlined text-therapy text-lg" style="font-variation-settings: 'FILL' 1">spa</span>
+<p class="text-therapy text-xs font-bold">Terapia</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-nutrition/20 border border-nutrition/30 px-3">
+<span class="material-symbols-outlined text-nutrition text-lg" style="font-variation-settings: 'FILL' 1">restaurant</span>
+<p class="text-nutrition text-xs font-bold">Nutrición</p>
+</div>
+</div>
+<!-- Agenda Section -->
+<main class="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+<h3 class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">Hoy - Lunes 8 Mar</h3>
+<!-- 08:00 Event -->
+<div class="flex gap-4">
+<div class="w-12 pt-1">
+<p class="text-xs font-bold text-slate-400">08:00</p>
+</div>
+<div class="flex-1 border-l-4 border-primary bg-slate-100/50 dark:bg-slate-800/40 p-4 rounded-r-xl">
+<h4 class="font-bold text-base">Fuerza - Tren superior</h4>
+<div class="flex items-center gap-1 mt-1 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="text-xs font-medium">En casa</span>
+</div>
+</div>
+</div>
+<!-- 10:00 Event -->
+<div class="flex gap-4">
+<div class="w-12 pt-1">
+<p class="text-xs font-bold text-slate-400">10:00</p>
+</div>
+<div class="flex-1 border-l-4 border-therapy bg-slate-100/50 dark:bg-slate-800/40 p-4 rounded-r-xl">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-base">Cámara Hiperbárica</h4>
+<span class="bg-therapy/20 text-therapy text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                            Reservado <span class="material-symbols-outlined text-[10px]">check</span>
+</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs font-medium">En el centro</span>
+</div>
+</div>
+</div>
+<!-- 13:00 Event -->
+<div class="flex gap-4">
+<div class="w-12 pt-1">
+<p class="text-xs font-bold text-slate-400">13:00</p>
+</div>
+<div class="flex-1 border-l-4 border-nutrition bg-slate-100/50 dark:bg-slate-800/40 p-4 rounded-r-xl">
+<h4 class="font-bold text-base">Comida - Foto registro</h4>
+<div class="flex items-center gap-1 mt-1 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+<span class="text-xs font-medium">Nutrición Longevity</span>
+</div>
+</div>
+</div>
+<!-- 18:00 Event -->
+<div class="flex gap-4">
+<div class="w-12 pt-1">
+<p class="text-xs font-bold text-slate-400">18:00</p>
+</div>
+<div class="flex-1 border-l-4 border-primary bg-slate-100/50 dark:bg-slate-800/40 p-4 rounded-r-xl">
+<h4 class="font-bold text-base">Cardio Zona 2</h4>
+<div class="flex items-center gap-1 mt-1 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="text-xs font-medium">En casa</span>
+</div>
+</div>
+</div>
+<div class="h-10"></div>
+</main>
+<!-- Floating Action Button -->
+<button class="absolute bottom-24 right-6 size-14 bg-primary text-white rounded-full flex items-center justify-center shadow-xl shadow-primary/40 hover:scale-105 active:scale-95 transition-transform z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-background-light dark:bg-[#1c1f27] border-t border-slate-200 dark:border-slate-800 px-2 pb-6 pt-2 flex items-center justify-around">
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Hoy</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">calendar_month</span>
+<span class="text-[10px] font-bold">Calendario</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-[10px] font-bold">Plan</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-bold">Métricas</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</a>
+</nav>
+<!-- iOS Home Indicator -->
+<div class="absolute bottom-1 w-full flex justify-center pointer-events-none">
+<div class="w-32 h-1 bg-slate-900/10 dark:bg-white/10 rounded-full"></div>
+</div>
+</div>
+</body></html>
