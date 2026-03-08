@@ -70,6 +70,8 @@
   // === WIRE UP NAVIGATION LINKS ===
 
   // Back buttons — only target the icon itself or its direct small parent
+  const backTo05 = ['09-exercise.html','10-therapies.html','12-nutrition.html','13-supplementation.html'];
+  const backDest = backTo05.includes(currentFile) ? '05-program-overview.html' : '04-home-dashboard.html';
   document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
     const iconName = icon.textContent.trim();
     if (iconName === 'arrow_back' || iconName === 'arrow_back_ios' || iconName === 'arrow_back_ios_new' || iconName === 'close') {
@@ -78,7 +80,7 @@
       target.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        location.href = '04-home-dashboard.html';
+        location.href = backDest;
       });
     }
   });
