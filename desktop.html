@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeBlue - Plataforma Clinica Desktop</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: #060E1A;
+    color: #E2E8F0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar */
+  .topbar {
+    height: 56px;
+    background: #0A1628;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .topbar-logo h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #135BEC, #0DD5C4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .topbar-logo span.subtitle {
+    font-size: 0.65rem;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 12px;
+  }
+  .topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #64748B;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .topbar-item:hover {
+    background: rgba(255,255,255,0.04);
+    color: #E2E8F0;
+  }
+  .topbar-item.active {
+    background: rgba(19, 91, 236, 0.15);
+    color: #60A5FA;
+    border-color: rgba(19, 91, 236, 0.2);
+    font-weight: 600;
+  }
+  .topbar-item .material-symbols-outlined { font-size: 1rem; }
+  .topbar-item .num {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #475569;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+  }
+  .topbar-item.active .num {
+    background: rgba(19, 91, 236, 0.3);
+    color: #60A5FA;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-arrow:hover:not(:disabled) {
+    background: rgba(19, 91, 236, 0.2);
+    border-color: rgba(19, 91, 236, 0.3);
+    color: #60A5FA;
+  }
+  .nav-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+  .nav-arrow .material-symbols-outlined { font-size: 1rem; }
+  .screen-counter {
+    font-size: 0.75rem;
+    color: #64748B;
+    font-weight: 600;
+  }
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
+  }
+  .back-link:hover { color: #E2E8F0; border-color: rgba(255,255,255,0.12); }
+  .back-link .material-symbols-outlined { font-size: 0.9rem; }
+
+  /* Dropdown for overflow items */
+  .dropdown-wrapper {
+    position: relative;
+  }
+  .dropdown-toggle {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #64748B;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    transition: all 0.2s;
+  }
+  .dropdown-toggle:hover { color: #E2E8F0; background: rgba(255,255,255,0.06); }
+  .dropdown-toggle .material-symbols-outlined { font-size: 1rem; }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    background: #0F1D32;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 6px;
+    min-width: 260px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    z-index: 100;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .dropdown-menu.open { display: block; }
+  .dropdown-menu .nav-group-title {
+    font-size: 0.6rem;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 8px 10px 4px;
+  }
+  .dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #94A3B8;
+    transition: all 0.15s;
+  }
+  .dropdown-menu .dropdown-item:hover { background: rgba(255,255,255,0.05); color: #E2E8F0; }
+  .dropdown-menu .dropdown-item.active { background: rgba(19,91,236,0.15); color: #60A5FA; font-weight: 600; }
+  .dropdown-menu .dropdown-item .material-symbols-outlined { font-size: 1rem; }
+  .dropdown-menu .dropdown-item .num {
+    font-size: 0.6rem; font-weight: 700; color: #475569;
+    width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 5px; background: rgba(255,255,255,0.05); flex-shrink: 0;
+  }
+  .dropdown-menu .dropdown-item.active .num { background: rgba(19,91,236,0.3); color: #60A5FA; }
+
+  /* Iframe */
+  .frame-area {
+    flex: 1;
+    overflow: hidden;
+  }
+  .frame-area iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #0A1628;
+  }
+
+  @media (max-width: 1100px) {
+    .topbar-nav { display: none; }
+    .dropdown-toggle { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">
+      <h1>BE BLUE</h1>
+      <span class="subtitle">Plataforma Clinica</span>
+    </div>
+    <div class="topbar-nav" id="topNav"></div>
+    <div class="dropdown-wrapper">
+      <button class="dropdown-toggle" id="dropdownToggle" onclick="toggleDropdown()">
+        <span class="material-symbols-outlined">menu</span>
+        Pantallas
+        <span class="material-symbols-outlined" style="font-size:0.8rem">expand_more</span>
+      </button>
+      <div class="dropdown-menu" id="dropdownMenu"></div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="nav-arrow" id="prevBtn" onclick="navigate(-1)">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    <span class="screen-counter" id="counter">1 / 16</span>
+    <button class="nav-arrow" id="nextBtn" onclick="navigate(1)">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+    <a class="back-link" href="index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Inicio
+    </a>
+  </div>
+</div>
+
+<div class="frame-area">
+  <iframe id="screenFrame" src="desktop/01-login.html"></iframe>
+</div>
+
+<script>
+const screens = [
+  { file: 'desktop/01-login.html', title: 'Login', icon: 'lock', group: 'acceso' },
+  { file: 'desktop/02-dashboard.html', title: 'Dashboard', icon: 'dashboard', group: 'principal' },
+  { file: 'desktop/03-patient-list.html', title: 'Pacientes', icon: 'group', group: 'principal' },
+  { file: 'desktop/04-patient-record.html', title: 'Ficha Paciente', icon: 'assignment_ind', group: 'principal' },
+  { file: 'desktop/05-program-editor.html', title: 'Editor Programa', icon: 'edit_note', group: 'principal' },
+  { file: 'desktop/06-scheduling.html', title: 'Agenda', icon: 'calendar_today', group: 'principal' },
+  { file: 'desktop/07-analytics.html', title: 'Analiticas', icon: 'bar_chart', group: 'principal' },
+  { file: 'desktop/08-review-v1.html', title: 'Revision v1', icon: 'rate_review', group: 'revision' },
+  { file: 'desktop/09-review-v2.html', title: 'Revision v2', icon: 'rate_review', group: 'revision' },
+  { file: 'desktop/10-registration-step1.html', title: 'Alta - Paso 1', icon: 'person_add', group: 'alta' },
+  { file: 'desktop/11-registration-step2.html', title: 'Alta - Paso 2', icon: 'medical_information', group: 'alta' },
+  { file: 'desktop/12-assessment-step3.html', title: 'Alta - Paso 3', icon: 'biotech', group: 'alta' },
+  { file: 'desktop/13-registration-step4.html', title: 'Alta - Paso 4', icon: 'check_circle', group: 'alta' },
+  { file: 'desktop/14-program-library.html', title: 'Biblioteca', icon: 'library_books', group: 'config' },
+  { file: 'desktop/15-equipment-management.html', title: 'Equipos', icon: 'build', group: 'config' },
+];
+
+const groups = {
+  acceso: 'Acceso',
+  principal: 'Plataforma',
+  revision: 'Revisiones',
+  alta: 'Alta Paciente',
+  config: 'Configuracion'
+};
+
+let current = 0;
+
+function buildNav() {
+  // Top nav (visible on wide screens)
+  const topNav = document.getElementById('topNav');
+  let topHtml = '';
+  screens.forEach((s, i) => {
+    topHtml += `<div class="topbar-item ${i === 0 ? 'active' : ''}" data-idx="${i}" onclick="goTo(${i})">
+      <span class="num">${i + 1}</span>
+      <span class="material-symbols-outlined">${s.icon}</span>
+      ${s.title}
+    </div>`;
+  });
+  topNav.innerHTML = topHtml;
+
+  // Dropdown menu (visible on narrow screens)
+  const dd = document.getElementById('dropdownMenu');
+  let ddHtml = '';
+  let lastGroup = '';
+  screens.forEach((s, i) => {
+    if (s.group !== lastGroup) {
+      lastGroup = s.group;
+      ddHtml += `<div class="nav-group-title">${groups[s.group]}</div>`;
+    }
+    ddHtml += `<div class="dropdown-item ${i === 0 ? 'active' : ''}" data-idx="${i}" onclick="goTo(${i}); closeDropdown();">
+      <span class="num">${i + 1}</span>
+      <span class="material-symbols-outlined">${s.icon}</span>
+      ${s.title}
+    </div>`;
+  });
+  dd.innerHTML = ddHtml;
+}
+
+function goTo(idx) {
+  current = idx;
+  document.getElementById('screenFrame').src = screens[idx].file;
+  document.getElementById('counter').textContent = `${idx + 1} / ${screens.length}`;
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === screens.length - 1;
+
+  document.querySelectorAll('.topbar-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+  });
+  document.querySelectorAll('.dropdown-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+  });
+
+  // scroll active nav item into view
+  const activeTop = document.querySelector('.topbar-item.active');
+  if (activeTop) activeTop.scrollIntoView({ block: 'nearest', behavior: 'smooth', inline: 'center' });
+}
+
+function navigate(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < screens.length) goTo(next);
+}
+
+function toggleDropdown() {
+  document.getElementById('dropdownMenu').classList.toggle('open');
+}
+function closeDropdown() {
+  document.getElementById('dropdownMenu').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.dropdown-wrapper')) closeDropdown();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); navigate(1); }
+});
+
+buildNav();
+goTo(0);
+</script>
+
+</body>
+</html>

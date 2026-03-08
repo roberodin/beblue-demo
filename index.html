@@ -3,517 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeBlue - Centro de Vida | Prototype</title>
+<title>BeBlue - Centro de Vida</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Manrope', sans-serif;
     background: #0A1628;
     color: #E2E8F0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
   }
-  header {
-    text-align: center;
-    padding: 48px 24px 32px;
-    background: linear-gradient(180deg, #0F2847 0%, #0A1628 100%);
-    border-bottom: 1px solid rgba(19, 91, 236, 0.2);
+  .logo {
+    margin-bottom: 12px;
   }
-  header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+  .logo h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
     background: linear-gradient(135deg, #135BEC, #0DD5C4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
+    letter-spacing: -1px;
   }
-  header p {
-    color: #94A3B8;
+  .subtitle {
     font-size: 1.1rem;
-  }
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 24px;
-  }
-  .tab {
-    padding: 12px 32px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
-    color: #94A3B8;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .tab:hover { background: rgba(19, 91, 236, 0.15); color: #E2E8F0; }
-  .tab.active {
-    background: linear-gradient(135deg, #135BEC, #0DD5C4);
-    color: #fff;
-    border-color: transparent;
-  }
-  .section { display: none; padding: 0 24px 48px; max-width: 1400px; margin: 0 auto; }
-  .section.active { display: block; }
-  .section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    color: #E2E8F0;
-  }
-  .section p.desc {
     color: #64748B;
-    margin-bottom: 24px;
-    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 48px;
+    text-align: center;
   }
-  .grid {
-    display: grid;
-    gap: 20px;
+  .cards {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
   }
-  .grid.mobile { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-  .grid.desktop { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
   .card {
-    background: rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    padding: 48px 32px;
+    background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.3s;
-    cursor: pointer;
+    border-radius: 24px;
     text-decoration: none;
     color: inherit;
-    display: block;
+    transition: all 0.3s;
+    cursor: pointer;
   }
   .card:hover {
     border-color: rgba(19, 91, 236, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(19, 91, 236, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(19, 91, 236, 0.15);
+    background: rgba(19, 91, 236, 0.06);
   }
-  .card-number {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(19, 91, 236, 0.9);
+  .card-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .card-icon .material-symbols-outlined {
+    font-size: 2.2rem;
     color: #fff;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
+  }
+  .card.mobile .card-icon {
+    background: linear-gradient(135deg, #135BEC, #0DD5C4);
+  }
+  .card.desktop .card-icon {
+    background: linear-gradient(135deg, #A855F7, #135BEC);
+  }
+  .card h2 {
+    font-size: 1.3rem;
     font-weight: 700;
+    margin-bottom: 8px;
   }
-  .card-preview {
-    position: relative;
-    background: #0F1D32;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 180px;
-  }
-  .card-preview .device-frame {
-    background: #1a2744;
-    border-radius: 12px;
-    border: 2px solid rgba(255,255,255,0.08);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card-preview .device-frame.mobile-frame {
-    width: 120px;
-    height: 140px;
-  }
-  .card-preview .device-frame.desktop-frame {
-    width: 260px;
-    height: 140px;
-  }
-  .device-icon {
-    font-size: 2rem;
-    opacity: 0.3;
-  }
-  .card-info {
-    padding: 16px 20px;
-  }
-  .card-info h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .card-info span {
-    font-size: 0.8rem;
+  .card p {
+    font-size: 0.9rem;
     color: #64748B;
-  }
-  .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    margin-left: 8px;
-  }
-  .badge.exercise { background: rgba(19, 91, 236, 0.2); color: #135BEC; }
-  .badge.therapies { background: rgba(13, 213, 196, 0.2); color: #0DD5C4; }
-  .badge.nutrition { background: rgba(74, 222, 128, 0.2); color: #4ADE80; }
-  .badge.supplement { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
-  .badge.core { background: rgba(255, 255, 255, 0.1); color: #94A3B8; }
-  .badge.clinical { background: rgba(19, 91, 236, 0.15); color: #60A5FA; }
-
-  footer {
     text-align: center;
-    padding: 32px;
-    color: #475569;
-    font-size: 0.85rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.4;
+  }
+  .card .badge {
+    margin-top: 16px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.06);
+    color: #94A3B8;
+  }
+  footer {
+    margin-top: 48px;
+    color: #334155;
+    font-size: 0.8rem;
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>BeBlue</h1>
-  <p>Centro de Vida &mdash; Prototipo Navegable</p>
-</header>
+<div class="logo">
+  <h1>BE BLUE</h1>
+</div>
+<p class="subtitle">Centro de Vida &mdash; Prototipo Navegable</p>
 
-<div class="tabs">
-  <button class="tab active" onclick="showSection('mobile')">App Mobile</button>
-  <button class="tab" onclick="showSection('desktop')">Plataforma Desktop</button>
+<div class="cards">
+  <a class="card mobile" href="mobile.html">
+    <div class="card-icon">
+      <span class="material-symbols-outlined">phone_iphone</span>
+    </div>
+    <h2>App Mobile</h2>
+    <p>Experiencia del usuario: dashboard, pilares, calendario, progreso</p>
+    <span class="badge">15 pantallas</span>
+  </a>
+
+  <a class="card desktop" href="desktop.html">
+    <div class="card-icon">
+      <span class="material-symbols-outlined">desktop_windows</span>
+    </div>
+    <h2>Plataforma Clinica</h2>
+    <p>Staff medico: pacientes, programas, revisiones, analiticas</p>
+    <span class="badge">16 pantallas</span>
+  </a>
 </div>
 
-<section id="mobile" class="section active">
-  <h2>App Mobile - Usuarios</h2>
-  <p class="desc">15 pantallas del flujo de usuario: desde bienvenida hasta seguimiento diario</p>
-  <div class="grid mobile">
-    <a class="card" href="mobile/01-welcome.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">1</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">👋</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Welcome Screen</h3>
-        <span>Pantalla de bienvenida</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/02-login.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">2</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🔐</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Premium Login</h3>
-        <span>Acceso / Registro</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/03-onboarding.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">3</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">📋</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Onboarding Lifestyle</h3>
-        <span>Cuestionario inicial</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/04-home-dashboard.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">4</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🏠</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Home Dashboard</h3>
-        <span>Panel principal con Edad Biologica</span>
-        <span class="badge core">Core</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/05-program-overview.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">5</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">📊</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Program Overview</h3>
-        <span>Vista general del programa</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/06-calendar.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">6</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">📅</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Calendario & Agenda</h3>
-        <span>Sesiones programadas</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/07-progress-avatar.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">7</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🧬</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Progreso & Avatar</h3>
-        <span>Evolucion visual del progreso</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/08-profile.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">8</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">👤</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Perfil</h3>
-        <span>Datos personales y ajustes</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/09-exercise.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">9</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">💪</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Ejercicio</h3>
-        <span>Detalle pilar ejercicio</span>
-        <span class="badge exercise">Ejercicio</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/10-therapies.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">10</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🧊</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Terapias Recovery</h3>
-        <span>Detalle pilar terapias</span>
-        <span class="badge therapies">Terapias</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/11-booking.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">11</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🗓️</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Reservas</h3>
-        <span>Gestion de citas y reservas</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/12-nutrition.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">12</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">🥗</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Nutricion</h3>
-        <span>Detalle pilar nutricion</span>
-        <span class="badge nutrition">Nutricion</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/13-supplementation.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">13</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">💊</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Suplementacion</h3>
-        <span>Detalle pilar suplementacion</span>
-        <span class="badge supplement">Suplementacion</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/14-daily-checkin.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">14</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">✅</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Check-in Diario</h3>
-        <span>Registro diario de estado</span>
-      </div>
-    </a>
-    <a class="card" href="mobile/15-connected-devices.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">15</span>
-        <div class="device-frame mobile-frame"><span class="device-icon">⌚</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Dispositivos Conectados</h3>
-        <span>Wearables e integraciones</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="desktop" class="section">
-  <h2>Plataforma Desktop - Staff Clinico</h2>
-  <p class="desc">16 pantallas de la plataforma de gestion clinica para medicos y staff</p>
-  <div class="grid desktop">
-    <a class="card" href="desktop/01-login.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">1</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">🔐</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Login Clinico</h3>
-        <span>Acceso plataforma clinica</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/02-dashboard.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">2</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">📊</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Dashboard Staff</h3>
-        <span>Panel principal del centro</span>
-        <span class="badge clinical">Clinical</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/03-patient-list.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">3</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">👥</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Lista de Pacientes</h3>
-        <span>Directorio de pacientes activos</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/04-patient-record.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">4</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">📋</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Ficha del Paciente</h3>
-        <span>Historial clinico detallado</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/05-program-editor.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">5</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">✏️</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Editor de Programa</h3>
-        <span>Configurar programa personalizado</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/06-scheduling.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">6</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">📅</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Agenda del Centro</h3>
-        <span>Programacion de citas y salas</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/07-analytics.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">7</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">📈</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Analytics Dashboard</h3>
-        <span>Metricas y analitica de pacientes</span>
-        <span class="badge clinical">Clinical</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/08-review-v1.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">8</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">🔍</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Revision & Seguimiento v1</h3>
-        <span>Revision periodica del paciente</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/09-review-v2.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">9</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">🔍</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Revision & Seguimiento v2</h3>
-        <span>Version alternativa de revision</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/10-registration-step1.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">10</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">1️⃣</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Alta Paciente - Paso 1</h3>
-        <span>Datos personales</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/11-registration-step2.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">11</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">2️⃣</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Alta Paciente - Paso 2</h3>
-        <span>Historial medico</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/12-assessment-step3.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">12</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">3️⃣</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Evaluacion Inicial - Paso 3</h3>
-        <span>Valoracion clinica inicial</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/13-registration-step4.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">13</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">4️⃣</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Alta Paciente - Paso 4</h3>
-        <span>Programa y confirmacion</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/14-program-library.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">14</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">📚</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Biblioteca de Programas</h3>
-        <span>Plantillas de programas genericos</span>
-      </div>
-    </a>
-    <a class="card" href="desktop/15-equipment-management.html" target="_blank">
-      <div class="card-preview">
-        <span class="card-number">15</span>
-        <div class="device-frame desktop-frame"><span class="device-icon">🔧</span></div>
-      </div>
-      <div class="card-info">
-        <h3>Gestion de Equipos</h3>
-        <span>Mantenimiento maquinas de terapia</span>
-        <span class="badge therapies">Terapias</span>
-      </div>
-    </a>
-  </div>
-</section>
-
 <footer>
-  BeBlue - Centro de Vida &bull; Prototipo de Demo &bull; Inspirado en Blue Zones
+  BeBlue &bull; Inspirado en Blue Zones &bull; Edad Biologica como metrica principal
 </footer>
-
-<script>
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-}
-</script>
 
 </body>
 </html>
