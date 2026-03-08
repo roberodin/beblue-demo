@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BeBlue - Revisión 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0A1628",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .gauge-ring { transition: stroke-dashoffset 0.35s; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark/50">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">BeBlue</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined italic">group</span>
+<span class="text-sm font-semibold">Usuarios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Calendario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Programas</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<img alt="Doctor profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AEWePRKNJMhFre8qgaRtklDfUkfZcLl9syWU8Ok6eDZyNt0BxG-EoQZyZ7GRPHb9oulw5MRLNYsWarlmHxZVZcuI65GH12Gvsvi9rsXToaMJGmwVaPGurfkCtCVi7V4UYQ6UXYqqz0-RpIyVjlY5e69GQY0-LUfnITlJQQnnj_Y7NRt9WofuvRF6Yg3An8SF4y5aWGlsiQCXX2y3_7-lI2QXmPAz-5kLhMrXaNXoerwUgHyRMp8escZV2r6UDxkI3sBi4tW9ClQ">
+</div>
+<div>
+<p class="text-sm font-bold">Dr. Julian S.</p>
+<p class="text-xs text-slate-500">Cardiólogo</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary cursor-pointer" style="text-decoration:none;" href="03-patient-list.html">Usuarios</a>
+<span class="text-slate-400">/</span>
+<a class="text-slate-500 hover:text-primary cursor-pointer" style="text-decoration:none;" href="04-patient-record.html">María García López</a>
+<span class="text-slate-400">/</span>
+<span class="font-semibold text-primary">Revisión 1</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Nueva Revisión
+                </button>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full">
+<div class="flex gap-8">
+<div class="w-56 flex-shrink-0">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Historial</h3>
+<div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-t before:from-primary before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+<a href="08-review-v1.html" class="relative flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" style="text-decoration:none;">
+<div class="absolute left-0 size-10 rounded-full bg-slate-800 border-4 border-background-dark flex items-center justify-center text-slate-400 z-10">
+<span class="material-symbols-outlined text-lg">history</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-medium text-slate-400">Estado inicial</p>
+<p class="text-xs text-slate-500">Oct 2025</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold mt-1">Edad Biológica Inicial: 51 años</p>
+<p class="text-[10px] text-red-500 font-bold">+6 años mayor</p>
+<p class="text-[10px] text-slate-500">Cronológica: 45</p>
+</div>
+</a>
+<div class="relative flex items-center gap-4">
+<div class="absolute left-0 size-10 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined text-lg">check</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-bold text-primary">Revisión 1</p>
+<p class="text-xs text-primary font-medium">Nov 2025</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold mt-1">Edad Biológica: 48 años</p>
+<p class="text-[10px] text-emerald-500 font-bold">-3 años vs inicial</p>
+</div>
+</div>
+<a href="09-review-v2.html" class="relative flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" style="text-decoration:none;">
+<div class="absolute left-0 size-10 rounded-full bg-slate-800 border-4 border-background-dark flex items-center justify-center text-slate-400 z-10">
+<span class="material-symbols-outlined text-lg">history</span>
+</div>
+<div class="ml-12">
+<p class="text-sm font-medium text-slate-400">Revisión 2</p>
+<p class="text-xs text-slate-500">Feb 2026</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold mt-1">Edad Biológica: 44 años</p>
+<p class="text-[10px] text-emerald-500 font-bold">-7 años vs inicial</p>
+</div>
+</a>
+</div>
+</div>
+<div class="flex-1 space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-black tracking-tight">Revisión 1 vs Estado Inicial</h2>
+<p class="text-slate-500 mt-1">Primera revisión de seguimiento — 1 mes de programa</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-slate-500 uppercase">Referencia Base</p>
+<p class="text-sm font-bold">Edad Cronológica: 45 años</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-8 rounded-xl flex items-center justify-around shadow-xl shadow-primary/5">
+<div class="text-center w-full">
+<p class="text-xs font-bold text-slate-500 uppercase mb-4">Edad Biológica</p>
+<div class="relative flex items-center justify-center gap-8">
+<div class="text-center opacity-50 scale-90">
+<div class="relative size-24">
+<svg class="size-full" viewBox="0 0 100 100">
+<circle class="text-slate-200 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-slate-400 stroke-current gauge-ring" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="50" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-bold italic">51</span>
+<span class="text-[10px]">Inicial</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-emerald-500">keyboard_double_arrow_down</span>
+<span class="text-emerald-500 font-bold text-lg">-3 años</span>
+</div>
+<div class="text-center">
+<div class="relative size-32">
+<svg class="size-full" viewBox="0 0 100 100">
+<circle class="text-slate-200 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-primary stroke-current gauge-ring" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="75" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black italic">48</span>
+<span class="text-xs text-primary font-bold">Rev 1</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary to-blue-700 p-8 rounded-xl text-white flex flex-col justify-center">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-4xl">energy_savings_leaf</span>
+<h3 class="text-2xl font-bold">Primera mejora</h3>
+</div>
+<p class="text-white/80 text-lg">Edad Biológica mejoró <span class="font-black text-white underline decoration-emerald-400">3 años</span></p>
+<div class="mt-4 flex gap-4">
+<div class="bg-white/10 px-4 py-2 rounded-lg border border-white/20">
+<p class="text-xs text-white/60">BioEdad Inicial</p>
+<p class="text-xl font-bold">51 años</p>
+</div>
+<div class="bg-white/20 px-4 py-2 rounded-lg border border-white/30">
+<p class="text-xs text-white/60">BioEdad Rev 1</p>
+<p class="text-xl font-bold">48 años</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-6 rounded-xl">
+<h3 class="text-sm font-bold text-slate-500 uppercase mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+                            Adherencia por Pilar
+                        </h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Nutrición Anti-inflamatoria</span>
+<span class="text-emerald-500 font-bold">+10%</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="h-full bg-slate-200 dark:bg-slate-800 rounded-full flex-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-slate-400 w-[50%]"></div>
+</div>
+<div class="h-full bg-primary/20 rounded-full flex-1 relative overflow-hidden border border-primary/20">
+<div class="absolute inset-0 bg-primary w-[60%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Actividad Física (Fuerza + HIIT)</span>
+<span class="text-emerald-500 font-bold">+12%</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="h-full bg-slate-200 dark:bg-slate-800 rounded-full flex-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-slate-400 w-[35%]"></div>
+</div>
+<div class="h-full bg-primary/20 rounded-full flex-1 relative overflow-hidden border border-primary/20">
+<div class="absolute inset-0 bg-primary w-[47%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Higiene del Sueño</span>
+<span class="text-emerald-500 font-bold">+8%</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="h-full bg-slate-200 dark:bg-slate-800 rounded-full flex-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-slate-400 w-[40%]"></div>
+</div>
+<div class="h-full bg-primary/20 rounded-full flex-1 relative overflow-hidden border border-primary/20">
+<div class="absolute inset-0 bg-primary w-[48%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-4 text-[10px] font-bold uppercase tracking-wider">
+<div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-slate-400"></span> Inicial</div>
+<div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-primary"></span> Rev 1</div>
+</div>
+</div>
+<div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 text-xs font-bold uppercase">
+<th class="px-6 py-4">Métrica de Salud</th>
+<th class="px-6 py-4 text-center">Estado Inicial</th>
+<th class="px-6 py-4 text-center">Revisión 1</th>
+<th class="px-6 py-4 text-center">Impacto Edad Biológica</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 font-medium">Peso Corporal</td>
+<td class="px-6 py-4 text-center text-slate-400">68 kg</td>
+<td class="px-6 py-4 text-center font-bold">66 kg</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span> -2 kg
+                                    </td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">% Grasa Corporal</td>
+<td class="px-6 py-4 text-center text-slate-400">28%</td>
+<td class="px-6 py-4 text-center font-bold">27%</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span> -1%
+                                    </td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">% Músculo Esquelético</td>
+<td class="px-6 py-4 text-center text-slate-400">34%</td>
+<td class="px-6 py-4 text-center font-bold">35%</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +1%
+                                    </td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">VO2 Max (ml/kg/min)</td>
+<td class="px-6 py-4 text-center text-slate-400">32</td>
+<td class="px-6 py-4 text-center font-bold">35</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">keyboard_double_arrow_up</span> +3
+                                    </td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">FC Reposo (lpm)</td>
+<td class="px-6 py-4 text-center text-slate-400">72</td>
+<td class="px-6 py-4 text-center font-bold">68</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span> -4
+                                    </td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">Colesterol Total</td>
+<td class="px-6 py-4 text-center text-slate-400">220 mg/dL</td>
+<td class="px-6 py-4 text-center font-bold">208 mg/dL</td>
+<td class="px-6 py-4 text-center text-emerald-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span> -12
+                                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="space-y-4">
+<h3 class="text-sm font-bold text-slate-500 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                            Notas Clínicas: Primera Revisión
+                        </h3>
+<textarea class="w-full h-32 bg-slate-900/40 border border-slate-800 rounded-xl p-4 text-slate-100 placeholder:text-slate-600 focus:ring-primary focus:border-primary" placeholder="Añadir observaciones sobre el progreso actual...">La paciente muestra buena adherencia inicial al programa. Se observan las primeras mejoras en composición corporal y capacidad cardiovascular. El VO2 Max ha mejorado de 32 a 35, saliendo de la categoría "Below Average". El colesterol total comienza a descender. Se recomienda intensificar el pilar de actividad física y mantener la adherencia nutricional para acelerar el rejuvenecimiento biológico.</textarea>
+</div>
+<div class="flex flex-wrap gap-4 pt-4 border-t border-slate-800">
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all">
+                            Ajustar Programa <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-slate-800 hover:bg-slate-700 text-slate-100 px-6 py-3 rounded-lg font-bold transition-all">
+                            Programar Próxima Revisión
+                        </button>
+<button class="ml-auto bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                            Generar Informe
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+<script src="nav.js"></script>
+</body></html>

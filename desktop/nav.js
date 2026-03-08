@@ -16,7 +16,7 @@
   // Sidebar menu items
   const menuItems = [
     { icon: 'dashboard', label: 'Dashboard', href: '02-dashboard.html' },
-    { icon: 'group', label: 'Pacientes', href: '03-patient-list.html' },
+    { icon: 'group', label: 'Usuarios', href: '03-patient-list.html' },
     { icon: 'calendar_today', label: 'Agenda', href: '06-scheduling.html' },
     { icon: 'stethoscope', label: 'Terapias', href: '14-program-library.html' },
     { icon: 'build', label: 'Equipos', href: '15-equipment-management.html' },
@@ -26,17 +26,18 @@
   // Which menu item is active for each page
   const activeMap = {
     '02-dashboard.html': 'Dashboard',
-    '03-patient-list.html': 'Pacientes',
-    '04-patient-record.html': 'Pacientes',
-    '05-program-editor.html': 'Pacientes',
+    '03-patient-list.html': 'Usuarios',
+    '04-patient-record.html': 'Usuarios',
+    '05-program-editor.html': 'Usuarios',
     '06-scheduling.html': 'Agenda',
-    '07-analytics.html': 'Pacientes',
-    '08-review-v1.html': 'Pacientes',
-    '09-review-v2.html': 'Pacientes',
-    '10-registration-step1.html': 'Pacientes',
-    '11-registration-step2.html': 'Pacientes',
-    '12-assessment-step3.html': 'Pacientes',
-    '13-registration-step4.html': 'Pacientes',
+    '07-analytics.html': 'Usuarios',
+    '08-review-v1.html': 'Usuarios',
+    '08b-revision1.html': 'Usuarios',
+    '09-review-v2.html': 'Usuarios',
+    '10-registration-step1.html': 'Usuarios',
+    '11-registration-step2.html': 'Usuarios',
+    '12-assessment-step3.html': 'Usuarios',
+    '13-registration-step4.html': 'Usuarios',
     '14-program-library.html': 'Terapias',
     '15-equipment-management.html': 'Equipos',
   };
@@ -67,7 +68,7 @@
       </div>
       <div>
         <div style="color:#fff;font-size:16px;font-weight:800;font-family:Manrope,sans-serif;letter-spacing:-0.5px;">BE BLUE</div>
-        <div style="color:#64748B;font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-family:Manrope,sans-serif;">Clinical Staff</div>
+        <div style="color:#64748B;font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-family:Manrope,sans-serif;">Centro de Vida</div>
       </div>
     </div>
     <nav style="flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;">
@@ -87,7 +88,13 @@
   }
 
   // Find existing aside and replace, or inject new one
-  const existingAside = document.querySelector('aside');
+  // Some pages have <aside> inside <main> as content (e.g. registration step 4) — skip those
+  const allAsides = document.querySelectorAll('aside');
+  let existingAside = null;
+  allAsides.forEach(a => {
+    // Only use aside if it's a top-level nav sidebar (not inside <main>)
+    if (!a.closest('main')) existingAside = a;
+  });
 
   if (existingAside) {
     // Replace content of existing aside, keep its position in DOM
@@ -96,6 +103,14 @@
     existingAside.style.cssText = 'width:256px;flex-shrink:0;display:flex;flex-direction:column;background:#0B1120;border-right:1px solid rgba(255,255,255,0.06);height:100vh;position:sticky;top:0;overflow-y:auto;';
     // Remove fixed positioning if any
     existingAside.className = '';
+    // Fix main content margin if it was set for original wider sidebar (e.g. ml-72 = 288px)
+    const main = document.querySelector('main');
+    if (main) {
+      main.style.marginLeft = '0';
+      main.style.flex = '1';
+      main.style.overflowY = 'auto';
+      main.style.maxHeight = '100vh';
+    }
   } else {
     // No sidebar exists - inject one and restructure the layout
     const aside = document.createElement('aside');
@@ -188,7 +203,7 @@
     document.querySelectorAll('button').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
       if (text.includes('nueva consulta')) el.addEventListener('click', e => { e.preventDefault(); location.href = '08-review-v1.html'; });
-      if (text === 'protocolos') el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
+      if (text === 'programas') el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
       if (text === 'analíticas' || text === 'analiticas') el.addEventListener('click', e => { e.preventDefault(); location.href = '07-analytics.html'; });
       if (text === 'historial') el.addEventListener('click', e => { e.preventDefault(); location.href = '09-review-v2.html'; });
     });
@@ -205,15 +220,15 @@
       }
     });
     document.querySelectorAll('a[href="#"]').forEach(el => {
-      if (el.textContent.trim() === 'Pacientes') el.href = '03-patient-list.html';
+      if (el.textContent.trim() === 'Usuarios') el.href = '03-patient-list.html';
     });
   }
 
   // Reviews
-  if (currentFile.includes('review')) {
+  if (currentFile.includes('review') || currentFile === '08b-revision1.html') {
     document.querySelectorAll('button, a').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
-      if (text.includes('ver programa') || text.includes('editar programa') || text.includes('programa pautado')) {
+      if (text.includes('ver programa') || text.includes('editar programa') || text.includes('programa pautado') || text.includes('ajustar programa') || text.includes('diseñar programa')) {
         el.style.cursor = 'pointer';
         el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
       }
@@ -238,7 +253,7 @@
       }
     });
     document.querySelectorAll('a[href="#"]').forEach(el => {
-      if (el.textContent.trim() === 'Pacientes') el.href = '03-patient-list.html';
+      if (el.textContent.trim() === 'Usuarios') el.href = '03-patient-list.html';
     });
   }
 
@@ -281,9 +296,9 @@
     });
   }
 
-  // Breadcrumbs: "Pacientes" link
+  // Breadcrumbs: "Usuarios" link
   document.querySelectorAll('a[href="#"], span').forEach(el => {
-    if (el.textContent.trim() === 'Pacientes' && el.tagName === 'A') {
+    if (el.textContent.trim() === 'Usuarios' && el.tagName === 'A') {
       el.href = '03-patient-list.html';
     }
   });
