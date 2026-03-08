@@ -77,8 +77,7 @@
       el.style.cursor = 'pointer';
       el.addEventListener('click', function(e) {
         e.preventDefault();
-        if (history.length > 1) history.back();
-        else location.href = '04-home-dashboard.html';
+        location.href = '04-home-dashboard.html';
       });
     }
   });
