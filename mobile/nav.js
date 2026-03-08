@@ -1,76 +1,77 @@
-// BeBlue Mobile Navigation - Auto-wires all nav links
+// BeBlue Mobile Navigation - Injects standardized bottom nav + wires all links
 (function() {
-  const iconMap = {
-    'home': '04-home-dashboard.html',
-    'calendar_today': '06-calendar.html',
-    'calendar_month': '06-calendar.html',
-    'fact_check': '05-program-overview.html',
-    'monitoring': '07-progress-avatar.html',
-    'analytics': '07-progress-avatar.html',
-    'auto_awesome': '07-progress-avatar.html',
-    'monitor_heart': '10-therapies.html',
-    'bar_chart': '07-progress-avatar.html',
-    'person': '08-profile.html',
-    'fitness_center': '09-exercise.html',
-    'spa': '10-therapies.html',
-    'restaurant': '12-nutrition.html',
-    'medication': '13-supplementation.html',
-    'event_available': '11-booking.html',
-    'favorite': '07-progress-avatar.html',
-    'group': '08-profile.html',
-    'check_circle': '14-daily-checkin.html',
-    'watch': '15-connected-devices.html',
-    'assignment': '05-program-overview.html',
-    'notifications': '#',
-    'add': '11-booking.html',
-  };
+  const currentFile = location.pathname.split('/').pop();
 
-  const textMap = {
-    'home': '04-home-dashboard.html',
-    'hoy': '04-home-dashboard.html',
-    'inicio': '04-home-dashboard.html',
-    'programa': '05-program-overview.html',
-    'calendario': '06-calendar.html',
-    'reservas': '11-booking.html',
-    'progreso': '07-progress-avatar.html',
-    'wellness': '07-progress-avatar.html',
-    'vitalidad': '07-progress-avatar.html',
-    'salud': '07-progress-avatar.html',
-    'métricas': '07-progress-avatar.html',
-    'metricas': '07-progress-avatar.html',
-    'perfil': '08-profile.html',
-    'terapias': '10-therapies.html',
-    'social': '08-profile.html',
-    'plan': '05-program-overview.html',
-    'nueva': '11-booking.html',
-    'comunidad': '08-profile.html',
-    'dispositivos': '15-connected-devices.html',
-  };
+  // Pages that should NOT have bottom nav
+  const noNav = ['01-welcome.html', '02-login.html', '03-onboarding.html'];
+  const hasNav = !noNav.includes(currentFile);
 
-  // Wire up all <a href="#"> and buttons with icons/labels
-  document.querySelectorAll('a[href="#"], button').forEach(el => {
-    const icon = el.querySelector('.material-symbols-outlined');
-    const iconName = icon ? icon.textContent.trim() : '';
+  // Standard bottom nav items
+  const navItems = [
+    { icon: 'home', label: 'Home', href: '04-home-dashboard.html', pages: ['04-home-dashboard.html','09-exercise.html','10-therapies.html','12-nutrition.html','13-supplementation.html'] },
+    { icon: 'calendar_today', label: 'Programa', href: '05-program-overview.html', pages: ['05-program-overview.html','06-calendar.html','11-booking.html'] },
+    { icon: 'add', label: '', href: '14-daily-checkin.html', pages: ['14-daily-checkin.html'], isFab: true },
+    { icon: 'monitoring', label: 'Progreso', href: '07-progress-avatar.html', pages: ['07-progress-avatar.html'] },
+    { icon: 'person', label: 'Perfil', href: '08-profile.html', pages: ['08-profile.html','15-connected-devices.html'] },
+  ];
 
-    const textEls = el.querySelectorAll('span, p');
-    let label = '';
-    textEls.forEach(t => {
-      const txt = t.textContent.trim().toLowerCase();
-      if (txt && txt !== iconName && txt.length < 30) label = txt;
+  // Remove ALL existing bottom navs
+  if (hasNav) {
+    // Remove <nav> elements that are bottom navigation
+    document.querySelectorAll('nav').forEach(nav => {
+      const style = window.getComputedStyle(nav);
+      const rect = nav.getBoundingClientRect();
+      // Remove if it's near the bottom of the page or fixed/absolute at bottom
+      if (style.position === 'fixed' || style.position === 'absolute' || rect.top > window.innerHeight * 0.7) {
+        nav.remove();
+      }
+    });
+    // Also remove fixed bottom divs that contain nav-like content (profile pattern)
+    document.querySelectorAll('div.fixed, div[class*="fixed bottom"]').forEach(div => {
+      if (div.className.includes('bottom') && div.querySelector('.material-symbols-outlined')) {
+        div.remove();
+      }
     });
 
-    let target = textMap[label] || iconMap[iconName];
+    // Build standard nav
+    const nav = document.createElement('nav');
+    nav.id = 'beblue-nav';
+    nav.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,22,40,0.95);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);padding:8px 24px 28px;';
 
-    if (target && target !== '#') {
-      const currentFile = location.pathname.split('/').pop();
-      if (target !== currentFile) {
-        if (el.tagName === 'A') el.href = target;
-        else el.addEventListener('click', () => location.href = target);
-        el.style.cursor = 'pointer';
+    const container = document.createElement('div');
+    container.style.cssText = 'display:flex;justify-content:space-between;align-items:center;max-width:420px;margin:0 auto;';
+
+    navItems.forEach(item => {
+      const isActive = item.pages.includes(currentFile);
+      const a = document.createElement('a');
+      a.href = item.href;
+
+      if (item.isFab) {
+        a.style.cssText = 'display:flex;align-items:center;justify-content:center;margin-top:-28px;';
+        a.innerHTML = '<div style="width:48px;height:48px;border-radius:50%;background:#135BEC;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(19,91,236,0.4);border:3px solid #0A1628;"><span class="material-symbols-outlined" style="color:#fff;font-size:24px;">add</span></div>';
+      } else {
+        const color = isActive ? '#135BEC' : '#64748B';
+        const weight = isActive ? '700' : '500';
+        const fill = isActive ? "font-variation-settings:'FILL' 1;" : '';
+        a.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;min-width:48px;';
+        a.innerHTML = `<span class="material-symbols-outlined" style="font-size:24px;color:${color};${fill}">${item.icon}</span><span style="font-size:10px;font-weight:${weight};color:${color};font-family:Manrope,sans-serif;">${item.label}</span>`;
       }
-    }
+      container.appendChild(a);
+    });
 
-    // Back buttons
+    nav.appendChild(container);
+    document.body.appendChild(nav);
+
+    // Add bottom padding to body so content isn't hidden behind nav
+    document.body.style.paddingBottom = '80px';
+  }
+
+  // === WIRE UP NAVIGATION LINKS ===
+
+  // Back buttons
+  document.querySelectorAll('a[href="#"], button, span, div').forEach(el => {
+    const icon = el.querySelector('.material-symbols-outlined') || (el.classList && el.classList.contains('material-symbols-outlined') ? el : null);
+    const iconName = icon ? icon.textContent.trim() : '';
     if (iconName === 'arrow_back' || iconName === 'arrow_back_ios' || iconName === 'arrow_back_ios_new' || iconName === 'close') {
       el.style.cursor = 'pointer';
       el.addEventListener('click', function(e) {
@@ -81,7 +82,7 @@
     }
   });
 
-  // Wire text-based buttons
+  // Text-based button wiring
   document.querySelectorAll('button, a').forEach(el => {
     const text = el.textContent.trim().toLowerCase();
     if (text.includes('ver detalles') || text.includes('ver programa')) {
@@ -92,22 +93,14 @@
       el.style.cursor = 'pointer';
       el.addEventListener('click', () => location.href = '07-progress-avatar.html');
     }
-    if (text.includes('reservar') || text.includes('nueva cita')) {
+    if (text.includes('reservar') || text.includes('nueva cita') || text.includes('agendar')) {
       el.style.cursor = 'pointer';
       el.addEventListener('click', () => location.href = '11-booking.html');
-    }
-    if (text.includes('iniciar sesión') || text.includes('comenzar') || text.includes('empezar')) {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => location.href = '02-login.html');
-    }
-    if (text.includes('crear cuenta') || text.includes('registr')) {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => location.href = '03-onboarding.html');
     }
   });
 
   // Welcome -> Login
-  if (location.pathname.includes('01-welcome')) {
+  if (currentFile === '01-welcome.html') {
     document.querySelectorAll('button, a').forEach(el => {
       if (el.textContent.trim().length > 0) {
         el.addEventListener('click', () => location.href = '02-login.html');
@@ -115,9 +108,9 @@
     });
   }
 
-  // Login -> Dashboard or Onboarding
-  if (location.pathname.includes('02-login')) {
-    document.querySelectorAll('button[type="submit"], button').forEach(el => {
+  // Login -> Dashboard / Onboarding
+  if (currentFile === '02-login.html') {
+    document.querySelectorAll('button, a').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
       if (text.includes('iniciar') || text.includes('entrar') || text.includes('acceder') || text.includes('login')) {
         el.addEventListener('click', e => { e.preventDefault(); location.href = '04-home-dashboard.html'; });
@@ -129,7 +122,7 @@
   }
 
   // Onboarding -> Dashboard
-  if (location.pathname.includes('03-onboarding')) {
+  if (currentFile === '03-onboarding.html') {
     document.querySelectorAll('button').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
       if (text.includes('siguiente') || text.includes('continuar') || text.includes('finalizar') || text.includes('completar')) {
@@ -138,48 +131,23 @@
     });
   }
 
-  // Dashboard: pillar cards + sessions + add "+" button to daily check-in
-  if (location.pathname.includes('04-home-dashboard')) {
-    // Pillar cards - target the small stat cards in the grid
-    document.querySelectorAll('.bg-slate-800\\/40, [class*="bg-slate-800"]').forEach(el => {
+  // Dashboard: pillar cards + sessions
+  if (currentFile === '04-home-dashboard.html') {
+    const pillarMap = { 'ejercicio': '09-exercise.html', 'terapias': '10-therapies.html', 'nutrici': '12-nutrition.html', 'suplem': '13-supplementation.html' };
+    document.querySelectorAll('div').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
-      if (text.includes('ejercicio') && el.offsetHeight < 200) {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => location.href = '09-exercise.html');
-      } else if (text.includes('terapias') && el.offsetHeight < 200) {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => location.href = '10-therapies.html');
-      } else if ((text.includes('nutrici') || text.includes('🥗')) && el.offsetHeight < 200) {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => location.href = '12-nutrition.html');
-      } else if ((text.includes('suplem') || text.includes('💊')) && el.offsetHeight < 200) {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => location.href = '13-supplementation.html');
-      }
-    });
-
-    // "Próximas Sesiones" cards -> booking
-    document.querySelectorAll('.bg-slate-800\\/30, [class*="bg-slate-800/30"]').forEach(el => {
-      if (el.textContent.includes('Cámara') || el.textContent.includes('Sauna') || el.textContent.includes('Sesión')) {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => location.href = '11-booking.html');
-      }
-    });
-
-    // The center "+" fab button -> daily check-in (the most natural daily action)
-    document.querySelectorAll('nav a, nav div').forEach(el => {
-      const icon = el.querySelector('.material-symbols-outlined');
-      if (icon && icon.textContent.trim() === 'add') {
-        el.style.cursor = 'pointer';
-        if (el.tagName === 'A') el.href = '14-daily-checkin.html';
-        else el.addEventListener('click', () => location.href = '14-daily-checkin.html');
+      for (const [key, href] of Object.entries(pillarMap)) {
+        if (text.includes(key) && el.offsetHeight < 120 && el.offsetHeight > 30 && el.children.length > 0) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', e => { e.stopPropagation(); location.href = href; });
+          break;
+        }
       }
     });
   }
 
-  // Profile: wire "Dispositivos Conectados" section -> connected devices
-  if (location.pathname.includes('08-profile')) {
-    // Make the whole devices section clickable
+  // Profile: devices section
+  if (currentFile === '08-profile.html') {
     document.querySelectorAll('h3').forEach(h3 => {
       if (h3.textContent.includes('Dispositivos')) {
         const section = h3.nextElementSibling;
@@ -187,56 +155,19 @@
           section.style.cursor = 'pointer';
           section.addEventListener('click', () => location.href = '15-connected-devices.html');
         }
-        // Also make the h3 title clickable
         h3.style.cursor = 'pointer';
         h3.addEventListener('click', () => location.href = '15-connected-devices.html');
       }
     });
-
-    // "Conectar nuevo dispositivo" button -> connected devices
-    document.querySelectorAll('button').forEach(el => {
-      if (el.textContent.toLowerCase().includes('conectar nuevo')) {
-        el.addEventListener('click', e => { e.preventDefault(); location.href = '15-connected-devices.html'; });
-      }
-    });
-
-    // Add a link to daily check-in from profile's "Analíticas" button
-    document.querySelectorAll('button').forEach(el => {
-      if (el.textContent.toLowerCase().includes('analíticas') || el.textContent.toLowerCase().includes('analiticas')) {
-        el.addEventListener('click', () => location.href = '07-progress-avatar.html');
-      }
-    });
   }
 
-  // Connected Devices: back to profile
-  if (location.pathname.includes('15-connected-devices')) {
-    document.querySelectorAll('a[href="#"], button').forEach(el => {
-      const icon = el.querySelector('.material-symbols-outlined');
-      if (icon && (icon.textContent.trim() === 'arrow_back' || icon.textContent.trim() === 'close')) {
-        el.addEventListener('click', e => { e.preventDefault(); location.href = '08-profile.html'; });
-      }
-    });
-  }
-
-  // Daily check-in: back to dashboard
-  if (location.pathname.includes('14-daily-checkin')) {
+  // Daily check-in: submit -> dashboard
+  if (currentFile === '14-daily-checkin.html') {
     document.querySelectorAll('button').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
-      if (text.includes('enviar') || text.includes('guardar') || text.includes('completar') || text.includes('finalizar')) {
+      if (text.includes('enviar') || text.includes('guardar') || text.includes('completar') || text.includes('finalizar') || text.includes('registrar')) {
         el.addEventListener('click', e => { e.preventDefault(); location.href = '04-home-dashboard.html'; });
       }
     });
   }
-
-  // Exercise/Therapies/Nutrition/Supplements: back to dashboard
-  ['09-exercise', '10-therapies', '12-nutrition', '13-supplementation'].forEach(screen => {
-    if (location.pathname.includes(screen)) {
-      document.querySelectorAll('button').forEach(el => {
-        const text = el.textContent.trim().toLowerCase();
-        if (text.includes('reservar') || text.includes('agendar')) {
-          el.addEventListener('click', e => { e.preventDefault(); location.href = '11-booking.html'; });
-        }
-      });
-    }
-  });
 })();
