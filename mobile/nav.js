@@ -198,7 +198,7 @@
     // Scroll container
     const scrollArea = document.createElement('div');
     scrollArea.id = 'phone-scroll';
-    scrollArea.style.cssText = 'position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-top:54px;';
+    scrollArea.style.cssText = 'position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;';
 
     // Move all body children into phone
     while (document.body.firstChild) {
