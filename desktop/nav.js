@@ -19,7 +19,7 @@
     { icon: 'group', label: 'Pacientes', href: '03-patient-list.html' },
     { icon: 'calendar_today', label: 'Agenda', href: '06-scheduling.html' },
     { icon: 'stethoscope', label: 'Terapias', href: '14-program-library.html' },
-    { icon: 'bar_chart', label: 'Analiticas', href: '07-analytics.html' },
+    { icon: 'build', label: 'Equipos', href: '15-equipment-management.html' },
     { icon: 'settings', label: 'Configuracion', href: '15-equipment-management.html', separator: true },
   ];
 
@@ -30,7 +30,7 @@
     '04-patient-record.html': 'Pacientes',
     '05-program-editor.html': 'Pacientes',
     '06-scheduling.html': 'Agenda',
-    '07-analytics.html': 'Analiticas',
+    '07-analytics.html': 'Pacientes',
     '08-review-v1.html': 'Pacientes',
     '09-review-v2.html': 'Pacientes',
     '10-registration-step1.html': 'Pacientes',
@@ -38,7 +38,7 @@
     '12-assessment-step3.html': 'Pacientes',
     '13-registration-step4.html': 'Pacientes',
     '14-program-library.html': 'Terapias',
-    '15-equipment-management.html': 'Configuracion',
+    '15-equipment-management.html': 'Equipos',
   };
 
   const activeLabel = activeMap[currentFile] || 'Dashboard';
