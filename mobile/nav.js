@@ -169,37 +169,7 @@
     });
   }
 
-  // Profile: menu items + devices section
-  if (currentFile === '08-profile.html') {
-    document.querySelectorAll('button, a, div').forEach(el => {
-      const text = el.textContent.trim().toLowerCase();
-      if (el.offsetHeight > 20 && el.offsetHeight < 80) {
-        if (text === 'analíticas' || text === 'analiticas') {
-          el.style.cursor = 'pointer';
-          el.addEventListener('click', () => location.href = '07-progress-avatar.html');
-        }
-        if (text === 'historial médico' || text === 'historial medico') {
-          el.style.cursor = 'pointer';
-          el.addEventListener('click', () => location.href = '07-progress-avatar.html');
-        }
-        if (text.includes('conectar nuevo dispositivo')) {
-          el.style.cursor = 'pointer';
-          el.addEventListener('click', () => location.href = '15-connected-devices.html');
-        }
-      }
-    });
-    document.querySelectorAll('h3').forEach(h3 => {
-      if (h3.textContent.includes('Dispositivos')) {
-        const section = h3.nextElementSibling;
-        if (section) {
-          section.style.cursor = 'pointer';
-          section.addEventListener('click', () => location.href = '15-connected-devices.html');
-        }
-        h3.style.cursor = 'pointer';
-        h3.addEventListener('click', () => location.href = '15-connected-devices.html');
-      }
-    });
-  }
+  // Profile: devices section is handled via inline onclick in HTML
 
   // Booking: accept/change buttons
   if (currentFile === '11-booking.html') {
