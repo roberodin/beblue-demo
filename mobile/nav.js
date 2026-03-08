@@ -83,8 +83,9 @@
     }
   });
 
-  // Text-based button wiring
+  // Text-based button wiring (skip elements that already have a real href)
   document.querySelectorAll('button, a').forEach(el => {
+    if (el.tagName === 'A' && el.href && !el.href.endsWith('#')) return;
     const text = el.textContent.trim().toLowerCase();
     if (text.includes('ver detalles') || text.includes('ver programa')) {
       el.style.cursor = 'pointer';
