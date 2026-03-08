@@ -262,6 +262,15 @@
     hideScrollStyle.textContent = '#phone-scroll::-webkit-scrollbar{display:none} #phone-scroll{-ms-overflow-style:none;scrollbar-width:none;}';
     document.head.appendChild(hideScrollStyle);
 
+    // Convert all fixed-position elements inside phone to sticky/absolute
+    scrollArea.querySelectorAll('*').forEach(el => {
+      if (el.id === 'beblue-nav') return;
+      const pos = window.getComputedStyle(el).position;
+      if (pos === 'fixed') {
+        el.style.position = 'sticky';
+      }
+    });
+
     // Move bottom nav inside phone and make it sticky to bottom of phone frame
     const beblueNav = document.getElementById('beblue-nav');
     if (beblueNav) {
