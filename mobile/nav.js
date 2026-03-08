@@ -2,6 +2,7 @@
 (function() {
   const currentFile = location.pathname.split('/').pop();
 
+
   // Pages that should NOT have bottom nav
   const noNav = ['01-welcome.html', '02-login.html', '03-onboarding.html'];
   const hasNav = !noNav.includes(currentFile);
@@ -169,5 +170,65 @@
         el.addEventListener('click', e => { e.preventDefault(); location.href = '04-home-dashboard.html'; });
       }
     });
+  }
+  // === PHONE SIMULATOR FRAME (only on wide screens) ===
+  if (window.innerWidth > 500) {
+    const bg = document.createElement('div');
+    bg.style.cssText = 'position:fixed;inset:0;background:#111;display:flex;align-items:center;justify-content:center;z-index:0;';
+
+    const phone = document.createElement('div');
+    phone.style.cssText = 'width:390px;height:844px;border-radius:50px;border:6px solid #2a2a2a;box-shadow:0 0 0 2px #1a1a1a, 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 2px #3a3a3a;overflow:hidden;position:relative;background:#000;';
+
+    // Dynamic Island
+    const notch = document.createElement('div');
+    notch.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);width:126px;height:36px;background:#1a1a1a;border-radius:20px;z-index:10001;';
+    const cam = document.createElement('div');
+    cam.style.cssText = 'position:absolute;right:16px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#0a0a0a;border:2px solid #222;';
+    notch.appendChild(cam);
+
+    // Status bar
+    const statusBar = document.createElement('div');
+    statusBar.style.cssText = 'position:absolute;top:0;left:0;right:0;height:54px;z-index:10000;display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 4px;font-family:Manrope,SF Pro,-apple-system,sans-serif;pointer-events:none;';
+    statusBar.innerHTML = '<span style="font-size:15px;font-weight:700;color:#fff;">9:41</span><div style="display:flex;align-items:center;gap:6px;"><span style="font-size:12px;font-weight:600;color:#fff;">5G</span><svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="5" width="3" height="7" rx="0.5" fill="#fff"/><rect x="4.5" y="3" width="3" height="9" rx="0.5" fill="#fff"/><rect x="9" y="1" width="3" height="11" rx="0.5" fill="#fff"/><rect x="13" y="0" width="3" height="12" rx="0.5" fill="#fff" opacity="0.3"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0" y="0.5" width="23" height="12" rx="3" stroke="#fff" stroke-width="1.5" fill="none"/><rect x="24.5" y="4" width="2.5" height="5" rx="1" fill="#fff" opacity="0.5"/><rect x="2" y="2.5" width="16" height="8" rx="2" fill="#34D399"/></svg></div>';
+
+    // Home indicator
+    const homeIndicator = document.createElement('div');
+    homeIndicator.style.cssText = 'position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;background:rgba(255,255,255,0.3);border-radius:3px;z-index:10001;';
+
+    // Scroll container
+    const scrollArea = document.createElement('div');
+    scrollArea.id = 'phone-scroll';
+    scrollArea.style.cssText = 'position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-top:54px;';
+
+    // Move all body children into phone
+    while (document.body.firstChild) {
+      scrollArea.appendChild(document.body.firstChild);
+    }
+
+    phone.appendChild(scrollArea);
+    phone.appendChild(notch);
+    phone.appendChild(statusBar);
+    phone.appendChild(homeIndicator);
+    bg.appendChild(phone);
+    document.body.appendChild(bg);
+
+    document.body.style.cssText = 'margin:0;padding:0;overflow:hidden;background:#111;height:100vh;';
+    document.documentElement.style.overflow = 'hidden';
+
+    // Move bottom nav inside phone and make it sticky to bottom of phone frame
+    const beblueNav = document.getElementById('beblue-nav');
+    if (beblueNav) {
+      beblueNav.style.cssText = 'position:sticky;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,22,40,0.95);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);padding:8px 24px 28px;margin-top:auto;';
+      // Wrap scroll content + nav in a flex column so nav sticks to bottom
+      scrollArea.style.display = 'flex';
+      scrollArea.style.flexDirection = 'column';
+      // Wrap existing content in a div
+      const contentWrap = document.createElement('div');
+      contentWrap.style.cssText = 'flex:1;';
+      while (scrollArea.firstChild !== beblueNav && scrollArea.firstChild) {
+        contentWrap.appendChild(scrollArea.firstChild);
+      }
+      scrollArea.insertBefore(contentWrap, beblueNav);
+    }
   }
 })();
