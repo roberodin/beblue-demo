@@ -267,10 +267,7 @@
     cam.style.cssText = 'position:absolute;right:16px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#0a0a0a;border:2px solid #222;';
     notch.appendChild(cam);
 
-    // Status bar
-    const statusBar = document.createElement('div');
-    statusBar.style.cssText = 'position:absolute;top:0;left:0;right:0;height:54px;z-index:10000;display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 4px;font-family:Manrope,SF Pro,-apple-system,sans-serif;pointer-events:none;';
-    statusBar.innerHTML = '<span style="font-size:15px;font-weight:700;color:#fff;">9:41</span><div style="display:flex;align-items:center;gap:6px;"><span style="font-size:12px;font-weight:600;color:#fff;">5G</span><svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="5" width="3" height="7" rx="0.5" fill="#fff"/><rect x="4.5" y="3" width="3" height="9" rx="0.5" fill="#fff"/><rect x="9" y="1" width="3" height="11" rx="0.5" fill="#fff"/><rect x="13" y="0" width="3" height="12" rx="0.5" fill="#fff" opacity="0.3"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0" y="0.5" width="23" height="12" rx="3" stroke="#fff" stroke-width="1.5" fill="none"/><rect x="24.5" y="4" width="2.5" height="5" rx="1" fill="#fff" opacity="0.5"/><rect x="2" y="2.5" width="16" height="8" rx="2" fill="#34D399"/></svg></div>';
+    // Status bar (empty spacer for notch area)
 
     // Home indicator
     const homeIndicator = document.createElement('div');
@@ -292,7 +289,6 @@
 
     phone.appendChild(scrollArea);
     phone.appendChild(notch);
-    phone.appendChild(statusBar);
     phone.appendChild(homeIndicator);
     bg.appendChild(phone);
     document.body.appendChild(bg);
