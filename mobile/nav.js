@@ -265,9 +265,14 @@
     // Convert all fixed-position elements inside phone to sticky/absolute
     scrollArea.querySelectorAll('*').forEach(el => {
       if (el.id === 'beblue-nav') return;
-      const pos = window.getComputedStyle(el).position;
-      if (pos === 'fixed') {
-        el.style.position = 'sticky';
+      const styles = window.getComputedStyle(el);
+      if (styles.position === 'fixed') {
+        // Decorative elements (blur backgrounds etc.) should be absolute, not sticky
+        if (styles.pointerEvents === 'none' || el.classList.contains('pointer-events-none')) {
+          el.style.position = 'absolute';
+        } else {
+          el.style.position = 'sticky';
+        }
       }
     });
 
