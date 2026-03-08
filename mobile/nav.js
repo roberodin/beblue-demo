@@ -260,15 +260,6 @@
     const phone = document.createElement('div');
     phone.style.cssText = 'width:390px;height:844px;border-radius:50px;border:6px solid #2a2a2a;box-shadow:0 0 0 2px #1a1a1a, 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 2px #3a3a3a;overflow:hidden;position:relative;background:#000;';
 
-    // Dynamic Island
-    const notch = document.createElement('div');
-    notch.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);width:126px;height:36px;background:#1a1a1a;border-radius:20px;z-index:10001;';
-    const cam = document.createElement('div');
-    cam.style.cssText = 'position:absolute;right:16px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#0a0a0a;border:2px solid #222;';
-    notch.appendChild(cam);
-
-    // Status bar (empty spacer for notch area)
-
     // Home indicator
     const homeIndicator = document.createElement('div');
     homeIndicator.style.cssText = 'position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;background:rgba(255,255,255,0.3);border-radius:3px;z-index:10001;';
@@ -288,7 +279,6 @@
     }
 
     phone.appendChild(scrollArea);
-    phone.appendChild(notch);
     phone.appendChild(homeIndicator);
     bg.appendChild(phone);
     document.body.appendChild(bg);
