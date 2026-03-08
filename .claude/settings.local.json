@@ -14,7 +14,8 @@
       "Bash(gh api:*)",
       "Bash(git:*)",
       "Bash(ls:*)",
-      "Bash(do:*)"
+      "Bash(do:*)",
+      "Bash(grep:*)"
     ]
   }
 }
