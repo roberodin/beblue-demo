@@ -200,6 +200,10 @@
     scrollArea.id = 'phone-scroll';
     scrollArea.style.cssText = 'position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;';
 
+    // Copy body background to scroll area before moving children
+    const bodyStyles = window.getComputedStyle(document.body);
+    scrollArea.style.background = bodyStyles.background || bodyStyles.backgroundColor || '#0A1628';
+
     // Move all body children into phone
     while (document.body.firstChild) {
       scrollArea.appendChild(document.body.firstChild);
