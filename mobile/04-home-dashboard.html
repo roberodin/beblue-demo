@@ -51,25 +51,84 @@
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
-<header class="flex items-center justify-between px-6 pt-6 pb-2">
+<header class="flex items-center justify-between px-6 pt-6 pb-2" style="position:relative;z-index:100;">
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
-<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7YjRQyNIkeyJKwem2wY6OXWOnzPwc-aMNlfE6zu3wHanDXwGFg_uqMFOjzax3TbTzPdsuDGyI9GffLmdPKVm-7TlRKMwC7nLnkw6-ExCDqy-uw8raNDb8dmrhSCSymBN1-EUWyOVXpYO6pGb4HbawhAGdbof4f9JF2GjlmLIi_UfIUd7OHsOl2JVy7NAn4RxrMaxKklydN8QHgqEx0RRqr1xlSXHrS1bLWvPpOtCdw873CY7BVLHkI8Tv_SOL7DEpsPWk1gTJ5ro"/>
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7aVIhKFbrocN8TmzY3oE8PfpFSVstr21T40il9mwKivyjal3RMFqHMh266AKhAPCcO6-1LEdT2Hich-mNgXCMBFdGWPtq_f0ez8h9o7jEW4kU1uEM-iHrtW0S90mDDG3HFMWy9yjRYS05LOTXWrAG44_qz0GJBwKkXqBnzJkK7LiLJUlCqsKVoYVjvaCpDtAxY2y5bQMkseO88pgIvgQ4XpMuegpk82yRKqvbLIfZ96Sg4kN1oJrV_1Rqo88eAxgTDSugj8UVhtY"/>
 </div>
 <div>
 <p class="text-xs text-slate-400 font-medium">Bienvenida de nuevo</p>
 <h1 class="text-lg font-bold">Hola, María</h1>
 </div>
 </div>
-<div class="flex items-center gap-2">
-<button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-800/50 text-slate-100">
+<div class="flex items-center gap-2" style="position:relative;">
+<button id="notif-btn" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-800/50 text-slate-100 relative">
 <span class="material-symbols-outlined text-2xl">notifications</span>
+<div class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-background-dark"></div>
 </button>
+<div id="notif-panel" style="display:none;position:absolute;top:48px;right:0;width:340px;background:#1E293B;border-radius:16px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 60px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;z-index:9999;">
+  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;">
+    <h3 style="font-size:16px;font-weight:800;font-family:Manrope,sans-serif;color:#fff;">Notificaciones</h3>
+    <span id="notif-close" style="font-size:11px;color:#135bec;font-weight:600;cursor:pointer;font-family:Manrope,sans-serif;">Cerrar</span>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(19,91,236,0.06);">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(19,91,236,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:18px;color:#135bec;">calendar_today</span></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;font-weight:600;color:#fff;font-family:Manrope,sans-serif;">Sesión mañana a las 10:00</p>
+        <p style="font-size:12px;color:#94A3B8;margin-top:2px;font-family:Manrope,sans-serif;">Cámara Hiperbárica - BeBlue Center</p>
+        <p style="font-size:10px;color:#64748B;margin-top:4px;font-family:Manrope,sans-serif;">Hace 1 hora</p>
+      </div>
+      <div style="width:8px;height:8px;border-radius:50%;background:#135bec;margin-top:6px;flex-shrink:0;"></div>
+    </div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(19,91,236,0.06);">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:18px;color:#22c55e;">chat</span></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;font-weight:600;color:#fff;font-family:Manrope,sans-serif;">Nuevo mensaje de Dr. Martinez</p>
+        <p style="font-size:12px;color:#94A3B8;margin-top:2px;font-family:Manrope,sans-serif;">"Recuerda tomar el suplemento de magnesio antes de dormir"</p>
+        <p style="font-size:10px;color:#64748B;margin-top:4px;font-family:Manrope,sans-serif;">Hace 3 horas</p>
+      </div>
+      <div style="width:8px;height:8px;border-radius:50%;background:#135bec;margin-top:6px;flex-shrink:0;"></div>
+    </div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,146,60,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:18px;color:#fb923c;">local_fire_department</span></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;font-weight:600;color:#fff;font-family:Manrope,sans-serif;">¡Racha de 12 días!</p>
+        <p style="font-size:12px;color:#94A3B8;margin-top:2px;font-family:Manrope,sans-serif;">Sigue así, estás mejorando tu adherencia</p>
+        <p style="font-size:10px;color:#64748B;margin-top:4px;font-family:Manrope,sans-serif;">Ayer</p>
+      </div>
+    </div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(19,91,236,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:18px;color:#135bec;">biotech</span></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;font-weight:600;color:#fff;font-family:Manrope,sans-serif;">Resultados analítica disponibles</p>
+        <p style="font-size:12px;color:#94A3B8;margin-top:2px;font-family:Manrope,sans-serif;">Tu edad biológica ha mejorado 2 años este mes</p>
+        <p style="font-size:10px;color:#64748B;margin-top:4px;font-family:Manrope,sans-serif;">Hace 2 días</p>
+      </div>
+    </div>
+  </div>
+  <div style="padding:14px 20px;">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(139,92,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:18px;color:#8b5cf6;">medication</span></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;font-weight:600;color:#fff;font-family:Manrope,sans-serif;">Recordatorio de suplementación</p>
+        <p style="font-size:12px;color:#94A3B8;margin-top:2px;font-family:Manrope,sans-serif;">No olvides tu dosis de Omega-3 hoy</p>
+        <p style="font-size:10px;color:#64748B;margin-top:4px;font-family:Manrope,sans-serif;">Hace 3 días</p>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </header>
 <main class="flex-1 overflow-y-auto px-6 pb-24">
 <section class="mt-6">
-<div class="glass rounded-xl p-6 relative overflow-hidden bg-gradient-to-br from-primary/10 to-transparent">
+<div class="glass rounded-xl p-6 relative overflow-hidden bg-gradient-to-br from-primary/10 to-transparent" onclick="location.href='07-progress-avatar.html'" style="cursor:pointer">
 <div class="flex justify-between items-start mb-6">
 <h2 class="text-xl font-bold">Tu Edad Biológica</h2>
 <span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Premium</span>
@@ -216,5 +275,22 @@
 </div>
 </nav>
 
+<script>
+document.getElementById('notif-btn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  var panel = document.getElementById('notif-panel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+});
+document.getElementById('notif-close').addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('notif-panel').style.display = 'none';
+});
+document.addEventListener('click', function(e) {
+  var panel = document.getElementById('notif-panel');
+  if (panel.style.display !== 'none' && !panel.contains(e.target) && e.target.id !== 'notif-btn') {
+    panel.style.display = 'none';
+  }
+});
+</script>
 <script src="nav.js"></script>
 </body></html>

@@ -9,10 +9,10 @@
 
   // Standard bottom nav items
   const navItems = [
-    { icon: 'home', label: 'Home', href: '04-home-dashboard.html', pages: ['04-home-dashboard.html','09-exercise.html','10-therapies.html','12-nutrition.html','13-supplementation.html'] },
+    { icon: 'home', label: 'Home', href: '04-home-dashboard.html', pages: ['04-home-dashboard.html','09-exercise.html','10-therapies.html','12-nutrition.html','13-supplementation.html','07-progress-avatar.html'] },
     { icon: 'calendar_today', label: 'Programa', href: '05-program-overview.html', pages: ['05-program-overview.html','06-calendar.html','11-booking.html'] },
     { icon: 'add', label: '', href: '14-daily-checkin.html', pages: ['14-daily-checkin.html'], isFab: true },
-    { icon: 'monitoring', label: 'Progreso', href: '07-progress-avatar.html', pages: ['07-progress-avatar.html'] },
+    { icon: 'chat', label: 'Chat', href: '16-chat.html', pages: ['16-chat.html'] },
     { icon: 'person', label: 'Perfil', href: '08-profile.html', pages: ['08-profile.html','15-connected-devices.html'] },
   ];
 

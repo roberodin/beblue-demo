@@ -19,6 +19,7 @@
     { icon: 'group', label: 'Usuarios', href: '03-patient-list.html' },
     { icon: 'calendar_today', label: 'Agenda', href: '06-scheduling.html' },
     { icon: 'stethoscope', label: 'Terapias', href: '14-program-library.html' },
+    { icon: 'chat', label: 'Mensajes', href: '16-messaging.html' },
     { icon: 'build', label: 'Equipos', href: '15-equipment-management.html' },
     { icon: 'settings', label: 'Configuracion', href: '15-equipment-management.html', separator: true },
   ];
@@ -40,6 +41,7 @@
     '13-registration-step4.html': 'Usuarios',
     '14-program-library.html': 'Terapias',
     '15-equipment-management.html': 'Equipos',
+    '16-messaging.html': 'Mensajes',
   };
 
   const activeLabel = activeMap[currentFile] || 'Dashboard';

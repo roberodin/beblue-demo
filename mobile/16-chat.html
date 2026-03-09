@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Specialist Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0F172A",
+                        "slate-custom": "#1E293B",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-[430px] mx-auto border-x border-slate-200 dark:border-slate-800">
+<!-- TopAppBar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 border-b border-slate-200 dark:border-slate-800 z-10 shrink-0">
+<div class="flex items-center gap-3 flex-1">
+<button class="text-slate-900 dark:text-white flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 p-1">
+<span class="material-symbols-outlined" style="font-size: 28px;">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Dr. Martínez - Especialista</h2>
+<div class="size-2.5 rounded-full bg-green-500 border border-background-dark"></div>
+</div>
+<span class="text-slate-500 dark:text-slate-400 text-xs">En línea</span>
+</div>
+</div>
+<div class="flex items-center">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined" title="Cambiar chat">swap_horiz</span>
+</button>
+</div>
+</header>
+<!-- Chat History -->
+<main class="flex-1 overflow-y-auto p-4 space-y-6">
+<div class="flex flex-col items-center">
+<span class="text-slate-500 dark:text-slate-400 text-[11px] font-bold tracking-wider uppercase bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">Hoy, 10:30</span>
+</div>
+<!-- Specialist Message -->
+<div class="flex items-end gap-3 max-w-[85%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 shrink-0 border border-slate-700" data-alt="Doctor specialist portrait professional avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9CuIZkTNZ7zMlQIEWjQt9-vMaNC6CNSFQu3g2U7MSf50yh1s1z3GPkjdlpul_U8EFKu-czDN-w9lpaZX9PbJcYnbPpDOSkgkLhb0ZWCsvgDBJJuVnzzBJnDh6IftgSzlScz_waejJRPub8XDA-qoPPCxbNXWaaaG1-FsqupAbKJS5jh_L62H7L9LWMCY-HVz28u0NKa47uoU8NYATd0AYooyhKeUPLJ8M82JbuD3qRpLcFGzMdYPFZ0-Sc353V95cf5-W1TVCBNM");'>
+</div>
+<div class="flex flex-col gap-1 items-start">
+<p class="text-slate-500 dark:text-slate-400 text-[11px] font-semibold ml-1">Dr. Martínez</p>
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-bl-none px-4 py-3 bg-slate-custom text-slate-100 shadow-sm">
+                        Hola, he revisado los resultados de tu sesión en la Cámara Hiperbárica. Todo se ve excelente, la saturación de oxígeno post-sesión es ideal.
+                    </div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-end gap-3 justify-end ml-auto max-w-[85%]">
+<div class="flex flex-col gap-1 items-end">
+<p class="text-slate-500 dark:text-slate-400 text-[11px] font-semibold mr-1">Tú</p>
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-br-none px-4 py-3 bg-primary text-white shadow-md">
+                        ¡Qué bien! Me alegra escucharlo. Respecto a la Pterovita, ¿cuál sería la dosis recomendada para esta semana? ¿Debo aumentar la ingesta?
+                    </div>
+<span class="text-[10px] text-slate-500 mr-1">10:32 AM</span>
+</div>
+</div>
+<!-- Specialist Message -->
+<div class="flex items-end gap-3 max-w-[85%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 shrink-0 border border-slate-700" data-alt="Doctor specialist portrait professional avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUJByGwZTxPV0L-nIRtjk78BzJEnWmGUyUDF02XfzybVqEKumJk1i5iUMAjfXRbntJUAeMYwnvOm6SKdDVEz1Ua0Sn4juVC_SBv950GNHgV6VleqR33eBCVjhxdsRFPXsYkGSAUKT1OO2lZ9NJ33FGIIo6hCPupyc9eUWRIQfGLc3TgwDTZlcIwGgpLMNpcYnUIEM86fpX_CC1KnUyRZN6_ctO6H4fR7YguHINo9H-uz95HgHKRDLibHOA4RApvb3J9fN3Exl3PGw");'>
+</div>
+<div class="flex flex-col gap-1 items-start">
+<p class="text-slate-500 dark:text-slate-400 text-[11px] font-semibold ml-1">Dr. Martínez</p>
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-bl-none px-4 py-3 bg-slate-custom text-slate-100 shadow-sm">
+                        Mantendremos la dosis actual de una cápsula por la mañana antes del desayuno. No es necesario aumentar por ahora, los marcadores están estables.
+                    </div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-end gap-3 justify-end ml-auto max-w-[85%]">
+<div class="flex flex-col gap-1 items-end">
+<p class="text-slate-500 dark:text-slate-400 text-[11px] font-semibold mr-1">Tú</p>
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-br-none px-4 py-3 bg-primary text-white shadow-md">
+                        Perfecto, entendido. Muchas gracias, Dr.
+                    </div>
+<span class="text-[10px] text-slate-500 mr-1 flex items-center gap-1">10:35 AM <span class="material-symbols-outlined text-[14px]">done_all</span></span>
+</div>
+</div>
+</main>
+<!-- Message Input Area -->
+<footer class="p-4 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<div class="relative flex-1">
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-full px-4 py-3 text-sm focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-500" placeholder="Escribe un mensaje..." type="text"/>
+</div>
+<button class="flex items-center justify-center size-11 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors shadow-lg">
+<span class="material-symbols-outlined" style="font-size: 22px; margin-left: 2px;">send</span>
+</button>
+</div>
+<!-- iOS Indicator Mock -->
+<div class="mt-4 flex justify-center">
+<div class="h-1.5 w-32 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+</div>
+</footer>
+</div>
+<script src="nav.js"></script>
+</body></html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue Clinical Messaging Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.2);
+            border-radius: 10px;
+        }
+        .message-shadow {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden h-screen font-display">
+<div class="flex h-screen w-full">
+<!-- Main Sidebar (Navigation) -->
+<aside class="w-20 lg:w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark/50">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined">clinical_notes</span>
+</div>
+<div class="hidden lg:block">
+<h1 class="text-base font-bold text-slate-900 dark:text-white leading-none">BeBlue Clinical</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Staff Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="hidden lg:block text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="hidden lg:block text-sm font-medium">Pacientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="hidden lg:block text-sm font-medium">Mensajes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="hidden lg:block text-sm font-medium">Calendario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="hidden lg:block text-sm font-medium">Configuración</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2 py-3 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+<div class="size-8 rounded-full bg-slate-300 dark:bg-slate-700 bg-cover bg-center" data-alt="Staff profile photo Dr. Martinez" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKD2ZMKekXc3RApaHFC2toRpZIoU96k3lPvV60ahdvq_EN2EyoiOTOeXJHMGcKWxQcdg4iS6dj8Bqam2QsbVknzMF7-ROMmxfs6P-SY_sbh12l7DgF9BTAbd72tXX5LN8RU2wbrYC2UVTs2Xd6FVRvbyLUHGr7h3ZlQVZWmCLVnlS7gaijASca6m93tokuTvtT0b3Wu6wTqfgBWjq2SD7zkQOtZF0MfGcYv_-rAKg1_6cNCEiCmvQuZZmD2wPYVQFoGrsAzHwarAI')"></div>
+<div class="hidden lg:block overflow-hidden">
+<p class="text-xs font-bold truncate">Dr. Martínez</p>
+<p class="text-[10px] text-slate-500">Médico General</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Conversation List Sidebar -->
+<div class="w-80 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark/30 overflow-hidden">
+<div class="p-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary dark:text-white placeholder:text-slate-500" placeholder="Buscar conversaciones..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Conversation Thread 1 (Active) -->
+<div class="flex items-center gap-3 px-4 py-4 bg-primary/5 dark:bg-primary/10 border-r-4 border-primary cursor-pointer">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Maria Garcia profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyYe0nzbEWcGyOehTuNaZTsJNKkw4hPzJXx_6JAMoiY6B7LwJORcRGvQzheoSCrito5xDtt5oKINkSMYBu9W923QoWulasc0Z-cG47h4FWwnNfyXDBBy-h6Q0FY3jrrpp7yOnGxEIFIgAN8INob1Pv_YuQ-h8BAFzCT2r0AgaBRku59_e64cEHgOBUsXNRLBc4qdswvL_Bfi_PiBUtCxktRsCR8A7MIf0gEcvtKfYtWBwXEax2QQe1SYG2EElMPd0R-qxp6ZQMIiQ')"></div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white truncate">María García</h3>
+<span class="text-[10px] text-slate-400">10:45 AM</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">¿Cuál es la dosis de Pterovita?</p>
+</div>
+<div class="size-5 rounded-full bg-primary flex items-center justify-center">
+<span class="text-[10px] font-bold text-white">2</span>
+</div>
+</div>
+<!-- Conversation Thread 2 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Juan Perez profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBL0SOlYQfmMBtlTPYnZvtZcytAF4l772_vsQmQ4OLzWVzZAsNKl05n3AOsG2dhHXA51B4A0YSzRSI7wP3JwF7y9q6UcoLB3cwj9UDJKr7D58hoKG1DvHDftmD3b8xRcFgARynbwH3f-7BUL9NdT6ZtxFd-A8R7qnvaNhucNNeh6Vp6NrL993UQvg3PjJI8lbzGv2fYtmbx-eWwGjG2vUvlOupkGFajmNl-T3IZ_573LlGxHAYSq7v5kqAFY8vhxVcHNH6fmJ8ygyo')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Juan Pérez</h3>
+<span class="text-[10px] text-slate-400">9:30 AM</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Gracias doctor, nos vemos en la cita.</p>
+</div>
+</div>
+<!-- Thread 3 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Lucia Mendez profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCeuAR_HRscFqu6rmRWmqyC_ZKAxvRXWvI9ION5PsDFviLcLzb7ETWin1Sm1teWDE-HoclCBWkkOJ1XPfEPuqvAeAo9WL4xrcW8dkcya1EDDPLETUtC13nKL_QVmjEtWJir5MMS0ZErI8JsubhzZPA1Z3K6dfHJoqIA9USa5doy-9iYJ8pY8A965MdGnGlGC3tlCxJ1nolENjKdjR5EA5xrTVBNdkTttST2lGIW85gGqrVXf5QawoVa74_RFhmZ-u0SPibbOfNuoDA')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Lucía Méndez</h3>
+<span class="text-[10px] text-slate-400">Ayer</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Adjunto mis resultados de laboratorio.</p>
+</div>
+</div>
+<!-- Thread 4 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Roberto Diaz profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqrAsYmt4PyyHs753TqM8oduy1rurv1vWfSERq1JtDXAVhbyoB3uTCc1CaCCSlKDPm-xsrfDZkI7SH-0mbqbvUkYlCtQa60lLxXWOy-qRK_KC3i1jA_SyqvhgpB3pZ7xAGnhs73XdUGyXia5kF4S2q_MJ6kRG_BH7yhdjjwzayqKwjCHlPKGBLEhBXEbyh0iofHTvmwQ0a7Ehr4XZRuZvHXZiA1Y0-cl9zDhi00u8QHN4En5e-CSHBoZpPoJtqqUsvjTu1S-NYyUI')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Roberto Díaz</h3>
+<span class="text-[10px] text-slate-400">Ayer</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate text-primary font-medium">Nueva cita programada</p>
+</div>
+<div class="size-5 rounded-full bg-primary flex items-center justify-center">
+<span class="text-[10px] font-bold text-white">1</span>
+</div>
+</div>
+<!-- Thread 5 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Elena Ruiz profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKVt9EpyLfQei7r-rddkYp_3kdjGXch_PYpsZDsUu2eAlH5Vvh6AOSqRsruYHrkVDJklQxpmiTX7IdWd5CWUDYjvCCZ1GcPt_o_MxCQ5s5zdB8sfP1OmwCkVynFN3CGBBmvIdPLmbouZaPGHXlom1kUwiWU6A_ZBBBY6HqLvzncVHQK-0UxydSWWWYVSJJYFgf6H7hLTgLC6PaXdp_cb6L97YjaDfBdmd22Qj553RJ18rk2nPMsiQtFB0bepvHBtafQ4SUgq5PODA')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Elena Ruiz</h3>
+<span class="text-[10px] text-slate-400">Lunes</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">¿Puede renovar mi receta médica?</p>
+</div>
+</div>
+<!-- Thread 6 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Carlos Sosa profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANjKSl-akdpAgO3ypeizTZvjn6U2iZDljUiEi_iIX9f7Cp6JZ7jurAbtxKqrjrclwpd7hYN4wU0IV-qeB250OzHaXw1rA7PFWxec-bGwVdzON-OH8C1y1qm51S4Otb7gNlTkSTn-xBowOp0TsrL0rCq4CH6-zhZY3r8X7c2T8gj7fhb3typDp7arCTbCUc-Ufuf88KwunL6Tcsg2nfT0Y0IhTAPY5JyqfZMY6IwMaOMjO1oiSxHLODRdZN6J-_VMJsB-KKWHFCVcc')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Carlos Sosa</h3>
+<span class="text-[10px] text-slate-400">Lunes</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Me siento mucho mejor hoy.</p>
+</div>
+</div>
+<!-- Thread 7 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Sofia Torres profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAS_5W5hl9o-RgpeOyuwOiLX6rXN6VZ23PphWxD0JrBpD3xHVD0lVHhUZz8-HBllJDJHKsng0O15hvyRa3-Q99GkEvzYBfziLJ0pXB11MsmeN7I2zgRi9VBYzles7Kl5crcvve0LGRLh7eF5TCz1o1Pk8F5NhTQHZ7FujeB1W9BCS-jZikkJDmKoctzsSaEMsuZBO6kCCFGREJZ7Y66oTSNCGtpqJaNG2kzLu3RwwD6998HUbejNRerAdjFi8XIY450_6kwxCHmNzY')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Sofía Torres</h3>
+<span class="text-[10px] text-slate-400">24 Oct</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">¿Cuándo debo tomar la vitamina C?</p>
+</div>
+</div>
+<!-- Thread 8 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer transition-colors">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Patient Mateo Vaca profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBZP4uXBpWCrRqAA2M9opL-2Ebm5c2BlczqpNNrmqbz-WI3WverEyg-BUagYWHLIFeOaHRBFbIqfNnjKrRBdSlzgTlQkO3btRzO4SZs1aRwdmvWx1vyokgUjMCKywM_jA9SDOPM2OYaMUAZaJUjUqb_rRp_SgiHClgdiUY40CR2sCVjsAdddxwikurgHERJooSSOjqx4Nq_hxfCRLnMfPtk_LUZcgSaarH1gNwNuwPLe2axQpsag8E02bvp0Nr_Lt9VEt0I5ftFnM')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">Mateo Vaca</h3>
+<span class="text-[10px] text-slate-400">22 Oct</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Confirmado para el miércoles.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Area -->
+<main class="flex-1 flex flex-col bg-white dark:bg-background-dark">
+<!-- Chat Header -->
+<header class="h-16 px-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Active patient Maria Garcia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNWyaYxPCOY7EK0kKs5ur9aBzizdgom4mGMjYSSOGOVzoI-d96ms-_s1-kNni-TfWKOfIArDBPHNInP5dX99xWuTP13C-GclJIUqyyvdNVTQXOntvIL3g_puSNubqnHpQtHyZcs0fCKl3EDxUt-NKlSU8RyZZd674y9w7j9vl90GSodSu-xhKBlXGt-csQrdEreKBf1sUaLXPn8VQIQjl89Efc3HcXxu6H1D_KRRB5KngsA-UP83Sr0CPCu-WbZyiDhG9HJf9V2vE')"></div>
+<div>
+<h2 class="text-sm font-bold text-slate-900 dark:text-white leading-none">María García</h2>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="size-2 bg-green-500 rounded-full"></span>
+<span class="text-[10px] text-slate-500 font-medium">En línea</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:border-slate-800 mx-1"></div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">clinical_notes</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Chat Content -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] text-slate-500 rounded-full uppercase tracking-wider font-bold">Hoy</span>
+</div>
+<!-- Patient Message -->
+<div class="flex flex-col items-start max-w-[80%]">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">María García</span>
+<span class="text-[10px] text-slate-400">10:42 AM</span>
+</div>
+<div class="px-4 py-3 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-white/5 rounded-xl rounded-tl-none message-shadow">
+<p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">Buenos días Dr. Martínez. Tenía una duda sobre el tratamiento que me recetó ayer.</p>
+</div>
+</div>
+<!-- Patient Message -->
+<div class="flex flex-col items-start max-w-[80%]">
+<div class="px-4 py-3 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-white/5 rounded-xl rounded-tl-none message-shadow">
+<p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">¿Cuál es la dosis exacta de Pterovita que debo tomar? No me quedó claro si era una o dos cápsulas después del desayuno.</p>
+</div>
+<span class="text-[10px] text-slate-400 mt-1">10:43 AM</span>
+</div>
+<!-- Doctor Response -->
+<div class="flex flex-col items-end max-w-[80%] ml-auto">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] text-slate-400">10:45 AM</span>
+<span class="text-xs font-bold text-primary">Dr. Martínez</span>
+</div>
+<div class="px-4 py-3 bg-primary text-white rounded-xl rounded-tr-none message-shadow">
+<p class="text-sm leading-relaxed">Hola María. Para el Pterovita, la indicación correcta es <strong>una cápsula de 500mg</strong> diariamente después del desayuno.</p>
+</div>
+</div>
+<!-- Doctor Response -->
+<div class="flex flex-col items-end max-w-[80%] ml-auto">
+<div class="px-4 py-3 bg-primary text-white rounded-xl rounded-tr-none message-shadow">
+<p class="text-sm leading-relaxed">Es importante que lo tomes con un vaso completo de agua para mejorar la absorción. ¿Tienes alguna otra duda con el resto de los medicamentos?</p>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-[10px] text-slate-400">Enviado</span>
+<span class="material-symbols-outlined text-xs text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
+<div class="flex items-end gap-3 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-white/10 rounded-xl p-2 transition-all focus-within:ring-2 focus-within:ring-primary/20">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-sm py-2 px-2 dark:text-white placeholder:text-slate-500 resize-none max-h-32 min-h-[40px] leading-relaxed" placeholder="Escribe un mensaje clínico..."></textarea>
+<button class="bg-primary hover:bg-primary/90 text-white p-3 rounded-lg flex items-center justify-center transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="mt-3 flex justify-between items-center px-1">
+<div class="flex gap-4">
+<button class="text-[10px] font-bold text-slate-500 hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                            RESPUESTAS RÁPIDAS
+                        </button>
+<button class="text-[10px] font-bold text-slate-500 hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">description</span>
+                            ADJUNTAR RECETA
+                        </button>
+</div>
+<p class="text-[10px] text-slate-500 italic">Enter para enviar, Shift+Enter para nueva línea</p>
+</div>
+</div>
+</main>
+</div>
+<script src="nav.js"></script>
+</body></html>
