@@ -15,7 +15,9 @@
       "Bash(git:*)",
       "Bash(ls:*)",
       "Bash(do:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(gh run:*)",
+      "WebFetch(domain:contribution.usercontent.google.com)"
     ]
   }
 }

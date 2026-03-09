@@ -207,7 +207,7 @@
     document.querySelectorAll('button').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
       if (text.includes('nueva consulta')) el.addEventListener('click', e => { e.preventDefault(); location.href = '08-review-v1.html'; });
-      if (text === 'programas') el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
+      if (text === 'planes') el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
       if (text === 'seguimiento') el.addEventListener('click', e => { e.preventDefault(); location.href = '07-analytics.html'; });
       if (text === 'historial') el.addEventListener('click', e => { e.preventDefault(); location.href = '09-review-v2.html'; });
     });
@@ -232,7 +232,7 @@
   if (currentFile.includes('review') || currentFile === '08b-revision1.html') {
     document.querySelectorAll('button, a').forEach(el => {
       const text = el.textContent.trim().toLowerCase();
-      if (text.includes('ver programa') || text.includes('editar programa') || text.includes('programa pautado') || text.includes('ajustar programa') || text.includes('diseñar programa')) {
+      if (text.includes('ver plan') || text.includes('editar plan') || text.includes('plan pautado') || text.includes('ajustar plan') || text.includes('diseñar plan')) {
         el.style.cursor = 'pointer';
         el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
       }
