@@ -17,10 +17,10 @@
   const menuItems = [
     { icon: 'dashboard', label: 'Dashboard', href: '02-dashboard.html' },
     { icon: 'group', label: 'Usuarios', href: '03-patient-list.html' },
-    { icon: 'calendar_today', label: 'Agenda', href: '06-scheduling.html' },
+    { icon: 'calendar_today', label: 'Agenda', href: '06-scheduling.html', badge: 9, badgeColor: '#eab308' },
+    { icon: 'chat', label: 'Mensajes', href: '16-messaging.html', badge: 3, badgeColor: '#22c55e' },
     { icon: 'stethoscope', label: 'Terapias', href: '14-program-library.html' },
-    { icon: 'chat', label: 'Mensajes', href: '16-messaging.html' },
-    { icon: 'build', label: 'Equipos', href: '15-equipment-management.html' },
+    { icon: 'build', label: 'Equipos', href: '15-equipment-management.html', badge: 2 },
     { icon: 'settings', label: 'Configuracion', href: '15-equipment-management.html', separator: true },
   ];
 
@@ -58,7 +58,9 @@
       const fontW = isActive ? 'font-weight:600;' : 'font-weight:500;';
       const fill = isActive ? "font-variation-settings:'FILL' 1;" : '';
       const hover = isActive ? '' : 'onmouseenter="this.style.background=\'rgba(255,255,255,0.05)\';this.style.color=\'#E2E8F0\';" onmouseleave="this.style.background=\'transparent\';this.style.color=\'#94A3B8\';"';
-      navHTML += `<a href="${item.href}" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;${bg}${fontW}" ${hover}><span class="material-symbols-outlined" style="font-size:20px;${fill}">${item.icon}</span><span style="font-size:14px;font-family:Manrope,sans-serif;">${item.label}</span></a>`;
+      const badgeBg = item.badgeColor || '#ef4444';
+      const badgeHTML = item.badge ? `<span style="margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:${badgeBg};color:#fff;font-size:11px;font-weight:700;font-family:Manrope,sans-serif;display:flex;align-items:center;justify-content:center;">${item.badge}</span>` : '';
+      navHTML += `<a href="${item.href}" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;${bg}${fontW}" ${hover}><span class="material-symbols-outlined" style="font-size:20px;${fill}">${item.icon}</span><span style="font-size:14px;font-family:Manrope,sans-serif;">${item.label}</span>${badgeHTML}</a>`;
     });
     return navHTML;
   }
