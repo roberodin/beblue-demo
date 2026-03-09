@@ -204,7 +204,7 @@
       const text = el.textContent.trim().toLowerCase();
       if (text.includes('nueva consulta')) el.addEventListener('click', e => { e.preventDefault(); location.href = '08-review-v1.html'; });
       if (text === 'programas') el.addEventListener('click', e => { e.preventDefault(); location.href = '05-program-editor.html'; });
-      if (text === 'analíticas' || text === 'analiticas') el.addEventListener('click', e => { e.preventDefault(); location.href = '07-analytics.html'; });
+      if (text === 'seguimiento') el.addEventListener('click', e => { e.preventDefault(); location.href = '07-analytics.html'; });
       if (text === 'historial') el.addEventListener('click', e => { e.preventDefault(); location.href = '09-review-v2.html'; });
     });
     document.querySelectorAll('div').forEach(el => {
