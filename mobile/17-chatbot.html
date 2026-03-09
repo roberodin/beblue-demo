@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeBlue - Asistente IA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: { "primary": "#135bec", "background-dark": "#0A1628" },
+      fontFamily: { "display": ["Manrope", "sans-serif"] },
+      borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+    },
+  },
+}
+</script>
+<style>
+body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+body { min-height: max(884px, 100dvh); }
+.typing-dot { animation: blink 1.4s infinite both; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
+</style>
+</head>
+<body class="bg-background-dark text-slate-100 min-h-screen flex flex-col font-display">
+
+<!-- Header -->
+<header class="flex items-center gap-3 px-5 pt-6 pb-4 border-b border-white/5">
+  <a href="04-home-dashboard.html" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-800/50">
+    <span class="material-symbols-outlined text-slate-300">arrow_back</span>
+  </a>
+  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0">
+    <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+  </div>
+  <div class="flex-1">
+    <h1 class="text-base font-bold">BlueBot</h1>
+    <p class="text-[11px] text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Tu asistente de bienestar</p>
+  </div>
+  <button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-800/50">
+    <span class="material-symbols-outlined text-slate-400 text-xl">more_vert</span>
+  </button>
+</header>
+
+<!-- Chat Messages -->
+<main class="flex-1 overflow-y-auto px-4 py-5 space-y-4" id="chat-area">
+
+  <!-- Welcome message -->
+  <div class="flex gap-3 items-start">
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+      <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </div>
+    <div class="max-w-[85%] space-y-2">
+      <div class="bg-slate-800/60 border border-white/5 rounded-2xl rounded-tl-md px-4 py-3">
+        <p class="text-sm leading-relaxed">¡Hola María! 👋 Soy <strong>BlueBot</strong>, tu asistente personal de bienestar. Estoy aquí para ayudarte con recomendaciones basadas en tus datos de salud.</p>
+      </div>
+      <p class="text-[10px] text-slate-500 ml-1">09:00</p>
+    </div>
+  </div>
+
+  <!-- Bot: daily summary -->
+  <div class="flex gap-3 items-start">
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+      <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </div>
+    <div class="max-w-[85%] space-y-2">
+      <div class="bg-slate-800/60 border border-white/5 rounded-2xl rounded-tl-md px-4 py-3 space-y-3">
+        <p class="text-sm font-bold text-primary">📊 Tu resumen de hoy:</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-indigo-500/15 flex items-center justify-center"><span class="material-symbols-outlined text-indigo-400 text-xs">bedtime</span></span>
+            <p class="text-sm"><strong>Sueño:</strong> 7h 12m — <span class="text-emerald-400">Buena calidad</span></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-orange-500/15 flex items-center justify-center"><span class="material-symbols-outlined text-orange-400 text-xs">steps</span></span>
+            <p class="text-sm"><strong>Pasos:</strong> 3,200 de 10,000 — <span class="text-amber-400">Sigue moviéndote</span></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-rose-500/15 flex items-center justify-center"><span class="material-symbols-outlined text-rose-400 text-xs">favorite</span></span>
+            <p class="text-sm"><strong>HRV:</strong> 42ms — <span class="text-rose-400">Algo baja, cuida el descanso</span></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-cyan-500/15 flex items-center justify-center"><span class="material-symbols-outlined text-cyan-400 text-xs">water_drop</span></span>
+            <p class="text-sm"><strong>Hidratación:</strong> 0.5L — <span class="text-amber-400">Recuerda beber más agua</span></p>
+          </div>
+        </div>
+      </div>
+      <p class="text-[10px] text-slate-500 ml-1">09:01</p>
+    </div>
+  </div>
+
+  <!-- User message -->
+  <div class="flex justify-end">
+    <div class="max-w-[80%] space-y-2">
+      <div class="bg-primary rounded-2xl rounded-tr-md px-4 py-3">
+        <p class="text-sm text-white">Tengo la sesión de cámara hiperbárica mañana, ¿alguna recomendación?</p>
+      </div>
+      <p class="text-[10px] text-slate-500 text-right mr-1">09:03</p>
+    </div>
+  </div>
+
+  <!-- Bot: hyperbaric recommendations -->
+  <div class="flex gap-3 items-start">
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+      <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </div>
+    <div class="max-w-[85%] space-y-2">
+      <div class="bg-slate-800/60 border border-white/5 rounded-2xl rounded-tl-md px-4 py-3 space-y-3">
+        <p class="text-sm leading-relaxed">¡Genial que tengas sesión mañana! 🫧 Aquí van mis recomendaciones para la <strong>Cámara Hiperbárica</strong>:</p>
+        <div class="space-y-2 text-sm">
+          <div class="flex gap-2 items-start">
+            <span class="text-emerald-400 mt-0.5">✓</span>
+            <p><strong>Antes:</strong> Hidrátate bien (mínimo 0.5L en las 2h previas). Evita cafeína 1h antes.</p>
+          </div>
+          <div class="flex gap-2 items-start">
+            <span class="text-emerald-400 mt-0.5">✓</span>
+            <p><strong>Ropa:</strong> Lleva ropa cómoda de algodón, sin cremalleras metálicas.</p>
+          </div>
+          <div class="flex gap-2 items-start">
+            <span class="text-emerald-400 mt-0.5">✓</span>
+            <p><strong>Durante:</strong> Relájate, respira profundamente. Puedes meditar o escuchar música.</p>
+          </div>
+          <div class="flex gap-2 items-start">
+            <span class="text-emerald-400 mt-0.5">✓</span>
+            <p><strong>Después:</strong> Descansa 15 min, bebe agua. Evita ejercicio intenso las 2h siguientes.</p>
+          </div>
+        </div>
+        <div class="bg-primary/10 border border-primary/20 rounded-xl p-3 mt-2">
+          <p class="text-xs text-primary font-semibold">💡 Según tus datos, llevas 6 sesiones. Tu SpO2 ha mejorado un 2% desde que empezaste.</p>
+        </div>
+      </div>
+      <p class="text-[10px] text-slate-500 ml-1">09:03</p>
+    </div>
+  </div>
+
+  <!-- User message -->
+  <div class="flex justify-end">
+    <div class="max-w-[80%] space-y-2">
+      <div class="bg-primary rounded-2xl rounded-tr-md px-4 py-3">
+        <p class="text-sm text-white">¿Qué debería cenar hoy? Mi nutricionista me dijo que debo subir proteína</p>
+      </div>
+      <p class="text-[10px] text-slate-500 text-right mr-1">09:05</p>
+    </div>
+  </div>
+
+  <!-- Bot: nutrition recommendation -->
+  <div class="flex gap-3 items-start">
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+      <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </div>
+    <div class="max-w-[85%] space-y-2">
+      <div class="bg-slate-800/60 border border-white/5 rounded-2xl rounded-tl-md px-4 py-3 space-y-3">
+        <p class="text-sm leading-relaxed">Según tu registro de hoy, llevas <strong>98g de proteína</strong> y tu objetivo es 120g. Te faltan unos <strong>22g</strong>. Aquí tienes ideas para la cena:</p>
+
+        <div class="bg-slate-900/60 rounded-xl p-3 space-y-2">
+          <p class="text-xs font-bold text-emerald-400 uppercase">Opción 1 — Rápida</p>
+          <p class="text-sm">🥩 Pechuga de pollo a la plancha (200g) con verduras salteadas y quinoa</p>
+          <p class="text-[11px] text-slate-400">~420 kcal · P 42g · C 30g · G 12g</p>
+        </div>
+
+        <div class="bg-slate-900/60 rounded-xl p-3 space-y-2">
+          <p class="text-xs font-bold text-cyan-400 uppercase">Opción 2 — Ligera</p>
+          <p class="text-sm">🐟 Salmón al horno (180g) con brócoli al vapor y batata</p>
+          <p class="text-[11px] text-slate-400">~380 kcal · P 36g · C 25g · G 16g</p>
+        </div>
+
+        <div class="bg-slate-900/60 rounded-xl p-3 space-y-2">
+          <p class="text-xs font-bold text-violet-400 uppercase">Opción 3 — Vegetariana</p>
+          <p class="text-sm">🥗 Tofu firme marinado con arroz integral y edamames</p>
+          <p class="text-[11px] text-slate-400">~350 kcal · P 28g · C 35g · G 10g</p>
+        </div>
+
+        <p class="text-xs text-slate-400">Con cualquiera de estas llegarás a tu objetivo de proteína. 💪</p>
+      </div>
+      <p class="text-[10px] text-slate-500 ml-1">09:05</p>
+    </div>
+  </div>
+
+  <!-- User message -->
+  <div class="flex justify-end">
+    <div class="max-w-[80%] space-y-2">
+      <div class="bg-primary rounded-2xl rounded-tr-md px-4 py-3">
+        <p class="text-sm text-white">Genial, voy con la del salmón. ¿Algo más que debería hacer hoy?</p>
+      </div>
+      <p class="text-[10px] text-slate-500 text-right mr-1">09:06</p>
+    </div>
+  </div>
+
+  <!-- Bot: daily plan -->
+  <div class="flex gap-3 items-start">
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+      <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </div>
+    <div class="max-w-[85%] space-y-2">
+      <div class="bg-slate-800/60 border border-white/5 rounded-2xl rounded-tl-md px-4 py-3 space-y-3">
+        <p class="text-sm leading-relaxed">¡Buena elección! 🐟 Aquí tu <strong>plan para el resto del día</strong>:</p>
+        <div class="space-y-2 text-sm">
+          <div class="flex gap-3 items-start">
+            <span class="text-[11px] text-slate-500 font-mono w-10 text-right flex-shrink-0 mt-0.5">12:00</span>
+            <div class="flex-1">
+              <p>💊 Toma tu <strong>probiótico</strong> (pendiente de hoy)</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-[11px] text-slate-500 font-mono w-10 text-right flex-shrink-0 mt-0.5">14:00</span>
+            <div class="flex-1">
+              <p>🚶‍♀️ Paseo de 30 min — te faltan 6,800 pasos para el objetivo</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-[11px] text-slate-500 font-mono w-10 text-right flex-shrink-0 mt-0.5">17:00</span>
+            <div class="flex-1">
+              <p>🧘 15 min de estiramientos — tu HRV está baja, esto ayudará</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-[11px] text-slate-500 font-mono w-10 text-right flex-shrink-0 mt-0.5">20:00</span>
+            <div class="flex-1">
+              <p>🐟 Cena: salmón + brócoli + batata</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-[11px] text-slate-500 font-mono w-10 text-right flex-shrink-0 mt-0.5">22:00</span>
+            <div class="flex-1">
+              <p>🌙 Toma <strong>melatonina</strong> (1mg) y apaga pantallas</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3">
+          <p class="text-xs text-emerald-400 font-semibold">🎯 Tu edad biológica ha bajado 7 años desde que empezaste. ¡Cada día cuenta!</p>
+        </div>
+      </div>
+      <p class="text-[10px] text-slate-500 ml-1">09:06</p>
+    </div>
+  </div>
+
+  <!-- Quick suggestions -->
+  <div class="flex gap-2 overflow-x-auto pb-2 px-1 no-scrollbar">
+    <button class="flex-shrink-0 text-xs font-semibold bg-slate-800/60 border border-white/5 text-slate-300 px-4 py-2 rounded-full hover:border-primary/30 hover:text-primary transition-all">¿Cómo va mi adherencia?</button>
+    <button class="flex-shrink-0 text-xs font-semibold bg-slate-800/60 border border-white/5 text-slate-300 px-4 py-2 rounded-full hover:border-primary/30 hover:text-primary transition-all">Resumen semanal</button>
+    <button class="flex-shrink-0 text-xs font-semibold bg-slate-800/60 border border-white/5 text-slate-300 px-4 py-2 rounded-full hover:border-primary/30 hover:text-primary transition-all">Receta saludable</button>
+    <button class="flex-shrink-0 text-xs font-semibold bg-slate-800/60 border border-white/5 text-slate-300 px-4 py-2 rounded-full hover:border-primary/30 hover:text-primary transition-all">Tips para dormir</button>
+  </div>
+
+</main>
+
+<!-- Input bar -->
+<footer class="px-4 py-3 pb-8 border-t border-white/5 bg-background-dark/95 backdrop-blur-md">
+  <div class="flex items-center gap-3">
+    <button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-800/50 flex-shrink-0">
+      <span class="material-symbols-outlined text-slate-400 text-xl">mic</span>
+    </button>
+    <div class="flex-1 bg-slate-800/60 border border-white/5 rounded-2xl px-4 py-2.5 flex items-center">
+      <input type="text" placeholder="Pregúntame lo que quieras..." class="bg-transparent border-none outline-none text-sm text-slate-100 placeholder:text-slate-500 w-full font-display" />
+    </div>
+    <button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">
+      <span class="material-symbols-outlined text-white text-xl" style="margin-left:2px;">send</span>
+    </button>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body></html>

@@ -266,7 +266,7 @@
 
     // Convert all fixed-position elements inside phone to sticky/absolute
     scrollArea.querySelectorAll('*').forEach(el => {
-      if (el.id === 'beblue-nav') return;
+      if (el.id === 'beblue-nav' || el.id === 'bluebot-fab') return;
       const styles = window.getComputedStyle(el);
       if (styles.position === 'fixed') {
         // Decorative elements (blur backgrounds etc.) should be absolute, not sticky
@@ -292,6 +292,16 @@
         contentWrap.appendChild(scrollArea.firstChild);
       }
       scrollArea.insertBefore(contentWrap, beblueNav);
+    }
+
+    // Reposition BlueBot FAB inside phone frame
+    const bluebotFab = document.getElementById('bluebot-fab');
+    if (bluebotFab) {
+      bluebotFab.style.position = 'fixed';
+      bluebotFab.style.bottom = ((window.innerHeight - 844) / 2 + 90) + 'px';
+      bluebotFab.style.right = ((window.innerWidth - 390) / 2 + 20) + 'px';
+      // Move FAB out of phone scroll into the body so it overlays the phone
+      document.body.appendChild(bluebotFab);
     }
   }
 })();
