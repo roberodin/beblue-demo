@@ -95,7 +95,7 @@
 <button class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors">notifications</button>
 <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-bold transition-all shadow-lg shadow-primary/20">
 <span class="material-symbols-outlined text-lg">add</span>
-                        Nuevo Paciente
+                        Nuevo Usuario
                     </button>
 </div>
 </header>
@@ -106,7 +106,7 @@
 <div class="flex flex-wrap items-center gap-4">
 <div class="flex-1 min-w-[300px] relative">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="w-full pl-10 pr-4 py-2.5 rounded-xl border-none bg-white dark:bg-slate-800/50 focus:ring-2 focus:ring-primary dark:text-slate-100 text-sm shadow-sm transition-all" placeholder="Buscar paciente por nombre, ID o programa..." type="text"/>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl border-none bg-white dark:bg-slate-800/50 focus:ring-2 focus:ring-primary dark:text-slate-100 text-sm shadow-sm transition-all" placeholder="Buscar usuario por nombre, ID o programa..." type="text"/>
 </div>
 <div class="flex items-center gap-2">
 <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/50 rounded-xl text-sm font-medium border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all shadow-sm">
@@ -118,7 +118,7 @@
 <span class="material-symbols-outlined text-base">expand_more</span>
 </button>
 <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/50 rounded-xl text-sm font-medium border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all shadow-sm">
-<span>Scoring</span>
+<span>Edad Bio.</span>
 <span class="material-symbols-outlined text-base">expand_more</span>
 </button>
 </div>
@@ -126,7 +126,7 @@
 <div class="flex items-center gap-2">
 <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Ordenar por:</span>
 <button class="flex items-center gap-1 text-primary text-sm font-bold">
-                                Scoring
+                                Edad Bio.
                                 <span class="material-symbols-outlined text-base">arrow_downward</span>
 </button>
 </div>
@@ -141,7 +141,6 @@
 <th class="px-6 py-4">Foto</th>
 <th class="px-6 py-4">Nombre</th>
 <th class="px-6 py-4">Edad</th>
-<th class="px-6 py-4">Scoring</th>
 <th class="px-6 py-4">Edad Bio.</th>
 <th class="px-6 py-4">Adherencia</th>
 <th class="px-6 py-4">Programa</th>
@@ -158,9 +157,8 @@
 <td class="px-6 py-4 text-sm font-semibold">María García López</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">45</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">72</span>
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">38</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">38</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -185,9 +183,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Juan Pérez</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">52</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">48</span>
+<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">60</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">60</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -212,9 +209,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Ana Martínez</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">30</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">85</span>
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">25</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">25</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -239,9 +235,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Carlos Ruiz</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">61</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">55</span>
+<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">65</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">65</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -266,9 +261,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Elena Sanz</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">38</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">68</span>
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">35</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">35</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -293,9 +287,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Luis Moreno</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">55</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">75</span>
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">50</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">50</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -320,9 +313,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Carmen Ortiz</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">42</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">35</span>
+<span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">48</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">48</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -347,9 +339,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Roberto Díaz</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">67</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">91</span>
+<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">58</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">58</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -374,9 +365,8 @@
 <td class="px-6 py-4 text-sm font-semibold">Sonia Vaca</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">49</td>
 <td class="px-6 py-4">
-<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">62</span>
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">45</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">45</td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -401,9 +391,8 @@
 <td class="px-6 py-4 text-sm font-semibold border-none">Alberto Gil</td>
 <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 border-none">36</td>
 <td class="px-6 py-4 border-none">
-<span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs font-bold border border-green-500/20">79</span>
+<span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold border border-yellow-500/20">33</span>
 </td>
-<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 border-none">33</td>
 <td class="px-6 py-4 border-none">
 <div class="flex items-center gap-2">
 <div class="flex-1 h-1.5 w-24 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">

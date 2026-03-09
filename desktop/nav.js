@@ -160,11 +160,11 @@
   // Text-based buttons
   document.querySelectorAll('button, a').forEach(el => {
     const text = el.textContent.trim().toLowerCase();
-    if (text.includes('nuevo paciente') || text.includes('alta paciente') || text.includes('añadir paciente')) {
+    if (text.includes('nuevo usuario') || text.includes('alta usuario') || text.includes('añadir usuario')) {
       el.style.cursor = 'pointer';
       el.addEventListener('click', e => { e.preventDefault(); location.href = '10-registration-step1.html'; });
     }
-    if (text === 'ver detalle' || text === 'ver paciente' || text === 'ver ficha') {
+    if (text === 'ver detalle' || text === 'ver usuario' || text === 'ver ficha') {
       el.style.cursor = 'pointer';
       el.addEventListener('click', e => { e.preventDefault(); location.href = '04-patient-record.html'; });
     }
